@@ -22,6 +22,7 @@ const bindings = [
 ];
 
 const socialStyles = [];
+const customPlayStyles = [];
 
 function esc(s){
   return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -67,7 +68,30 @@ function renderPlatforms(){
   if(other) vals.push(other);
   renderTags(vals,'outPlatforms');
 }
-function renderPlayStyles(){renderTags(selected('playStyles'),'outPlayStyles')}
+function renderPlayStyles(){
+  renderTags([...selected('playStyles'), ...customPlayStyles],'outPlayStyles');
+}
+function renderCustomPlayStyles(){
+  $('playStyleEditorTags').innerHTML = customPlayStyles.map((v,i)=>`<button type="button" data-i="${i}">${esc(v)} ×</button>`).join('');
+  renderPlayStyles();
+}
+function addPlayStyle(){
+  const v=$('playStyleInput').value.trim();
+  if(!v) return;
+  const presets=selected('playStyles');
+  if(!customPlayStyles.includes(v) && !presets.includes(v)) customPlayStyles.push(v);
+  $('playStyleInput').value='';
+  renderCustomPlayStyles();
+}
+$('playStyleAddBtn').addEventListener('click',addPlayStyle);
+$('playStyleInput').addEventListener('keydown',e=>{
+  if(e.key==='Enter'){e.preventDefault();addPlayStyle();}
+});
+$('playStyleEditorTags').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b)return;
+  customPlayStyles.splice(Number(b.dataset.i),1);
+  renderCustomPlayStyles();
+});
 document.querySelectorAll('.chip-editor input').forEach(i=>i.addEventListener('change',()=>{
   renderPlatforms();renderPlayStyles();
 }));
@@ -162,5 +186,6 @@ $('sheetFont').value=savedFont;
 applyFont(savedFont);
 renderPlatforms();
 renderPlayStyles();
+renderCustomPlayStyles();
 renderSocial();
 updateCharacters();

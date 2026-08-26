@@ -554,3 +554,26 @@ input[type=file]{
   .editor{border-right:0;border-bottom:1px solid var(--line)}
   .preview{padding-left:12px;padding-right:12px}
 }
+
+
+/* ===== Header without AI CHAT FRIEND SHEET ribbon ===== */
+.sheet-header.no-title-ribbon{
+  grid-template-columns:minmax(0,1fr) 285px;
+  grid-template-rows:32px 26px;
+}
+.sheet-header.no-title-ribbon .user-line{
+  grid-column:1;
+  grid-row:1;
+}
+.sheet-header.no-title-ribbon > p{
+  grid-column:1;
+  grid-row:2;
+}
+.sheet-header.no-title-ribbon .platform-box{
+  grid-column:2;
+  grid-row:1 / span 2;
+}
+
+.tendency-custom-add{
+  margin-top:10px;
+}

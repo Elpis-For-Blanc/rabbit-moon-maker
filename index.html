@@ -16,7 +16,7 @@
 
       <section class="panel">
         <h2>♡ 기본 정보</h2>
-        <label>닉네임<input id="nickname" type="text" value="루아" maxlength="18"></label>
+        <label>닉네임<input id="nickname" type="text" value="닉네임" maxlength="18"></label>
         <label>X 아이디<input id="twitterId" type="text" value="@your_id" maxlength="24"></label>
         <label>한 줄 소개<input id="intro" type="text" value="AI채팅과 페어 이야기를 좋아해요 ♡" maxlength="46"></label>
       </section>
@@ -38,7 +38,7 @@
 
         <div class="entry-card">
           <b>01</b>
-          <label>캐릭터명<input id="favoriteName" type="text" value="Blanc" maxlength="24"></label>
+          <label>캐릭터명<input id="favoriteName" type="text" value="" placeholder="캐릭터명" maxlength="24"></label>
           <label>설명<input id="favoriteDesc" type="text" value="가장 좋아하는 캐릭터" maxlength="42"></label>
           <label>이미지<input id="favoriteImage" type="file" accept="image/*"></label>
         </div>
@@ -75,7 +75,7 @@
         <div id="pairFields">
           <div class="entry-card">
             <b>01</b>
-            <label>페어명<input id="pairName" type="text" value="Blanc × Elpis" maxlength="24"></label>
+            <label>페어명<input id="pairName" type="text" value="" placeholder="페어명" maxlength="24"></label>
             <label>관계 / 설명<input id="pairDesc" type="text" value="연인 페어 · 서사 중심" maxlength="42"></label>
             <label>이미지<input id="pairImage" type="file" accept="image/*"></label>
           </div>
@@ -114,6 +114,11 @@
           <label><input type="checkbox" value="세계관 몰입"><span>세계관 몰입</span></label>
           <label><input type="checkbox" value="장문"><span>장문</span></label>
         </div>
+        <div class="custom-add tendency-custom-add">
+          <input id="playStyleInput" type="text" maxlength="24" placeholder="직접 작성">
+          <button id="playStyleAddBtn" type="button">추가</button>
+        </div>
+        <div id="playStyleEditorTags" class="editor-tags"></div>
       </section>
 
       <section class="panel two-grid">
@@ -183,10 +188,10 @@
       <div class="preview-label">LIVE PREVIEW</div>
       <div class="canvas-wrap">
         <article id="sheet" class="sheet">
-          <header class="sheet-header">
-            <div class="title-ribbon">AI CHAT FRIEND SHEET</div>
+          <header class="sheet-header no-title-ribbon">
+            
             <div class="user-line">
-              <h2 id="outNickname">루아</h2>
+              <h2 id="outNickname">닉네임</h2>
               <span>♡</span>
               <p id="outTwitter">@your_id</p>
             </div>
@@ -204,7 +209,7 @@
                 <article id="favoriteCard1" class="character-card">
                   <div class="image-frame"><img id="favoritePreview" alt="" hidden></div>
                   <small>FAVORITE 01</small>
-                  <h3 id="outFavoriteName">Blanc</h3>
+                  <h3 id="outFavoriteName"></h3>
                   <p id="outFavoriteDesc">가장 좋아하는 캐릭터</p>
                 </article>
                 <article id="favoriteCard2" class="character-card hidden">
@@ -222,7 +227,7 @@
                 <article id="pairCard1" class="character-card">
                   <div class="image-frame"><img id="pairPreview" alt="" hidden></div>
                   <small>PAIR 01</small>
-                  <h3 id="outPairName">Blanc × Elpis</h3>
+                  <h3 id="outPairName"></h3>
                   <p id="outPairDesc">연인 페어 · 서사 중심</p>
                 </article>
                 <article id="pairCard2" class="character-card hidden">
