@@ -1597,3 +1597,202 @@ button:hover{transform:translateY(-1px)}
     min-width:980px !important;
   }
 }
+
+
+/* =========================================================
+   CHARACTER CARD FIX — isolated from all legacy card rules
+   ========================================================= */
+
+#sheet #characterCards.landscape-character-grid{
+  display:grid !important;
+  width:100% !important;
+  height:100% !important;
+  min-width:0 !important;
+  min-height:0 !important;
+  margin:0 !important;
+  padding:0 !important;
+  gap:8px !important;
+  align-items:stretch !important;
+  align-content:stretch !important;
+  justify-items:stretch !important;
+  grid-auto-flow:row !important;
+}
+
+/* 1–4 cards: one row. 5–6 cards: 3×2 */
+#sheet #characterCards[data-total-cards="1"]{
+  grid-template-columns:minmax(0,1fr) !important;
+  grid-template-rows:1fr !important;
+}
+#sheet #characterCards[data-total-cards="2"]{
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  grid-template-rows:1fr !important;
+}
+#sheet #characterCards[data-total-cards="3"]{
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  grid-template-rows:1fr !important;
+}
+#sheet #characterCards[data-total-cards="4"]{
+  grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+  grid-template-rows:1fr !important;
+}
+#sheet #characterCards[data-total-cards="5"],
+#sheet #characterCards[data-total-cards="6"]{
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  grid-template-rows:repeat(2,minmax(0,1fr)) !important;
+}
+
+/* Only active cards participate in layout. */
+#sheet #characterCards > .is-hidden{
+  display:none !important;
+}
+
+#sheet #characterCards > .portrait-card{
+  display:grid !important;
+  grid-template-rows:minmax(0,1fr) auto auto auto !important;
+  gap:3px !important;
+  align-items:center !important;
+  justify-items:center !important;
+
+  position:relative !important;
+  width:auto !important;
+  height:auto !important;
+  min-width:0 !important;
+  min-height:0 !important;
+  max-width:none !important;
+  max-height:none !important;
+
+  margin:0 !important;
+  padding:9px !important;
+  overflow:hidden !important;
+
+  border:1px solid color-mix(in srgb,var(--theme) 26%,#ffffff) !important;
+  border-radius:12px !important;
+  background:linear-gradient(180deg,#ffffff 0%,var(--theme-pale) 100%) !important;
+  box-shadow:none !important;
+  transform:none !important;
+}
+
+/* Square image box: centered and never stretched horizontally. */
+#sheet #characterCards > .portrait-card > .portrait-frame{
+  display:block !important;
+  position:relative !important;
+
+  width:min(100%, 150px) !important;
+  height:auto !important;
+  aspect-ratio:1 / 1 !important;
+  min-width:0 !important;
+  min-height:0 !important;
+  max-width:150px !important;
+  max-height:150px !important;
+
+  margin:0 auto 3px !important;
+  padding:0 !important;
+
+  align-self:center !important;
+  justify-self:center !important;
+
+  overflow:hidden !important;
+  border:1px solid color-mix(in srgb,var(--theme) 38%,#ffffff) !important;
+  border-radius:10px !important;
+  background:
+    radial-gradient(circle at 1px 1px,color-mix(in srgb,var(--theme) 14%,transparent) 1px,transparent 1.2px) 0 0/10px 10px,
+    var(--theme-pale) !important;
+}
+
+/* Bigger image slots when only 1–2 cards are active. */
+#sheet #characterCards[data-total-cards="1"] > .portrait-card > .portrait-frame{
+  width:min(100%,220px) !important;
+  max-width:220px !important;
+  max-height:220px !important;
+}
+#sheet #characterCards[data-total-cards="2"] > .portrait-card > .portrait-frame{
+  width:min(100%,170px) !important;
+  max-width:170px !important;
+  max-height:170px !important;
+}
+#sheet #characterCards[data-total-cards="3"] > .portrait-card > .portrait-frame{
+  width:min(100%,135px) !important;
+  max-width:135px !important;
+  max-height:135px !important;
+}
+#sheet #characterCards[data-total-cards="4"] > .portrait-card > .portrait-frame{
+  width:min(100%,108px) !important;
+  max-width:108px !important;
+  max-height:108px !important;
+}
+#sheet #characterCards[data-total-cards="5"] > .portrait-card > .portrait-frame,
+#sheet #characterCards[data-total-cards="6"] > .portrait-card > .portrait-frame{
+  width:min(100%,82px) !important;
+  max-width:82px !important;
+  max-height:82px !important;
+}
+
+#sheet #characterCards .portrait-frame img[hidden]{
+  display:none !important;
+}
+#sheet #characterCards .portrait-frame img:not([hidden]){
+  display:block !important;
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  max-width:none !important;
+  max-height:none !important;
+  min-width:0 !important;
+  min-height:0 !important;
+  margin:0 !important;
+  padding:0 !important;
+  object-fit:cover !important;
+  object-position:center !important;
+  border:0 !important;
+  outline:0 !important;
+  font-size:0 !important;
+  color:transparent !important;
+}
+
+#sheet #characterCards > .portrait-card > .eyebrow{
+  width:100% !important;
+  margin:0 !important;
+  padding:0 !important;
+  color:var(--theme) !important;
+  font-size:7px !important;
+  line-height:1.1 !important;
+  letter-spacing:1px !important;
+  text-align:center !important;
+  white-space:nowrap !important;
+}
+
+#sheet #characterCards > .portrait-card > h3{
+  width:100% !important;
+  margin:0 !important;
+  padding:0 !important;
+  color:var(--theme-deep) !important;
+  font-size:11px !important;
+  line-height:1.15 !important;
+  text-align:center !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+
+#sheet #characterCards > .portrait-card > p:last-child{
+  width:100% !important;
+  height:18px !important;
+  margin:0 !important;
+  padding:0 2px !important;
+  color:#8a747e !important;
+  font-size:7px !important;
+  line-height:9px !important;
+  text-align:center !important;
+  overflow:hidden !important;
+  display:-webkit-box !important;
+  -webkit-box-orient:vertical !important;
+  -webkit-line-clamp:2 !important;
+}
+
+/* Give 1–2 active cards slightly more breathing room. */
+#sheet #characterCards[data-total-cards="1"] > .portrait-card,
+#sheet #characterCards[data-total-cards="2"] > .portrait-card{
+  padding:12px !important;
+}
+

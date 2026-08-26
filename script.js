@@ -115,17 +115,23 @@ function updateCharacterCards(){
   const pair2=pair && $('pair2Enabled').checked;
   const pair3=pair && $('pair3Enabled').checked;
 
-  $('favorite2Fields').classList.toggle('is-hidden',!fav2);
-  $('favorite3Fields').classList.toggle('is-hidden',!fav3);
-  $('favoriteCard2').classList.toggle('is-hidden',!fav2);
-  $('favoriteCard3').classList.toggle('is-hidden',!fav3);
+  const toggle=(id,show)=>{
+    const el=$(id);
+    el.classList.toggle('is-hidden',!show);
+    el.hidden=!show;
+  };
 
-  $('pairFields').classList.toggle('is-hidden',!pair);
-  $('pairCard').classList.toggle('is-hidden',!pair);
-  $('pair2Fields').classList.toggle('is-hidden',!pair2);
-  $('pair3Fields').classList.toggle('is-hidden',!pair3);
-  $('pairCard2').classList.toggle('is-hidden',!pair2);
-  $('pairCard3').classList.toggle('is-hidden',!pair3);
+  toggle('favorite2Fields',fav2);
+  toggle('favorite3Fields',fav3);
+  toggle('favoriteCard2',fav2);
+  toggle('favoriteCard3',fav3);
+
+  toggle('pairFields',pair);
+  toggle('pairCard',pair);
+  toggle('pair2Fields',pair2);
+  toggle('pair3Fields',pair3);
+  toggle('pairCard2',pair2);
+  toggle('pairCard3',pair3);
 
   const favCount=1+(fav2?1:0)+(fav3?1:0);
   const pairCount=pair ? 1+(pair2?1:0)+(pair3?1:0) : 0;
