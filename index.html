@@ -89,12 +89,45 @@
             <span>페어 카드 표시</span>
           </label>
         </div>
+
         <div id="pairFields">
-          <label>페어명<input id="dreamName" type="text" value="Blanc × Elpis" maxlength="24"></label>
-          <label>관계/설명<input id="dreamDesc" type="text" value="연인 페어 · 서사 중심" maxlength="42"></label>
-          <label class="file-label">이미지<input id="dreamImage" type="file" accept="image/*"></label>
+          <div class="favorite-editor-card">
+            <div class="mini-number">01</div>
+            <label>페어명<input id="dreamName" type="text" value="Blanc × Elpis" maxlength="24"></label>
+            <label>관계/설명<input id="dreamDesc" type="text" value="연인 페어 · 서사 중심" maxlength="42"></label>
+            <label class="file-label">이미지<input id="dreamImage" type="file" accept="image/*"></label>
+          </div>
+
+          <div class="optional-card-toggle">
+            <label class="switch-row">
+              <input id="pair2Enabled" type="checkbox">
+              <span class="switch-ui"></span>
+              <span>두 번째 페어 추가</span>
+            </label>
+          </div>
+          <div id="pair2Fields" class="favorite-editor-card optional-fields is-hidden">
+            <div class="mini-number">02</div>
+            <label>페어명<input id="dream2Name" type="text" placeholder="페어명" maxlength="24"></label>
+            <label>관계/설명<input id="dream2Desc" type="text" placeholder="짧은 설명" maxlength="42"></label>
+            <label class="file-label">이미지<input id="dream2Image" type="file" accept="image/*"></label>
+          </div>
+
+          <div class="optional-card-toggle">
+            <label class="switch-row">
+              <input id="pair3Enabled" type="checkbox">
+              <span class="switch-ui"></span>
+              <span>세 번째 페어 추가</span>
+            </label>
+          </div>
+          <div id="pair3Fields" class="favorite-editor-card optional-fields is-hidden">
+            <div class="mini-number">03</div>
+            <label>페어명<input id="dream3Name" type="text" placeholder="페어명" maxlength="24"></label>
+            <label>관계/설명<input id="dream3Desc" type="text" placeholder="짧은 설명" maxlength="42"></label>
+            <label class="file-label">이미지<input id="dream3Image" type="file" accept="image/*"></label>
+          </div>
         </div>
-        <p class="toggle-help">페어가 없다면 끌 수 있어요. 끄면 최애 카드가 더 크게 배치됩니다 ♡</p>
+
+        <p class="toggle-help">페어는 최대 3개까지 추가할 수 있어요. 페어를 끄면 최애 카드가 더 크게 배치됩니다 ♡</p>
       </section>
 
       <section class="editor-section">
@@ -205,31 +238,45 @@
 
           <section id="characterCards" class="character-cards">
             <div id="favoriteCard1" class="portrait-card favorite-card">
-              <div class="portrait-frame"><img id="favoritePreview" alt="최애 이미지"></div>
+              <div class="portrait-frame"><img id="favoritePreview" alt=""></div>
               <p class="eyebrow">FAVORITE 01</p>
               <h3 id="outFavoriteName">Blanc</h3>
               <p id="outFavoriteDesc">가장 좋아하는 캐릭터</p>
             </div>
 
             <div id="favoriteCard2" class="portrait-card favorite-card is-hidden">
-              <div class="portrait-frame"><img id="favorite2Preview" alt="두 번째 최애 이미지"></div>
+              <div class="portrait-frame"><img id="favorite2Preview" alt=""></div>
               <p class="eyebrow">FAVORITE 02</p>
               <h3 id="outFavorite2Name">—</h3>
               <p id="outFavorite2Desc">—</p>
             </div>
 
             <div id="favoriteCard3" class="portrait-card favorite-card is-hidden">
-              <div class="portrait-frame"><img id="favorite3Preview" alt="세 번째 최애 이미지"></div>
+              <div class="portrait-frame"><img id="favorite3Preview" alt=""></div>
               <p class="eyebrow">FAVORITE 03</p>
               <h3 id="outFavorite3Name">—</h3>
               <p id="outFavorite3Desc">—</p>
             </div>
 
             <div id="pairCard" class="portrait-card pair-card">
-              <div class="portrait-frame"><img id="dreamPreview" alt="페어 이미지"></div>
-              <p class="eyebrow">PAIR</p>
+              <div class="portrait-frame"><img id="dreamPreview" alt=""></div>
+              <p class="eyebrow">PAIR 01</p>
               <h3 id="outDreamName">Blanc × Elpis</h3>
               <p id="outDreamDesc">연인 페어 · 서사 중심</p>
+            </div>
+
+            <div id="pairCard2" class="portrait-card pair-card is-hidden">
+              <div class="portrait-frame"><img id="dream2Preview" alt=""></div>
+              <p class="eyebrow">PAIR 02</p>
+              <h3 id="outDream2Name">—</h3>
+              <p id="outDream2Desc">—</p>
+            </div>
+
+            <div id="pairCard3" class="portrait-card pair-card is-hidden">
+              <div class="portrait-frame"><img id="dream3Preview" alt=""></div>
+              <p class="eyebrow">PAIR 03</p>
+              <h3 id="outDream3Name">—</h3>
+              <p id="outDream3Desc">—</p>
             </div>
           </section>
 
