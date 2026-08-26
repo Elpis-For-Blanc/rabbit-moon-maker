@@ -236,7 +236,6 @@ button:hover{transform:translateY(-1px)}
 .ribbon:before,.ribbon:after{content:"";position:absolute;top:7px;border:16px solid var(--theme-deep);z-index:-1;filter:saturate(.7)}
 .ribbon:before{right:91%;border-left-color:transparent}
 .ribbon:after{left:91%;border-right-color:transparent}
-.crown{font-size:20px;color:var(--theme);margin-top:11px}
 .sheet-header h2{font:700 36px/1.08 'Playfair Display',serif;margin:4px 0;color:var(--theme-deep)}
 .sheet-header>p{margin:3px 0}
 .intro{font-size:13px;color:#806a74;margin-top:7px!important}

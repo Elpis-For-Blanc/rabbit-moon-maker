@@ -14,7 +14,7 @@
   <div class="app-shell">
     <aside class="editor-panel">
       <div class="editor-title">
-        <span class="mini-crown">♕</span>
+        
         <div>
           <p>RABBIT MOON · SERENDIPITY STYLE</p>
           <h1>AI채팅 트친소 시트</h1>
@@ -90,7 +90,7 @@
           </label>
         </div>
         <div id="pairFields">
-          <label>페어 상대<input id="dreamName" type="text" value="Blanc × Elpis" maxlength="24"></label>
+          <label>페어명<input id="dreamName" type="text" value="Blanc × Elpis" maxlength="24"></label>
           <label>관계/설명<input id="dreamDesc" type="text" value="연인 페어 · 서사 중심" maxlength="42"></label>
           <label class="file-label">이미지<input id="dreamImage" type="file" accept="image/*"></label>
         </div>
@@ -113,9 +113,11 @@
 
       <section class="editor-section">
         <h2>페어 / 교류 성향</h2>
-        <label>겹페어
+        <label>드림 성향
           <select id="overlapDream">
-            <option>환영</option><option selected>케바케</option><option>어려움</option>
+            <option value="온리">온리</option>
+            <option value="CBC">CBC</option>
+            <option value="오픈">오픈</option>
           </select>
         </label>
         <label>1T1D
@@ -174,7 +176,7 @@
 
           <header class="sheet-header">
             <div class="ribbon"><span>AI CHAT FRIEND SHEET</span></div>
-            <div class="crown">♕</div>
+            
             <h2 id="outNickname">루아</h2>
             <p id="outTwitter">@your_id</p>
             <p id="outIntro" class="intro">AI채팅과 페어 이야기를 좋아해요 ♡</p>
@@ -221,7 +223,7 @@
           </section>
 
           <section class="sheet-section tendency-grid">
-            <div><span class="tiny-label">겹페어</span><strong id="outOverlapDream">케바케</strong></div>
+            <div><span class="tiny-label">드림 성향</span><strong id="outOverlapDream">케바케</strong></div>
             <div><span class="tiny-label">1T1D</span><strong id="outOneTOneD">캐릭터별 상이</strong></div>
           </section>
 
