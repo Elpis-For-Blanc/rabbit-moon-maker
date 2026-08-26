@@ -677,3 +677,97 @@ button:hover{transform:translateY(-1px)}
     transform-origin:top left;
   }
 }
+
+
+/* ===== Preview image-slot hardening ===== */
+#sheet .portrait-frame{
+  position:relative;
+  display:block;
+  overflow:hidden;
+  flex:none;
+  box-sizing:border-box;
+  background:var(--theme-pale);
+  border-radius:12px;
+  border:1px solid color-mix(in srgb, var(--theme) 35%, #ffffff);
+}
+
+#sheet .portrait-frame img{
+  display:block;
+  width:100%;
+  height:100%;
+  min-width:100%;
+  min-height:100%;
+  max-width:100%;
+  max-height:100%;
+  object-fit:cover;
+  object-position:center;
+  border:0;
+  outline:0;
+  font-size:0;
+  color:transparent;
+}
+
+/* Broken/empty image icons and fallback text should not affect layout. */
+#sheet .portrait-frame img:not([src]),
+#sheet .portrait-frame img[src=""]{
+  visibility:hidden;
+}
+
+/* Keep every horizontal card's image box identical even with long text below. */
+#sheet .portrait-card{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  min-width:0;
+  overflow:hidden;
+}
+#sheet .portrait-card h3,
+#sheet .portrait-card > p{
+  width:100%;
+  box-sizing:border-box;
+  overflow-wrap:anywhere;
+}
+
+
+/* ===== Up to 3 pair cards ===== */
+#sheet .character-cards[data-total-cards="1"]{grid-template-columns:1fr;}
+#sheet .character-cards[data-total-cards="2"]{grid-template-columns:repeat(2,minmax(0,1fr));}
+#sheet .character-cards[data-total-cards="3"]{grid-template-columns:repeat(3,minmax(0,1fr));}
+#sheet .character-cards[data-total-cards="4"]{grid-template-columns:repeat(4,minmax(0,1fr));}
+#sheet .character-cards[data-total-cards="5"]{
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:8px;
+}
+#sheet .character-cards[data-total-cards="6"]{
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:7px;
+}
+
+#sheet .character-cards[data-total-cards="5"] .portrait-card,
+#sheet .character-cards[data-total-cards="6"] .portrait-card{
+  padding:9px 6px 8px;
+}
+#sheet .character-cards[data-total-cards="5"] .portrait-frame{
+  width:88px;
+  height:88px;
+}
+#sheet .character-cards[data-total-cards="6"] .portrait-frame{
+  width:76px;
+  height:76px;
+}
+#sheet .character-cards[data-total-cards="5"] .portrait-card h3,
+#sheet .character-cards[data-total-cards="6"] .portrait-card h3{
+  font-size:12px;
+}
+#sheet .character-cards[data-total-cards="5"] .portrait-card p,
+#sheet .character-cards[data-total-cards="6"] .portrait-card p{
+  font-size:8px;
+}
+
+@media(max-width:800px){
+  #sheet .character-cards[data-total-cards="4"],
+  #sheet .character-cards[data-total-cards="5"],
+  #sheet .character-cards[data-total-cards="6"]{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}

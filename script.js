@@ -45,6 +45,8 @@ const bindings = [
   ['favorite2Name','outFavorite2Name'],['favorite2Desc','outFavorite2Desc'],
   ['favorite3Name','outFavorite3Name'],['favorite3Desc','outFavorite3Desc'],
   ['dreamName','outDreamName'],['dreamDesc','outDreamDesc'],
+  ['dream2Name','outDream2Name'],['dream2Desc','outDream2Desc'],
+  ['dream3Name','outDream3Name'],['dream3Desc','outDream3Desc'],
   ['overlapDream','outOverlapDream'],['oneTOneD','outOneTOneD'],['ngText','outNg']
 ];
 
@@ -95,26 +97,40 @@ bindImage('favoriteImage','favoritePreview');
 bindImage('favorite2Image','favorite2Preview');
 bindImage('favorite3Image','favorite3Preview');
 bindImage('dreamImage','dreamPreview');
+bindImage('dream2Image','dream2Preview');
+bindImage('dream3Image','dream3Preview');
 
 function updateCharacterCards(){
   const fav2=$('favorite2Enabled').checked;
   const fav3=$('favorite3Enabled').checked;
   const pair=$('pairEnabled').checked;
+  const pair2=pair && $('pair2Enabled').checked;
+  const pair3=pair && $('pair3Enabled').checked;
 
   $('favorite2Fields').classList.toggle('is-hidden',!fav2);
   $('favorite3Fields').classList.toggle('is-hidden',!fav3);
   $('favoriteCard2').classList.toggle('is-hidden',!fav2);
   $('favoriteCard3').classList.toggle('is-hidden',!fav3);
+
   $('pairFields').classList.toggle('is-hidden',!pair);
   $('pairCard').classList.toggle('is-hidden',!pair);
+  $('pair2Fields').classList.toggle('is-hidden',!pair2);
+  $('pair3Fields').classList.toggle('is-hidden',!pair3);
+  $('pairCard2').classList.toggle('is-hidden',!pair2);
+  $('pairCard3').classList.toggle('is-hidden',!pair3);
 
   const favCount=1+(fav2?1:0)+(fav3?1:0);
+  const pairCount=pair ? 1+(pair2?1:0)+(pair3?1:0) : 0;
+  const totalCards=favCount+pairCount;
   const cards=$('characterCards');
+
   cards.classList.toggle('pair-disabled',!pair);
   cards.dataset.favoriteCount=String(favCount);
+  cards.dataset.pairCount=String(pairCount);
+  cards.dataset.totalCards=String(totalCards);
 }
 
-['favorite2Enabled','favorite3Enabled','pairEnabled'].forEach(id=>{
+['favorite2Enabled','favorite3Enabled','pairEnabled','pair2Enabled','pair3Enabled'].forEach(id=>{
   $(id).addEventListener('change',()=>{
     updateCharacterCards();
     saveForm();
@@ -183,6 +199,8 @@ function saveForm(){
   data.favorite2Enabled=$('favorite2Enabled').checked;
   data.favorite3Enabled=$('favorite3Enabled').checked;
   data.pairEnabled=$('pairEnabled').checked;
+  data.pair2Enabled=$('pair2Enabled').checked;
+  data.pair3Enabled=$('pair3Enabled').checked;
   data.sheetFont=$('sheetFont') ? $('sheetFont').value : 'gowun';
   data.socialStylesCustom=socialStylesCustom;
   ['platforms','playStyles'].forEach(t=>data[t]=getChecked(t));
@@ -211,6 +229,8 @@ function restoreForm(){
     if(typeof data.favorite2Enabled==='boolean')$('favorite2Enabled').checked=data.favorite2Enabled;
     if(typeof data.favorite3Enabled==='boolean')$('favorite3Enabled').checked=data.favorite3Enabled;
     if(typeof data.pairEnabled==='boolean')$('pairEnabled').checked=data.pairEnabled;
+    if(typeof data.pair2Enabled==='boolean')$('pair2Enabled').checked=data.pair2Enabled;
+    if(typeof data.pair3Enabled==='boolean')$('pair3Enabled').checked=data.pair3Enabled;
     socialStylesCustom=Array.isArray(data.socialStylesCustom)?data.socialStylesCustom:[];
 
     ['platforms','playStyles'].forEach(t=>{
