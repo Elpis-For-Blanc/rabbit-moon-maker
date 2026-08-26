@@ -1,4 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Gowun+Dodum&family=Jua&family=Nanum+Myeongjo:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
 :root{
+  --sheet-font:"Gowun Dodum","Noto Sans KR",sans-serif;
+
   --theme:#e982ac;
   --theme-deep:#b7547b;
   --theme-soft:#fde8f0;
@@ -562,4 +566,114 @@ button:hover{transform:translateY(-1px)}
   color:#a48d97;
   font-size:10px;
   padding:4px 1px;
+}
+
+
+/* ===== Sheet font selector ===== */
+#sheet{
+  font-family:var(--sheet-font);
+}
+#sheet input,
+#sheet button,
+#sheet select,
+#sheet textarea{
+  font-family:inherit;
+}
+
+
+/* ===== Landscape friend-sheet layout =====
+   Export target: wide social card, roughly 16:9.
+*/
+#sheet{
+  width:960px;
+  min-height:540px;
+  aspect-ratio:16 / 9;
+  margin:0 auto;
+  padding:34px 38px 28px;
+  box-sizing:border-box;
+  overflow:hidden;
+}
+
+/* Keep the upper identity area compact so the card reads horizontally. */
+#sheet .sheet-header{
+  margin-bottom:14px;
+}
+
+/* Character cards become a horizontal visual band. */
+#sheet .character-cards{
+  display:grid;
+  grid-auto-flow:row;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin-top:12px;
+}
+#sheet .character-cards[data-favorite-count="1"]:not(.pair-disabled){
+  grid-template-columns:repeat(2,minmax(0,1fr));
+}
+#sheet .character-cards[data-favorite-count="2"]:not(.pair-disabled){
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+#sheet .character-cards[data-favorite-count="3"]:not(.pair-disabled){
+  grid-template-columns:repeat(4,minmax(0,1fr));
+}
+#sheet .character-cards.pair-disabled[data-favorite-count="1"]{
+  grid-template-columns:1fr;
+}
+#sheet .character-cards.pair-disabled[data-favorite-count="2"]{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+}
+#sheet .character-cards.pair-disabled[data-favorite-count="3"]{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+
+#sheet .portrait-card{
+  padding:12px 10px 10px;
+  min-height:0;
+}
+#sheet .portrait-frame,
+#sheet .character-cards.pair-disabled[data-favorite-count="1"] .portrait-frame,
+#sheet .character-cards.pair-disabled[data-favorite-count="2"] .portrait-frame,
+#sheet .character-cards.pair-disabled[data-favorite-count="3"] .portrait-frame{
+  width:104px;
+  height:104px;
+  margin-bottom:7px;
+}
+#sheet .character-cards.pair-disabled[data-favorite-count="1"] .portrait-frame{
+  width:132px;
+  height:132px;
+}
+#sheet .portrait-card h3,
+#sheet .character-cards.pair-disabled[data-favorite-count="1"] .portrait-card h3{
+  font-size:15px;
+  margin:3px 0;
+}
+#sheet .portrait-card p{
+  font-size:9px;
+  line-height:1.35;
+}
+
+/* Information blocks sit in a wide multi-column grid. */
+#sheet .info-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px 12px;
+}
+#sheet .tag{
+  font-size:9px;
+  padding:4px 7px;
+}
+#sheet .sheet-footer{
+  margin-top:12px;
+  padding-top:8px;
+  font-size:9px;
+}
+
+/* Preview may shrink on narrow screens, but export remains 960x540. */
+.sheet-stage{
+  overflow:auto;
+}
+@media(max-width:1100px){
+  .sheet-stage #sheet{
+    transform-origin:top left;
+  }
 }

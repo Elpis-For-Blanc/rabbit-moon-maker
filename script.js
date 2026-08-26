@@ -1,6 +1,23 @@
 const $ = (id) => document.getElementById(id);
 const root = document.documentElement;
 
+const SHEET_FONTS = {
+  gowun: '"Gowun Dodum","Noto Sans KR",sans-serif',
+  noto: '"Noto Sans KR",Arial,sans-serif',
+  myeongjo: '"Nanum Myeongjo","Noto Serif KR",serif',
+  gaegu: '"Gaegu","Noto Sans KR",cursive',
+  jua: '"Jua","Noto Sans KR",sans-serif',
+  serif: 'Georgia,"Times New Roman","Nanum Myeongjo",serif'
+};
+
+function applySheetFont(key){
+  const font = SHEET_FONTS[key] || SHEET_FONTS.gowun;
+  root.style.setProperty('--sheet-font', font);
+  if($('sheetFont')) $('sheetFont').value = key;
+  localStorage.setItem('princessSheetFont', key);
+}
+
+
 function hexToRgb(hex){
   const n = hex.replace('#','');
   if(!/^[0-9a-fA-F]{6}$/.test(n)) return null;
@@ -147,6 +164,14 @@ $('socialStyleList').addEventListener('click', e=>{
   saveForm();
 });
 
+
+if($('sheetFont')){
+  $('sheetFont').addEventListener('change', e=>{
+    applySheetFont(e.target.value);
+    saveForm();
+  });
+}
+
 $('themeColor').addEventListener('input',e=>applyTheme(e.target.value));
 $('themeHex').addEventListener('change',e=>applyTheme(e.target.value));
 document.querySelectorAll('.color-preset').forEach(b=>b.addEventListener('click',()=>applyTheme(b.dataset.color)));
@@ -158,6 +183,7 @@ function saveForm(){
   data.favorite2Enabled=$('favorite2Enabled').checked;
   data.favorite3Enabled=$('favorite3Enabled').checked;
   data.pairEnabled=$('pairEnabled').checked;
+  data.sheetFont=$('sheetFont') ? $('sheetFont').value : 'gowun';
   data.socialStylesCustom=socialStylesCustom;
   ['platforms','playStyles'].forEach(t=>data[t]=getChecked(t));
   localStorage.setItem('princessSheetData',JSON.stringify(data));
@@ -166,11 +192,15 @@ function saveForm(){
 function restoreForm(){
   const theme=localStorage.getItem('princessTheme');
   if(theme) applyTheme(theme);
+  const savedFont=localStorage.getItem('princessSheetFont');
+  if(savedFont) applySheetFont(savedFont);
+  else applySheetFont('gowun');
 
   const raw=localStorage.getItem('princessSheetData');
   if(!raw) return;
   try{
     const data=JSON.parse(raw);
+    if(data.sheetFont) applySheetFont(data.sheetFont);
     bindings.forEach(([i,o])=>{
       if(data[i]!=null){
         $(i).value=data[i];
