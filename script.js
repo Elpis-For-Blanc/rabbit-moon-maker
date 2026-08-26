@@ -1,282 +1,166 @@
-const $ = (id) => document.getElementById(id);
+const $ = (id)=>document.getElementById(id);
 const root = document.documentElement;
 
-const SHEET_FONTS = {
-  gowun: '"Gowun Dodum","Noto Sans KR",sans-serif',
-  noto: '"Noto Sans KR",Arial,sans-serif',
-  myeongjo: '"Nanum Myeongjo","Noto Serif KR",serif',
-  gaegu: '"Gaegu","Noto Sans KR",cursive',
-  jua: '"Jua","Noto Sans KR",sans-serif',
-  serif: 'Georgia,"Times New Roman","Nanum Myeongjo",serif'
+const FONT_MAP = {
+  gowun:'"Gowun Dodum","Noto Sans KR",sans-serif',
+  noto:'"Noto Sans KR",Arial,sans-serif',
+  myeongjo:'"Nanum Myeongjo",serif',
+  gaegu:'"Gaegu",cursive',
+  jua:'"Jua",sans-serif',
+  serif:'Georgia,"Times New Roman","Nanum Myeongjo",serif'
 };
-
-function applySheetFont(key){
-  const font = SHEET_FONTS[key] || SHEET_FONTS.gowun;
-  root.style.setProperty('--sheet-font', font);
-  if($('sheetFont')) $('sheetFont').value = key;
-  localStorage.setItem('princessSheetFont', key);
-}
-
-
-function hexToRgb(hex){
-  const n = hex.replace('#','');
-  if(!/^[0-9a-fA-F]{6}$/.test(n)) return null;
-  return {r:parseInt(n.slice(0,2),16),g:parseInt(n.slice(2,4),16),b:parseInt(n.slice(4,6),16)};
-}
-function mix(hex, target, ratio){
-  const a=hexToRgb(hex), b=hexToRgb(target); if(!a||!b) return hex;
-  const c=k=>Math.round(a[k]*(1-ratio)+b[k]*ratio).toString(16).padStart(2,'0');
-  return `#${c('r')}${c('g')}${c('b')}`;
-}
-function applyTheme(hex){
-  if(!hexToRgb(hex)) return;
-  root.style.setProperty('--theme',hex);
-  root.style.setProperty('--theme-deep',mix(hex,'#3b2430',.35));
-  root.style.setProperty('--theme-soft',mix(hex,'#ffffff',.78));
-  root.style.setProperty('--theme-pale',mix(hex,'#ffffff',.91));
-  $('themeColor').value=hex;
-  $('themeHex').value=hex;
-  localStorage.setItem('princessTheme',hex);
-}
 
 const bindings = [
   ['nickname','outNickname'],['twitterId','outTwitter'],['intro','outIntro'],
   ['favoriteName','outFavoriteName'],['favoriteDesc','outFavoriteDesc'],
   ['favorite2Name','outFavorite2Name'],['favorite2Desc','outFavorite2Desc'],
   ['favorite3Name','outFavorite3Name'],['favorite3Desc','outFavorite3Desc'],
-  ['dreamName','outDreamName'],['dreamDesc','outDreamDesc'],
-  ['dream2Name','outDream2Name'],['dream2Desc','outDream2Desc'],
-  ['dream3Name','outDream3Name'],['dream3Desc','outDream3Desc'],
-  ['overlapDream','outOverlapDream'],['oneTOneD','outOneTOneD'],['ngText','outNg']
+  ['pairName','outPairName'],['pairDesc','outPairDesc'],
+  ['pair2Name','outPair2Name'],['pair2Desc','outPair2Desc'],
+  ['pair3Name','outPair3Name'],['pair3Desc','outPair3Desc'],
+  ['ngText','outNg']
 ];
+
+const socialStyles = [];
+
+function esc(s){
+  return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function mix(hex,target,ratio){
+  const parse=h=>({r:parseInt(h.slice(1,3),16),g:parseInt(h.slice(3,5),16),b:parseInt(h.slice(5,7),16)});
+  const a=parse(hex),b=parse(target);
+  const f=k=>Math.round(a[k]*(1-ratio)+b[k]*ratio).toString(16).padStart(2,'0');
+  return `#${f('r')}${f('g')}${f('b')}`;
+}
+function applyTheme(hex){
+  if(!/^#[0-9a-f]{6}$/i.test(hex)) return;
+  root.style.setProperty('--theme',hex);
+  root.style.setProperty('--deep',mix(hex,'#47333c',.45));
+  root.style.setProperty('--soft',mix(hex,'#ffffff',.72));
+  root.style.setProperty('--pale',mix(hex,'#ffffff',.91));
+  root.style.setProperty('--line',mix(hex,'#ffffff',.76));
+  $('themeColor').value=hex;
+  $('themeHex').value=hex;
+  localStorage.setItem('aiSheetTheme',hex);
+}
+function applyFont(key){
+  root.style.setProperty('--sheet-font',FONT_MAP[key]||FONT_MAP.gowun);
+  localStorage.setItem('aiSheetFont',key);
+}
 
 bindings.forEach(([input,output])=>{
   $(input).addEventListener('input',()=>{
     $(output).textContent=$(input).value || '—';
-    saveForm();
   });
 });
 
-function getChecked(target){
+function selected(target){
   return [...document.querySelectorAll(`.chip-editor[data-target="${target}"] input:checked`)].map(x=>x.value);
 }
-function renderTags(target,outId,extra=''){
-  const vals=getChecked(target);
-  if(extra.trim()) vals.push(extra.trim());
-  $(outId).innerHTML=vals.length
-    ? vals.map(v=>`<span class="tag">${escapeHtml(v)}</span>`).join('')
-    : '<span class="tag">선택 없음</span>';
+function renderTags(values,target){
+  $(target).innerHTML = (values.length?values:['선택 없음']).map(v=>`<span class="tag">${esc(v)}</span>`).join('');
 }
-function escapeHtml(v){
-  return v.replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+function renderPlatforms(){
+  const vals=selected('platforms');
+  const other=$('platformOther').value.trim();
+  if(other) vals.push(other);
+  renderTags(vals,'outPlatforms');
 }
-
+function renderPlayStyles(){renderTags(selected('playStyles'),'outPlayStyles')}
 document.querySelectorAll('.chip-editor input').forEach(i=>i.addEventListener('change',()=>{
-  renderAllTags();
-  saveForm();
+  renderPlatforms();renderPlayStyles();
 }));
-$('platformOther').addEventListener('input',()=>{
-  renderAllTags();
-  saveForm();
-});
-function renderAllTags(){
-  renderTags('platforms','outPlatforms',$('platformOther').value);
-  renderTags('playStyles','outPlayStyles');
-}
+$('platformOther').addEventListener('input',renderPlatforms);
 
-function bindImage(inputId,previewId){
+function renderSocial(){
+  $('socialEditorTags').innerHTML = socialStyles.map((v,i)=>`<button type="button" data-i="${i}">${esc(v)} ×</button>`).join('');
+  renderTags(socialStyles,'outSocialStyles');
+}
+function addSocial(){
+  const v=$('socialInput').value.trim();
+  if(!v) return;
+  if(!socialStyles.includes(v)) socialStyles.push(v);
+  $('socialInput').value='';
+  renderSocial();
+}
+$('socialAddBtn').addEventListener('click',addSocial);
+$('socialInput').addEventListener('keydown',e=>{
+  if(e.key==='Enter'){e.preventDefault();addSocial();}
+});
+$('socialEditorTags').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b)return;
+  socialStyles.splice(Number(b.dataset.i),1); renderSocial();
+});
+
+function bindImage(inputId,imgId){
   $(inputId).addEventListener('change',e=>{
-    const img=$(previewId);
+    const img=$(imgId);
     const file=e.target.files[0];
     if(!file){
-      img.hidden=true;
-      img.removeAttribute('src');
-      return;
+      img.hidden=true;img.removeAttribute('src');return;
     }
     const r=new FileReader();
-    r.onload=()=>{
-      img.src=r.result;
-      img.hidden=false;
-    };
+    r.onload=()=>{img.src=r.result;img.hidden=false};
     r.readAsDataURL(file);
   });
 }
-bindImage('favoriteImage','favoritePreview');
-bindImage('favorite2Image','favorite2Preview');
-bindImage('favorite3Image','favorite3Preview');
-bindImage('dreamImage','dreamPreview');
-bindImage('dream2Image','dream2Preview');
-bindImage('dream3Image','dream3Preview');
+[
+ ['favoriteImage','favoritePreview'],['favorite2Image','favorite2Preview'],['favorite3Image','favorite3Preview'],
+ ['pairImage','pairPreview'],['pair2Image','pair2Preview'],['pair3Image','pair3Preview']
+].forEach(x=>bindImage(...x));
 
-function updateCharacterCards(){
-  const fav2=$('favorite2Enabled').checked;
-  const fav3=$('favorite3Enabled').checked;
+function setVisible(id,show){
+  const el=$(id);
+  el.hidden=!show;
+  el.classList.toggle('hidden',!show);
+}
+function updateCharacters(){
+  const f2=$('favorite2Enabled').checked;
+  const f3=$('favorite3Enabled').checked;
   const pair=$('pairEnabled').checked;
-  const pair2=pair && $('pair2Enabled').checked;
-  const pair3=pair && $('pair3Enabled').checked;
+  const p2=pair && $('pair2Enabled').checked;
+  const p3=pair && $('pair3Enabled').checked;
 
-  const toggle=(id,show)=>{
-    const el=$(id);
-    el.classList.toggle('is-hidden',!show);
-    el.hidden=!show;
-  };
+  setVisible('favorite2Fields',f2); setVisible('favoriteCard2',f2);
+  setVisible('favorite3Fields',f3); setVisible('favoriteCard3',f3);
+  setVisible('pairFields',pair); setVisible('pairCard1',pair);
+  setVisible('pair2Fields',p2); setVisible('pairCard2',p2);
+  setVisible('pair3Fields',p3); setVisible('pairCard3',p3);
 
-  toggle('favorite2Fields',fav2);
-  toggle('favorite3Fields',fav3);
-  toggle('favoriteCard2',fav2);
-  toggle('favoriteCard3',fav3);
-
-  toggle('pairFields',pair);
-  toggle('pairCard',pair);
-  toggle('pair2Fields',pair2);
-  toggle('pair3Fields',pair3);
-  toggle('pairCard2',pair2);
-  toggle('pairCard3',pair3);
-
-  const favCount=1+(fav2?1:0)+(fav3?1:0);
-  const pairCount=pair ? 1+(pair2?1:0)+(pair3?1:0) : 0;
-  const totalCards=favCount+pairCount;
-  const cards=$('characterCards');
-
-  cards.classList.toggle('pair-disabled',!pair);
-  cards.dataset.favoriteCount=String(favCount);
-  cards.dataset.pairCount=String(pairCount);
-  cards.dataset.totalCards=String(totalCards);
+  const total=1+(f2?1:0)+(f3?1:0)+(pair?1:0)+(p2?1:0)+(p3?1:0);
+  $('characterCards').dataset.total=String(total);
 }
+['favorite2Enabled','favorite3Enabled','pairEnabled','pair2Enabled','pair3Enabled']
+  .forEach(id=>$(id).addEventListener('change',updateCharacters));
 
-['favorite2Enabled','favorite3Enabled','pairEnabled','pair2Enabled','pair3Enabled'].forEach(id=>{
-  $(id).addEventListener('change',()=>{
-    updateCharacterCards();
-    saveForm();
-  });
-});
+$('dreamTendency').addEventListener('change',()=>{$('outDreamTendency').textContent=$('dreamTendency').value});
+$('oneTOneD').addEventListener('change',()=>{$('outOneTOneD').textContent=$('oneTOneD').value});
 
-
-let socialStylesCustom = [];
-
-function renderSocialStyles(){
-  const list = $('socialStyleList');
-  list.innerHTML = socialStylesCustom.length
-    ? socialStylesCustom.map((v,i)=>`
-        <button type="button" class="custom-tag-item" data-index="${i}" title="클릭해서 삭제">
-          <span>${escapeHtml(v)}</span><b>×</b>
-        </button>`).join('')
-    : '<span class="custom-tag-empty">아직 추가한 교류 성향이 없어요.</span>';
-
-  $('outSocialStyles').innerHTML = socialStylesCustom.length
-    ? socialStylesCustom.map(v=>`<span class="tag">${escapeHtml(v)}</span>`).join('')
-    : '<span class="tag">선택 없음</span>';
-}
-
-function addSocialStyle(){
-  const input = $('socialStyleInput');
-  const value = input.value.trim();
-  if(!value) return;
-  if(!socialStylesCustom.includes(value)) socialStylesCustom.push(value);
-  input.value = '';
-  renderSocialStyles();
-  saveForm();
-}
-
-$('addSocialStyleBtn').addEventListener('click', addSocialStyle);
-$('socialStyleInput').addEventListener('keydown', e=>{
-  if(e.key === 'Enter'){
-    e.preventDefault();
-    addSocialStyle();
-  }
-});
-$('socialStyleList').addEventListener('click', e=>{
-  const btn = e.target.closest('.custom-tag-item');
-  if(!btn) return;
-  const i = Number(btn.dataset.index);
-  socialStylesCustom.splice(i,1);
-  renderSocialStyles();
-  saveForm();
-});
-
-
-if($('sheetFont')){
-  $('sheetFont').addEventListener('change', e=>{
-    applySheetFont(e.target.value);
-    saveForm();
-  });
-}
-
+$('sheetFont').addEventListener('change',e=>applyFont(e.target.value));
 $('themeColor').addEventListener('input',e=>applyTheme(e.target.value));
 $('themeHex').addEventListener('change',e=>applyTheme(e.target.value));
 document.querySelectorAll('.color-preset').forEach(b=>b.addEventListener('click',()=>applyTheme(b.dataset.color)));
 
-function saveForm(){
-  const data={};
-  bindings.forEach(([i])=>data[i]=$(i).value);
-  data.platformOther=$('platformOther').value;
-  data.favorite2Enabled=$('favorite2Enabled').checked;
-  data.favorite3Enabled=$('favorite3Enabled').checked;
-  data.pairEnabled=$('pairEnabled').checked;
-  data.pair2Enabled=$('pair2Enabled').checked;
-  data.pair3Enabled=$('pair3Enabled').checked;
-  data.sheetFont=$('sheetFont') ? $('sheetFont').value : 'gowun';
-  data.socialStylesCustom=socialStylesCustom;
-  ['platforms','playStyles'].forEach(t=>data[t]=getChecked(t));
-  localStorage.setItem('princessSheetData',JSON.stringify(data));
-}
-
-function restoreForm(){
-  const theme=localStorage.getItem('princessTheme');
-  if(theme) applyTheme(theme);
-  const savedFont=localStorage.getItem('princessSheetFont');
-  if(savedFont) applySheetFont(savedFont);
-  else applySheetFont('gowun');
-
-  const raw=localStorage.getItem('princessSheetData');
-  if(!raw) return;
-  try{
-    const data=JSON.parse(raw);
-    if(data.sheetFont) applySheetFont(data.sheetFont);
-    bindings.forEach(([i,o])=>{
-      if(data[i]!=null){
-        $(i).value=data[i];
-        $(o).textContent=data[i]||'—';
-      }
-    });
-    if(data.platformOther!=null)$('platformOther').value=data.platformOther;
-    if(typeof data.favorite2Enabled==='boolean')$('favorite2Enabled').checked=data.favorite2Enabled;
-    if(typeof data.favorite3Enabled==='boolean')$('favorite3Enabled').checked=data.favorite3Enabled;
-    if(typeof data.pairEnabled==='boolean')$('pairEnabled').checked=data.pairEnabled;
-    if(typeof data.pair2Enabled==='boolean')$('pair2Enabled').checked=data.pair2Enabled;
-    if(typeof data.pair3Enabled==='boolean')$('pair3Enabled').checked=data.pair3Enabled;
-    socialStylesCustom=Array.isArray(data.socialStylesCustom)?data.socialStylesCustom:[];
-
-    ['platforms','playStyles'].forEach(t=>{
-      if(!Array.isArray(data[t])) return;
-      document.querySelectorAll(`.chip-editor[data-target="${t}"] input`).forEach(i=>{
-        i.checked=data[t].includes(i.value);
-      });
-    });
-  }catch(e){}
-}
-
 $('downloadBtn').addEventListener('click',async()=>{
-  const btn=$('downloadBtn');
-  const old=btn.textContent;
-  btn.textContent='이미지 만드는 중…';
-  btn.disabled=true;
+  const btn=$('downloadBtn'), old=btn.textContent;
+  btn.disabled=true;btn.textContent='이미지 만드는 중…';
   try{
-    const canvas=await html2canvas($('sheet'),{scale:2,useCORS:true,backgroundColor:null});
+    const canvas=await html2canvas($('sheet'),{scale:2,backgroundColor:null,useCORS:true});
     const a=document.createElement('a');
     a.download=`ai-chat-friend-sheet-${Date.now()}.png`;
     a.href=canvas.toDataURL('image/png');
     a.click();
   }finally{
-    btn.textContent=old;
-    btn.disabled=false;
+    btn.disabled=false;btn.textContent=old;
   }
 });
 
-document.querySelectorAll('#sheet .portrait-frame img').forEach(img=>{
-  if(!img.getAttribute('src')) img.hidden=true;
-});
-restoreForm();
-updateCharacterCards();
-renderAllTags();
-renderSocialStyles();
+applyTheme(localStorage.getItem('aiSheetTheme')||'#e77aa8');
+const savedFont=localStorage.getItem('aiSheetFont')||'gowun';
+$('sheetFont').value=savedFont;
+applyFont(savedFont);
+renderPlatforms();
+renderPlayStyles();
+renderSocial();
+updateCharacters();
