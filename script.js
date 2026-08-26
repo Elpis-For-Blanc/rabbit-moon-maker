@@ -89,8 +89,8 @@ function bindImage(inputId,previewId){
     const img=$(previewId);
     const file=e.target.files[0];
     if(!file){
-      img.removeAttribute('src');
       img.hidden=true;
+      img.removeAttribute('src');
       return;
     }
     const r=new FileReader();

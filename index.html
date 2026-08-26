@@ -216,114 +216,105 @@
       <div class="preview-sticky">
         <p class="preview-label">LIVE PREVIEW</p>
         <article id="sheet" class="sheet-card landscape-sheet">
-          <header class="landscape-header">
-            <div class="header-copy">
-              <div class="ribbon-title">AI CHAT FRIEND SHEET</div>
-              <div class="identity-row">
-                <h2 id="outNickname">루아</h2>
-                <span class="identity-divider">♡</span>
-                <p id="outTwitter">@your_id</p>
-              </div>
-              <p id="outIntro" class="intro">AI채팅과 페어 이야기를 좋아해요 ♡</p>
+          <div class="sheet-topbar">
+            <div class="sheet-brand">AI CHAT FRIEND SHEET</div>
+            <div class="sheet-user">
+              <h2 id="outNickname">루아</h2>
+              <span>♡</span>
+              <p id="outTwitter">@your_id</p>
             </div>
+            <p id="outIntro" class="sheet-intro">AI채팅과 페어 이야기를 좋아해요 ♡</p>
+          </div>
 
-            <div class="platform-box">
-              <span class="mini-heading">PLATFORM</span>
-              <div id="outPlatforms" class="tag-list compact-tags"></div>
-            </div>
-          </header>
-
-          <div class="landscape-body">
-            <section class="characters-panel">
-              <div class="panel-heading">
-                <span>FAVORITE &amp; PAIR</span>
-                <i>♡</i>
+          <div class="sheet-main">
+            <section class="sheet-left">
+              <div class="platform-strip">
+                <span class="section-label">PLATFORM</span>
+                <div id="outPlatforms" class="tag-list compact-tags"></div>
               </div>
 
-              <div id="characterCards" class="character-cards landscape-character-grid">
-                <div id="favoriteCard1" class="portrait-card favorite-card">
-                  <div class="portrait-frame"><img id="favoritePreview" alt="" hidden></div>
-                  <p class="eyebrow">FAVORITE 01</p>
-                  <h3 id="outFavoriteName">Blanc</h3>
-                  <p id="outFavoriteDesc">가장 좋아하는 캐릭터</p>
+              <div class="character-wrap">
+                <div class="section-head">
+                  <span>FAVORITE &amp; PAIR</span>
+                  <span>♡</span>
                 </div>
 
-                <div id="favoriteCard2" class="portrait-card favorite-card is-hidden">
-                  <div class="portrait-frame"><img id="favorite2Preview" alt="" hidden></div>
-                  <p class="eyebrow">FAVORITE 02</p>
-                  <h3 id="outFavorite2Name">—</h3>
-                  <p id="outFavorite2Desc">—</p>
-                </div>
+                <div id="characterCards" class="character-cards landscape-character-grid">
+                  <div id="favoriteCard1" class="portrait-card favorite-card">
+                    <div class="portrait-frame"><img id="favoritePreview" alt="" hidden></div>
+                    <p class="eyebrow">FAVORITE 01</p>
+                    <h3 id="outFavoriteName">Blanc</h3>
+                    <p id="outFavoriteDesc">가장 좋아하는 캐릭터</p>
+                  </div>
 
-                <div id="favoriteCard3" class="portrait-card favorite-card is-hidden">
-                  <div class="portrait-frame"><img id="favorite3Preview" alt="" hidden></div>
-                  <p class="eyebrow">FAVORITE 03</p>
-                  <h3 id="outFavorite3Name">—</h3>
-                  <p id="outFavorite3Desc">—</p>
-                </div>
+                  <div id="favoriteCard2" class="portrait-card favorite-card is-hidden">
+                    <div class="portrait-frame"><img id="favorite2Preview" alt="" hidden></div>
+                    <p class="eyebrow">FAVORITE 02</p>
+                    <h3 id="outFavorite2Name">—</h3>
+                    <p id="outFavorite2Desc">—</p>
+                  </div>
 
-                <div id="pairCard" class="portrait-card pair-card">
-                  <div class="portrait-frame"><img id="dreamPreview" alt="" hidden></div>
-                  <p class="eyebrow">PAIR 01</p>
-                  <h3 id="outDreamName">Blanc × Elpis</h3>
-                  <p id="outDreamDesc">연인 페어 · 서사 중심</p>
-                </div>
+                  <div id="favoriteCard3" class="portrait-card favorite-card is-hidden">
+                    <div class="portrait-frame"><img id="favorite3Preview" alt="" hidden></div>
+                    <p class="eyebrow">FAVORITE 03</p>
+                    <h3 id="outFavorite3Name">—</h3>
+                    <p id="outFavorite3Desc">—</p>
+                  </div>
 
-                <div id="pairCard2" class="portrait-card pair-card is-hidden">
-                  <div class="portrait-frame"><img id="dream2Preview" alt="" hidden></div>
-                  <p class="eyebrow">PAIR 02</p>
-                  <h3 id="outDream2Name">—</h3>
-                  <p id="outDream2Desc">—</p>
-                </div>
+                  <div id="pairCard" class="portrait-card pair-card">
+                    <div class="portrait-frame"><img id="dreamPreview" alt="" hidden></div>
+                    <p class="eyebrow">PAIR 01</p>
+                    <h3 id="outDreamName">Blanc × Elpis</h3>
+                    <p id="outDreamDesc">연인 페어 · 서사 중심</p>
+                  </div>
 
-                <div id="pairCard3" class="portrait-card pair-card is-hidden">
-                  <div class="portrait-frame"><img id="dream3Preview" alt="" hidden></div>
-                  <p class="eyebrow">PAIR 03</p>
-                  <h3 id="outDream3Name">—</h3>
-                  <p id="outDream3Desc">—</p>
+                  <div id="pairCard2" class="portrait-card pair-card is-hidden">
+                    <div class="portrait-frame"><img id="dream2Preview" alt="" hidden></div>
+                    <p class="eyebrow">PAIR 02</p>
+                    <h3 id="outDream2Name">—</h3>
+                    <p id="outDream2Desc">—</p>
+                  </div>
+
+                  <div id="pairCard3" class="portrait-card pair-card is-hidden">
+                    <div class="portrait-frame"><img id="dream3Preview" alt="" hidden></div>
+                    <p class="eyebrow">PAIR 03</p>
+                    <h3 id="outDream3Name">—</h3>
+                    <p id="outDream3Desc">—</p>
+                  </div>
                 </div>
               </div>
             </section>
 
-            <aside class="info-panel">
-              <section class="mini-info-box">
-                <div class="mini-heading-row">
-                  <span class="mini-index">01</span>
-                  <h3>AI채팅 성향</h3>
-                </div>
+            <aside class="sheet-right">
+              <section class="info-card">
+                <div class="info-title"><span>01</span><h3>AI채팅 성향</h3></div>
                 <div id="outPlayStyles" class="tag-list compact-tags"></div>
               </section>
 
-              <section class="mini-info-box tendency-box">
-                <div class="tendency-item">
+              <section class="info-card tendency-card">
+                <div>
                   <span>드림 성향</span>
                   <strong id="outOverlapDream">온리</strong>
                 </div>
-                <div class="tendency-item">
+                <div>
                   <span>1T1D</span>
                   <strong id="outOneTOneD">캐릭터별 상이</strong>
                 </div>
               </section>
 
-              <section class="mini-info-box">
-                <div class="mini-heading-row">
-                  <span class="mini-index">02</span>
-                  <h3>교류 성향</h3>
-                </div>
+              <section class="info-card">
+                <div class="info-title"><span>02</span><h3>교류 성향</h3></div>
                 <div id="outSocialStyles" class="tag-list compact-tags"></div>
               </section>
 
-              <section class="mini-info-box ng-box">
-                <div class="mini-heading-row">
-                  <span class="mini-index">03</span>
-                  <h3>NG / 참고</h3>
-                </div>
+              <section class="info-card ng-card">
+                <div class="info-title"><span>03</span><h3>NG / 참고</h3></div>
                 <p id="outNg">지나친 캐릭터 비교와 취향 강요는 어려워요.</p>
               </section>
             </aside>
           </div>
 
-          <footer class="landscape-footer">made with ♡ by @Elpis_for_Blanc</footer>
+          <footer class="sheet-credit">made with ♡ by @Elpis_for_Blanc</footer>
         </article>
       </div>
     </main>
