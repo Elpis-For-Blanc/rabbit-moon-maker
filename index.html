@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Princess AI Chat Friend Sheet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="editor-panel">
+      <div class="editor-title">
+        <span class="mini-crown">♕</span>
+        <div>
+          <p>PRINCESS MAKER</p>
+          <h1>AI채팅 트친소 시트</h1>
+        </div>
+      </div>
+
+      <section class="editor-section">
+        <h2>기본 정보</h2>
+        <label>닉네임<input id="nickname" type="text" value="루아" maxlength="20"></label>
+        <label>X 아이디<input id="twitterId" type="text" value="@your_id" maxlength="30"></label>
+        <label>한줄 소개<input id="intro" type="text" value="AI채팅과 드림 이야기를 좋아해요 ♡" maxlength="60"></label>
+      </section>
+
+      <section class="editor-section">
+        <h2>사용 플랫폼</h2>
+        <div class="chip-editor" data-target="platforms">
+          <label><input type="checkbox" value="케이브덕" checked>케이브덕</label>
+          <label><input type="checkbox" value="제타">제타</label>
+          <label><input type="checkbox" value="뤼튼">뤼튼</label>
+          <label><input type="checkbox" value="Character.AI">Character.AI</label>
+        </div>
+        <label>기타 플랫폼<input id="platformOther" type="text" placeholder="직접 입력"></label>
+      </section>
+
+      <section class="editor-section two-col">
+        <div>
+          <h2>최애</h2>
+          <label>캐릭터명<input id="favoriteName" type="text" value="Blanc" maxlength="24"></label>
+          <label>설명<input id="favoriteDesc" type="text" value="가장 좋아하는 캐릭터" maxlength="42"></label>
+          <label class="file-label">이미지<input id="favoriteImage" type="file" accept="image/*"></label>
+        </div>
+        <div>
+          <h2>드림</h2>
+          <label>드림 상대<input id="dreamName" type="text" value="Blanc × Elpis" maxlength="24"></label>
+          <label>관계/설명<input id="dreamDesc" type="text" value="연인 드림 · 서사 중심" maxlength="42"></label>
+          <label class="file-label">이미지<input id="dreamImage" type="file" accept="image/*"></label>
+        </div>
+      </section>
+
+      <section class="editor-section">
+        <h2>AI채팅 성향</h2>
+        <div class="chip-editor" data-target="playStyles">
+          <label><input type="checkbox" value="순애" checked>순애</label>
+          <label><input type="checkbox" value="서사 중심" checked>서사 중심</label>
+          <label><input type="checkbox" value="장문" checked>장문</label>
+          <label><input type="checkbox" value="세계관 몰입">세계관 몰입</label>
+          <label><input type="checkbox" value="일상">일상</label>
+          <label><input type="checkbox" value="피폐">피폐</label>
+          <label><input type="checkbox" value="개그">개그</label>
+          <label><input type="checkbox" value="전투">전투</label>
+        </div>
+      </section>
+
+      <section class="editor-section">
+        <h2>드림 / 교류 성향</h2>
+        <label>겹드림
+          <select id="overlapDream">
+            <option>환영</option><option selected>케바케</option><option>어려움</option>
+          </select>
+        </label>
+        <label>1T1D
+          <select id="oneTOneD">
+            <option>필요</option><option selected>캐릭터별 상이</option><option>불필요</option>
+          </select>
+        </label>
+        <div class="chip-editor" data-target="socialStyles">
+          <label><input type="checkbox" value="마음 위주" checked>마음 위주</label>
+          <label><input type="checkbox" value="멘션 좋아함">멘션 좋아함</label>
+          <label><input type="checkbox" value="DM 가능" checked>DM 가능</label>
+          <label><input type="checkbox" value="로그 공유" checked>로그 공유</label>
+          <label><input type="checkbox" value="드림썰">드림썰</label>
+        </div>
+      </section>
+
+      <section class="editor-section">
+        <h2>NG / 참고</h2>
+        <textarea id="ngText" rows="4">지나친 캐릭터 비교와 취향 강요는 어려워요.</textarea>
+      </section>
+
+      <section class="editor-section color-section">
+        <h2>시트 컬러</h2>
+        <div class="color-row">
+          <input id="themeColor" type="color" value="#e982ac">
+          <input id="themeHex" type="text" value="#e982ac" maxlength="7">
+        </div>
+        <div class="preset-row">
+          <button class="color-preset" data-color="#e982ac" aria-label="핑크"></button>
+          <button class="color-preset" data-color="#b88ad7" aria-label="라벤더"></button>
+          <button class="color-preset" data-color="#82aee8" aria-label="블루"></button>
+          <button class="color-preset" data-color="#7fbfb0" aria-label="민트"></button>
+          <button class="color-preset" data-color="#b13f57" aria-label="레드"></button>
+          <button class="color-preset" data-color="#55505a" aria-label="블랙"></button>
+        </div>
+      </section>
+
+      <button id="downloadBtn" class="download-btn">♡ 시트 PNG 저장하기 ♡</button>
+    </aside>
+
+    <main class="preview-area">
+      <div class="preview-sticky">
+        <p class="preview-label">LIVE PREVIEW</p>
+        <article id="sheet" class="sheet-card">
+          <div class="lace lace-top"></div>
+          <div class="lace lace-bottom"></div>
+          <div class="corner-pearl p1">●</div><div class="corner-pearl p2">●</div><div class="corner-pearl p3">●</div><div class="corner-pearl p4">●</div>
+
+          <header class="sheet-header">
+            <div class="ribbon"><span>AI CHAT FRIEND SHEET</span></div>
+            <div class="crown">♕</div>
+            <h2 id="outNickname">루아</h2>
+            <p id="outTwitter">@your_id</p>
+            <p id="outIntro" class="intro">AI채팅과 드림 이야기를 좋아해요 ♡</p>
+          </header>
+
+          <section class="sheet-section platform-section">
+            <h3><span>01</span> 사용 플랫폼</h3>
+            <div id="outPlatforms" class="tag-list"></div>
+          </section>
+
+          <section class="duo-cards">
+            <div class="portrait-card">
+              <div class="portrait-frame"><img id="favoritePreview" alt="최애 이미지"></div>
+              <p class="eyebrow">FAVORITE</p>
+              <h3 id="outFavoriteName">Blanc</h3>
+              <p id="outFavoriteDesc">가장 좋아하는 캐릭터</p>
+            </div>
+            <div class="portrait-card">
+              <div class="portrait-frame"><img id="dreamPreview" alt="드림 이미지"></div>
+              <p class="eyebrow">DREAM</p>
+              <h3 id="outDreamName">Blanc × Elpis</h3>
+              <p id="outDreamDesc">연인 드림 · 서사 중심</p>
+            </div>
+          </section>
+
+          <section class="sheet-section">
+            <h3><span>02</span> AI채팅 성향</h3>
+            <div id="outPlayStyles" class="tag-list"></div>
+          </section>
+
+          <section class="sheet-section tendency-grid">
+            <div><span class="tiny-label">겹드림</span><strong id="outOverlapDream">케바케</strong></div>
+            <div><span class="tiny-label">1T1D</span><strong id="outOneTOneD">캐릭터별 상이</strong></div>
+          </section>
+
+          <section class="sheet-section">
+            <h3><span>03</span> 교류 성향</h3>
+            <div id="outSocialStyles" class="tag-list"></div>
+          </section>
+
+          <section class="sheet-section note-section">
+            <h3><span>04</span> NG / 참고</h3>
+            <p id="outNg">지나친 캐릭터 비교와 취향 강요는 어려워요.</p>
+          </section>
+
+          <footer>♡ AI CHAT PRINCESS PROFILE ♡</footer>
+        </article>
+      </div>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
