@@ -771,3 +771,426 @@ button:hover{transform:translateY(-1px)}
     grid-template-columns:repeat(2,minmax(0,1fr));
   }
 }
+
+
+/* =========================================================
+   TRUE LANDSCAPE REDESIGN — fixed 960 × 540 export canvas
+   ========================================================= */
+
+#sheet.landscape-sheet{
+  --sheet-line:color-mix(in srgb,var(--theme) 27%,#ffffff);
+  width:960px !important;
+  height:540px !important;
+  min-height:540px !important;
+  max-height:540px !important;
+  aspect-ratio:auto !important;
+  box-sizing:border-box !important;
+  margin:0 auto !important;
+  padding:22px 24px 16px !important;
+  overflow:hidden !important;
+  display:grid !important;
+  grid-template-rows:92px 1fr 22px !important;
+  gap:12px !important;
+  background:
+    radial-gradient(circle at 1px 1px,color-mix(in srgb,var(--theme) 16%,transparent) 1px,transparent 1.2px) 0 0/15px 15px,
+    #fffdfd !important;
+  border:1px solid var(--sheet-line) !important;
+  border-radius:20px !important;
+  box-shadow:0 10px 30px rgba(108,70,86,.08) !important;
+  font-family:var(--sheet-font) !important;
+}
+
+#sheet.landscape-sheet::before,
+#sheet.landscape-sheet::after{
+  content:"" !important;
+  position:absolute !important;
+  pointer-events:none !important;
+  border-radius:15px !important;
+}
+#sheet.landscape-sheet::before{
+  inset:8px !important;
+  border:1px solid color-mix(in srgb,var(--theme) 19%,#fff) !important;
+}
+#sheet.landscape-sheet::after{
+  inset:12px !important;
+  border:1px dotted color-mix(in srgb,var(--theme) 20%,#fff) !important;
+}
+
+#sheet .landscape-header{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 300px;
+  gap:16px;
+  align-items:stretch;
+  margin:0 !important;
+  padding:0 !important;
+  border:0 !important;
+}
+
+#sheet .header-copy{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:6px 4px 5px 8px;
+}
+
+#sheet .ribbon-title{
+  align-self:flex-start;
+  min-width:235px;
+  padding:6px 24px;
+  margin:0 0 5px;
+  text-align:center;
+  color:#fff;
+  background:var(--theme);
+  border-radius:3px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:1.7px;
+  line-height:1;
+  box-shadow:0 3px 0 color-mix(in srgb,var(--theme) 58%,#74364e);
+}
+
+#sheet .identity-row{
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+  min-width:0;
+}
+#sheet .identity-row h2{
+  margin:0 !important;
+  color:var(--theme-deep);
+  font-size:28px !important;
+  line-height:1.1;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+#sheet .identity-row p{
+  margin:0 !important;
+  color:#846f78;
+  font-size:11px !important;
+  white-space:nowrap;
+}
+#sheet .identity-divider{
+  color:var(--theme);
+  font-size:11px;
+}
+#sheet .header-copy .intro{
+  width:auto !important;
+  margin:4px 0 0 !important;
+  padding:0 !important;
+  border:0 !important;
+  color:#9a828d !important;
+  font-size:10px !important;
+  line-height:1.35 !important;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+#sheet .platform-box{
+  position:relative;
+  z-index:2;
+  min-width:0;
+  padding:12px 14px;
+  border:1px solid var(--sheet-line);
+  border-radius:13px;
+  background:rgba(255,255,255,.82);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+#sheet .mini-heading{
+  display:block;
+  margin-bottom:7px;
+  color:var(--theme);
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:1.6px;
+}
+
+#sheet .landscape-body{
+  position:relative;
+  z-index:2;
+  min-height:0;
+  display:grid;
+  grid-template-columns:560px minmax(0,1fr);
+  gap:12px;
+}
+
+#sheet .characters-panel,
+#sheet .info-panel{
+  min-width:0;
+  min-height:0;
+}
+
+#sheet .characters-panel{
+  border:1px solid var(--sheet-line);
+  border-radius:14px;
+  background:rgba(255,255,255,.84);
+  padding:11px;
+  display:grid;
+  grid-template-rows:22px 1fr;
+  gap:8px;
+  overflow:hidden;
+}
+
+#sheet .panel-heading{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  color:var(--theme-deep);
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:1.4px;
+}
+#sheet .panel-heading i{
+  color:var(--theme);
+  font-style:normal;
+}
+
+#sheet .landscape-character-grid{
+  min-height:0;
+  height:100%;
+  margin:0 !important;
+  display:grid !important;
+  gap:8px !important;
+  align-content:stretch !important;
+  grid-auto-flow:row !important;
+}
+
+#sheet .landscape-character-grid[data-total-cards="1"]{grid-template-columns:1fr !important;}
+#sheet .landscape-character-grid[data-total-cards="2"]{grid-template-columns:repeat(2,1fr) !important;}
+#sheet .landscape-character-grid[data-total-cards="3"]{grid-template-columns:repeat(3,1fr) !important;}
+#sheet .landscape-character-grid[data-total-cards="4"]{grid-template-columns:repeat(4,1fr) !important;}
+#sheet .landscape-character-grid[data-total-cards="5"]{grid-template-columns:repeat(3,1fr) !important;grid-template-rows:repeat(2,1fr) !important;}
+#sheet .landscape-character-grid[data-total-cards="6"]{grid-template-columns:repeat(3,1fr) !important;grid-template-rows:repeat(2,1fr) !important;}
+
+#sheet .landscape-character-grid .portrait-card{
+  min-width:0 !important;
+  min-height:0 !important;
+  width:auto !important;
+  height:auto !important;
+  padding:7px !important;
+  margin:0 !important;
+  border:1px solid color-mix(in srgb,var(--theme) 23%,#fff) !important;
+  border-radius:11px !important;
+  background:linear-gradient(180deg,#fff,var(--theme-pale)) !important;
+  display:grid !important;
+  grid-template-rows:minmax(0,1fr) auto auto auto !important;
+  align-items:center !important;
+  justify-items:center !important;
+  gap:2px !important;
+  overflow:hidden !important;
+}
+
+#sheet .landscape-character-grid .portrait-frame,
+#sheet .landscape-character-grid.pair-disabled[data-favorite-count="1"] .portrait-frame,
+#sheet .landscape-character-grid.pair-disabled[data-favorite-count="2"] .portrait-frame,
+#sheet .landscape-character-grid.pair-disabled[data-favorite-count="3"] .portrait-frame{
+  width:auto !important;
+  height:auto !important;
+  aspect-ratio:1/1 !important;
+  max-width:100% !important;
+  max-height:100% !important;
+  min-width:0 !important;
+  min-height:0 !important;
+  align-self:stretch !important;
+  justify-self:stretch !important;
+  margin:0 !important;
+  border-radius:9px !important;
+  overflow:hidden !important;
+  background:
+    radial-gradient(circle,color-mix(in srgb,var(--theme) 16%,#fff) 1.2px,transparent 1.3px) 0 0/10px 10px,
+    var(--theme-pale) !important;
+  border:1px solid color-mix(in srgb,var(--theme) 34%,#fff) !important;
+  position:relative !important;
+}
+
+#sheet .portrait-frame img[hidden]{
+  display:none !important;
+}
+#sheet .portrait-frame img{
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  object-position:center !important;
+  border:0 !important;
+  outline:0 !important;
+  font-size:0 !important;
+  color:transparent !important;
+}
+
+#sheet .landscape-character-grid .eyebrow{
+  margin:2px 0 0 !important;
+  color:var(--theme) !important;
+  font-size:7px !important;
+  line-height:1 !important;
+  letter-spacing:1px !important;
+  white-space:nowrap;
+}
+#sheet .landscape-character-grid h3{
+  width:100% !important;
+  margin:1px 0 0 !important;
+  color:var(--theme-deep) !important;
+  font-size:11px !important;
+  line-height:1.15 !important;
+  text-align:center;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+#sheet .landscape-character-grid .portrait-card > p:last-child{
+  width:100% !important;
+  height:18px !important;
+  margin:0 !important;
+  color:#8d7882 !important;
+  font-size:7.5px !important;
+  line-height:9px !important;
+  text-align:center;
+  overflow:hidden !important;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+}
+
+#sheet .info-panel{
+  display:grid;
+  grid-template-rows:1.1fr .65fr 1fr 1fr;
+  gap:8px;
+}
+
+#sheet .mini-info-box{
+  min-width:0;
+  min-height:0;
+  padding:9px 10px;
+  border:1px solid var(--sheet-line);
+  border-radius:12px;
+  background:rgba(255,255,255,.84);
+  overflow:hidden;
+}
+#sheet .mini-heading-row{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  margin-bottom:6px;
+}
+#sheet .mini-heading-row h3{
+  margin:0 !important;
+  color:var(--theme-deep);
+  font-size:10px !important;
+  line-height:1;
+}
+#sheet .mini-index{
+  width:18px;
+  height:18px;
+  flex:0 0 18px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:var(--theme-soft);
+  color:var(--theme);
+  font-size:7px;
+  font-weight:700;
+}
+
+#sheet .compact-tags{
+  display:flex !important;
+  flex-wrap:wrap !important;
+  align-content:flex-start;
+  gap:4px !important;
+  min-width:0;
+}
+#sheet .compact-tags .tag,
+#sheet .tag{
+  display:inline-flex;
+  max-width:100%;
+  margin:0 !important;
+  padding:3px 6px !important;
+  border-radius:999px !important;
+  border:1px solid color-mix(in srgb,var(--theme) 28%,#fff) !important;
+  background:var(--theme-pale) !important;
+  color:var(--theme-deep) !important;
+  font-size:7.5px !important;
+  line-height:1.2 !important;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+#sheet .tendency-box{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  align-items:stretch;
+}
+#sheet .tendency-item{
+  min-width:0;
+  padding:7px 8px;
+  border-radius:9px;
+  background:var(--theme-pale);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:3px;
+}
+#sheet .tendency-item span{
+  color:#a28793;
+  font-size:7px;
+}
+#sheet .tendency-item strong{
+  color:var(--theme-deep);
+  font-size:10px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+#sheet .ng-box p{
+  margin:0 !important;
+  color:#806d76 !important;
+  font-size:8px !important;
+  line-height:1.45 !important;
+  overflow:hidden;
+  display:-webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
+}
+
+#sheet .landscape-footer{
+  position:relative;
+  z-index:2;
+  margin:0 !important;
+  padding:4px 0 0 !important;
+  border:0 !important;
+  color:#b08a9b !important;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:8px !important;
+  line-height:1 !important;
+  text-align:center;
+  letter-spacing:.5px;
+}
+
+/* Old decorative/vertical pieces must not affect the fixed canvas. */
+#sheet .corner-pearl,
+#sheet .sheet-section,
+#sheet .sheet-header,
+#sheet .platform-section,
+#sheet .tendency-grid{
+  max-height:none;
+}
+
+@media(max-width:1150px){
+  .preview-area{
+    overflow-x:auto;
+  }
+  .preview-sticky{
+    min-width:1000px;
+  }
+}

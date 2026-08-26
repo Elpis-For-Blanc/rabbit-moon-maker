@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rabbit Moon Maker · AI채팅 트친소 시트</title>
+  <title>AI Chat Friend Sheet Maker</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
       <div class="editor-title">
         
         <div>
-          <p>RABBIT MOON · SERENDIPITY STYLE</p>
+          <p>AI CHAT FRIEND SHEET MAKER</p>
           <h1>AI채팅 트친소 시트</h1>
         </div>
       </div>
@@ -145,7 +145,7 @@
       </section>
 
       <section class="editor-section">
-        <h2>페어 / 교류 성향</h2>
+        <h2>드림 / 배려 성향</h2>
         <label>드림 성향
           <select id="overlapDream">
             <option value="온리">온리</option>
@@ -155,16 +155,11 @@
         </label>
         <label>1T1D
           <select id="oneTOneD">
-            <option>필요</option><option selected>캐릭터별 상이</option><option>불필요</option>
+            <option>필요</option>
+            <option selected>캐릭터별 상이</option>
+            <option>불필요</option>
           </select>
         </label>
-        <div class="chip-editor" data-target="socialStyles">
-          <label><input type="checkbox" value="마음 위주" checked>마음 위주</label>
-          <label><input type="checkbox" value="멘션 좋아함">멘션 좋아함</label>
-          <label><input type="checkbox" value="DM 가능" checked>DM 가능</label>
-          <label><input type="checkbox" value="로그 공유" checked>로그 공유</label>
-          <label><input type="checkbox" value="페어썰">페어썰</label>
-        </div>
       </section>
 
       <section class="editor-section">
@@ -220,87 +215,115 @@
     <main class="preview-area">
       <div class="preview-sticky">
         <p class="preview-label">LIVE PREVIEW</p>
-        <article id="sheet" class="sheet-card">
-          <div class="corner-pearl p1">●</div><div class="corner-pearl p2">●</div><div class="corner-pearl p3">●</div><div class="corner-pearl p4">●</div>
+        <article id="sheet" class="sheet-card landscape-sheet">
+          <header class="landscape-header">
+            <div class="header-copy">
+              <div class="ribbon-title">AI CHAT FRIEND SHEET</div>
+              <div class="identity-row">
+                <h2 id="outNickname">루아</h2>
+                <span class="identity-divider">♡</span>
+                <p id="outTwitter">@your_id</p>
+              </div>
+              <p id="outIntro" class="intro">AI채팅과 페어 이야기를 좋아해요 ♡</p>
+            </div>
 
-          <header class="sheet-header">
-            <div class="ribbon"><span>AI CHAT FRIEND SHEET</span></div>
-            
-            <h2 id="outNickname">루아</h2>
-            <p id="outTwitter">@your_id</p>
-            <p id="outIntro" class="intro">AI채팅과 페어 이야기를 좋아해요 ♡</p>
+            <div class="platform-box">
+              <span class="mini-heading">PLATFORM</span>
+              <div id="outPlatforms" class="tag-list compact-tags"></div>
+            </div>
           </header>
 
-          <section class="sheet-section platform-section">
-            <h3><span>01</span> 사용 플랫폼</h3>
-            <div id="outPlatforms" class="tag-list"></div>
-          </section>
+          <div class="landscape-body">
+            <section class="characters-panel">
+              <div class="panel-heading">
+                <span>FAVORITE &amp; PAIR</span>
+                <i>♡</i>
+              </div>
 
-          <section id="characterCards" class="character-cards">
-            <div id="favoriteCard1" class="portrait-card favorite-card">
-              <div class="portrait-frame"><img id="favoritePreview" alt=""></div>
-              <p class="eyebrow">FAVORITE 01</p>
-              <h3 id="outFavoriteName">Blanc</h3>
-              <p id="outFavoriteDesc">가장 좋아하는 캐릭터</p>
-            </div>
+              <div id="characterCards" class="character-cards landscape-character-grid">
+                <div id="favoriteCard1" class="portrait-card favorite-card">
+                  <div class="portrait-frame"><img id="favoritePreview" alt="" hidden></div>
+                  <p class="eyebrow">FAVORITE 01</p>
+                  <h3 id="outFavoriteName">Blanc</h3>
+                  <p id="outFavoriteDesc">가장 좋아하는 캐릭터</p>
+                </div>
 
-            <div id="favoriteCard2" class="portrait-card favorite-card is-hidden">
-              <div class="portrait-frame"><img id="favorite2Preview" alt=""></div>
-              <p class="eyebrow">FAVORITE 02</p>
-              <h3 id="outFavorite2Name">—</h3>
-              <p id="outFavorite2Desc">—</p>
-            </div>
+                <div id="favoriteCard2" class="portrait-card favorite-card is-hidden">
+                  <div class="portrait-frame"><img id="favorite2Preview" alt="" hidden></div>
+                  <p class="eyebrow">FAVORITE 02</p>
+                  <h3 id="outFavorite2Name">—</h3>
+                  <p id="outFavorite2Desc">—</p>
+                </div>
 
-            <div id="favoriteCard3" class="portrait-card favorite-card is-hidden">
-              <div class="portrait-frame"><img id="favorite3Preview" alt=""></div>
-              <p class="eyebrow">FAVORITE 03</p>
-              <h3 id="outFavorite3Name">—</h3>
-              <p id="outFavorite3Desc">—</p>
-            </div>
+                <div id="favoriteCard3" class="portrait-card favorite-card is-hidden">
+                  <div class="portrait-frame"><img id="favorite3Preview" alt="" hidden></div>
+                  <p class="eyebrow">FAVORITE 03</p>
+                  <h3 id="outFavorite3Name">—</h3>
+                  <p id="outFavorite3Desc">—</p>
+                </div>
 
-            <div id="pairCard" class="portrait-card pair-card">
-              <div class="portrait-frame"><img id="dreamPreview" alt=""></div>
-              <p class="eyebrow">PAIR 01</p>
-              <h3 id="outDreamName">Blanc × Elpis</h3>
-              <p id="outDreamDesc">연인 페어 · 서사 중심</p>
-            </div>
+                <div id="pairCard" class="portrait-card pair-card">
+                  <div class="portrait-frame"><img id="dreamPreview" alt="" hidden></div>
+                  <p class="eyebrow">PAIR 01</p>
+                  <h3 id="outDreamName">Blanc × Elpis</h3>
+                  <p id="outDreamDesc">연인 페어 · 서사 중심</p>
+                </div>
 
-            <div id="pairCard2" class="portrait-card pair-card is-hidden">
-              <div class="portrait-frame"><img id="dream2Preview" alt=""></div>
-              <p class="eyebrow">PAIR 02</p>
-              <h3 id="outDream2Name">—</h3>
-              <p id="outDream2Desc">—</p>
-            </div>
+                <div id="pairCard2" class="portrait-card pair-card is-hidden">
+                  <div class="portrait-frame"><img id="dream2Preview" alt="" hidden></div>
+                  <p class="eyebrow">PAIR 02</p>
+                  <h3 id="outDream2Name">—</h3>
+                  <p id="outDream2Desc">—</p>
+                </div>
 
-            <div id="pairCard3" class="portrait-card pair-card is-hidden">
-              <div class="portrait-frame"><img id="dream3Preview" alt=""></div>
-              <p class="eyebrow">PAIR 03</p>
-              <h3 id="outDream3Name">—</h3>
-              <p id="outDream3Desc">—</p>
-            </div>
-          </section>
+                <div id="pairCard3" class="portrait-card pair-card is-hidden">
+                  <div class="portrait-frame"><img id="dream3Preview" alt="" hidden></div>
+                  <p class="eyebrow">PAIR 03</p>
+                  <h3 id="outDream3Name">—</h3>
+                  <p id="outDream3Desc">—</p>
+                </div>
+              </div>
+            </section>
 
-          <section class="sheet-section">
-            <h3><span>02</span> AI채팅 성향</h3>
-            <div id="outPlayStyles" class="tag-list"></div>
-          </section>
+            <aside class="info-panel">
+              <section class="mini-info-box">
+                <div class="mini-heading-row">
+                  <span class="mini-index">01</span>
+                  <h3>AI채팅 성향</h3>
+                </div>
+                <div id="outPlayStyles" class="tag-list compact-tags"></div>
+              </section>
 
-          <section class="sheet-section tendency-grid">
-            <div><span class="tiny-label">드림 성향</span><strong id="outOverlapDream">케바케</strong></div>
-            <div><span class="tiny-label">1T1D</span><strong id="outOneTOneD">캐릭터별 상이</strong></div>
-          </section>
+              <section class="mini-info-box tendency-box">
+                <div class="tendency-item">
+                  <span>드림 성향</span>
+                  <strong id="outOverlapDream">온리</strong>
+                </div>
+                <div class="tendency-item">
+                  <span>1T1D</span>
+                  <strong id="outOneTOneD">캐릭터별 상이</strong>
+                </div>
+              </section>
 
-          <section class="sheet-section">
-            <h3><span>03</span> 교류 성향</h3>
-            <div id="outSocialStyles" class="tag-list"></div>
-          </section>
+              <section class="mini-info-box">
+                <div class="mini-heading-row">
+                  <span class="mini-index">02</span>
+                  <h3>교류 성향</h3>
+                </div>
+                <div id="outSocialStyles" class="tag-list compact-tags"></div>
+              </section>
 
-          <section class="sheet-section note-section">
-            <h3><span>04</span> NG / 참고</h3>
-            <p id="outNg">지나친 캐릭터 비교와 취향 강요는 어려워요.</p>
-          </section>
+              <section class="mini-info-box ng-box">
+                <div class="mini-heading-row">
+                  <span class="mini-index">03</span>
+                  <h3>NG / 참고</h3>
+                </div>
+                <p id="outNg">지나친 캐릭터 비교와 취향 강요는 어려워요.</p>
+              </section>
+            </aside>
+          </div>
 
-          <footer>made with ♡ by @Elpis_for_Blanc</footer>
+          <footer class="landscape-footer">made with ♡ by @Elpis_for_Blanc</footer>
         </article>
       </div>
     </main>

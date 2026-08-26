@@ -86,10 +86,18 @@ function renderAllTags(){
 
 function bindImage(inputId,previewId){
   $(inputId).addEventListener('change',e=>{
+    const img=$(previewId);
     const file=e.target.files[0];
-    if(!file) return;
+    if(!file){
+      img.removeAttribute('src');
+      img.hidden=true;
+      return;
+    }
     const r=new FileReader();
-    r.onload=()=>{$(previewId).src=r.result;};
+    r.onload=()=>{
+      img.src=r.result;
+      img.hidden=false;
+    };
     r.readAsDataURL(file);
   });
 }
@@ -259,6 +267,9 @@ $('downloadBtn').addEventListener('click',async()=>{
   }
 });
 
+document.querySelectorAll('#sheet .portrait-frame img').forEach(img=>{
+  if(!img.getAttribute('src')) img.hidden=true;
+});
 restoreForm();
 updateCharacterCards();
 renderAllTags();
