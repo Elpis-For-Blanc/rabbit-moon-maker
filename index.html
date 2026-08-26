@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>AI Chat Friend Sheet Maker</title>
-  <link rel="stylesheet" href="app-v2.css?v=20260826-1837">
+  <link rel="stylesheet" href="app-v3.css?v=20260826-1845">
 </head>
 <body>
   <main class="app-shell">
@@ -115,7 +115,7 @@
           <label><input type="checkbox" value="장문"><span>장문</span></label>
         </div>
         <div class="custom-add tendency-custom-add">
-          <input id="playStyleInput" type="text" maxlength="24" placeholder="직접 작성">
+          <input id="playStyleInput" type="text" maxlength="24" placeholder="예: 감정선 중심">
           <button id="playStyleAddBtn" type="button">추가</button>
         </div>
         <div id="playStyleEditorTags" class="editor-tags"></div>
@@ -274,7 +274,8 @@
     </section>
   </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-  <script src="app-v2.js?v=20260826-1837"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"
+      onerror="this.onerror=null;this.src='https://unpkg.com/html2canvas@1.4.1/dist/html2canvas.min.js'"></script>
+  <script src="app-v3.js?v=20260826-1845"></script>
 </body>
 </html>
