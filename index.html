@@ -25,7 +25,7 @@
         <h2>기본 정보</h2>
         <label>닉네임<input id="nickname" type="text" value="루아" maxlength="20"></label>
         <label>X 아이디<input id="twitterId" type="text" value="@your_id" maxlength="30"></label>
-        <label>한줄 소개<input id="intro" type="text" value="AI채팅과 드림 이야기를 좋아해요 ♡" maxlength="60"></label>
+        <label>한줄 소개<input id="intro" type="text" value="AI채팅과 페어 이야기를 좋아해요 ♡" maxlength="60"></label>
       </section>
 
       <section class="editor-section">
@@ -38,19 +38,63 @@
         <label>기타 플랫폼<input id="platformOther" type="text" placeholder="직접 입력"></label>
       </section>
 
-      <section class="editor-section two-col">
-        <div>
+      <section class="editor-section">
+        <div class="section-title-row">
           <h2>최애</h2>
+          <span class="section-hint">최대 3명</span>
+        </div>
+
+        <div class="favorite-editor-card">
+          <div class="mini-number">01</div>
           <label>캐릭터명<input id="favoriteName" type="text" value="Blanc" maxlength="24"></label>
           <label>설명<input id="favoriteDesc" type="text" value="가장 좋아하는 캐릭터" maxlength="42"></label>
           <label class="file-label">이미지<input id="favoriteImage" type="file" accept="image/*"></label>
         </div>
-        <div>
-          <h2>드림</h2>
-          <label>드림 상대<input id="dreamName" type="text" value="Blanc × Elpis" maxlength="24"></label>
-          <label>관계/설명<input id="dreamDesc" type="text" value="연인 드림 · 서사 중심" maxlength="42"></label>
+
+        <div class="optional-card-toggle">
+          <label class="switch-row">
+            <input id="favorite2Enabled" type="checkbox">
+            <span class="switch-ui"></span>
+            <span>두 번째 최애 추가</span>
+          </label>
+        </div>
+        <div id="favorite2Fields" class="favorite-editor-card optional-fields is-hidden">
+          <div class="mini-number">02</div>
+          <label>캐릭터명<input id="favorite2Name" type="text" placeholder="캐릭터명" maxlength="24"></label>
+          <label>설명<input id="favorite2Desc" type="text" placeholder="짧은 소개" maxlength="42"></label>
+          <label class="file-label">이미지<input id="favorite2Image" type="file" accept="image/*"></label>
+        </div>
+
+        <div class="optional-card-toggle">
+          <label class="switch-row">
+            <input id="favorite3Enabled" type="checkbox">
+            <span class="switch-ui"></span>
+            <span>세 번째 최애 추가</span>
+          </label>
+        </div>
+        <div id="favorite3Fields" class="favorite-editor-card optional-fields is-hidden">
+          <div class="mini-number">03</div>
+          <label>캐릭터명<input id="favorite3Name" type="text" placeholder="캐릭터명" maxlength="24"></label>
+          <label>설명<input id="favorite3Desc" type="text" placeholder="짧은 소개" maxlength="42"></label>
+          <label class="file-label">이미지<input id="favorite3Image" type="file" accept="image/*"></label>
+        </div>
+      </section>
+
+      <section class="editor-section pair-editor-section">
+        <div class="section-title-row">
+          <h2>페어</h2>
+          <label class="switch-row pair-switch">
+            <input id="pairEnabled" type="checkbox" checked>
+            <span class="switch-ui"></span>
+            <span>페어 카드 표시</span>
+          </label>
+        </div>
+        <div id="pairFields">
+          <label>페어 상대<input id="dreamName" type="text" value="Blanc × Elpis" maxlength="24"></label>
+          <label>관계/설명<input id="dreamDesc" type="text" value="연인 페어 · 서사 중심" maxlength="42"></label>
           <label class="file-label">이미지<input id="dreamImage" type="file" accept="image/*"></label>
         </div>
+        <p class="toggle-help">페어가 없다면 끌 수 있어요. 끄면 최애 카드가 더 크게 배치됩니다 ♡</p>
       </section>
 
       <section class="editor-section">
@@ -68,8 +112,8 @@
       </section>
 
       <section class="editor-section">
-        <h2>드림 / 교류 성향</h2>
-        <label>겹드림
+        <h2>페어 / 교류 성향</h2>
+        <label>겹페어
           <select id="overlapDream">
             <option>환영</option><option selected>케바케</option><option>어려움</option>
           </select>
@@ -84,8 +128,18 @@
           <label><input type="checkbox" value="멘션 좋아함">멘션 좋아함</label>
           <label><input type="checkbox" value="DM 가능" checked>DM 가능</label>
           <label><input type="checkbox" value="로그 공유" checked>로그 공유</label>
-          <label><input type="checkbox" value="드림썰">드림썰</label>
+          <label><input type="checkbox" value="페어썰">페어썰</label>
         </div>
+      </section>
+
+      <section class="editor-section">
+        <h2>교류 성향</h2>
+        <div class="custom-tag-input">
+          <input id="socialStyleInput" type="text" maxlength="24" placeholder="예: 마음 위주, 멘션 좋아해요">
+          <button id="addSocialStyleBtn" type="button">추가</button>
+        </div>
+        <div id="socialStyleList" class="custom-tag-list" aria-live="polite"></div>
+        <p class="toggle-help">원하는 교류 성향을 직접 입력해 여러 개 추가할 수 있어요 ♡</p>
       </section>
 
       <section class="editor-section">
@@ -116,16 +170,14 @@
       <div class="preview-sticky">
         <p class="preview-label">LIVE PREVIEW</p>
         <article id="sheet" class="sheet-card">
-          <div class="lace lace-top"></div>
-          <div class="lace lace-bottom"></div>
           <div class="corner-pearl p1">●</div><div class="corner-pearl p2">●</div><div class="corner-pearl p3">●</div><div class="corner-pearl p4">●</div>
 
           <header class="sheet-header">
-            <div class="ribbon"><span>RABBIT MOON FRIEND SHEET</span></div>
+            <div class="ribbon"><span>AI CHAT FRIEND SHEET</span></div>
             <div class="crown">♕</div>
             <h2 id="outNickname">루아</h2>
             <p id="outTwitter">@your_id</p>
-            <p id="outIntro" class="intro">AI채팅과 드림 이야기를 좋아해요 ♡</p>
+            <p id="outIntro" class="intro">AI채팅과 페어 이야기를 좋아해요 ♡</p>
           </header>
 
           <section class="sheet-section platform-section">
@@ -133,18 +185,33 @@
             <div id="outPlatforms" class="tag-list"></div>
           </section>
 
-          <section class="duo-cards">
-            <div class="portrait-card">
+          <section id="characterCards" class="character-cards">
+            <div id="favoriteCard1" class="portrait-card favorite-card">
               <div class="portrait-frame"><img id="favoritePreview" alt="최애 이미지"></div>
-              <p class="eyebrow">FAVORITE</p>
+              <p class="eyebrow">FAVORITE 01</p>
               <h3 id="outFavoriteName">Blanc</h3>
               <p id="outFavoriteDesc">가장 좋아하는 캐릭터</p>
             </div>
-            <div class="portrait-card">
-              <div class="portrait-frame"><img id="dreamPreview" alt="드림 이미지"></div>
-              <p class="eyebrow">DREAM</p>
+
+            <div id="favoriteCard2" class="portrait-card favorite-card is-hidden">
+              <div class="portrait-frame"><img id="favorite2Preview" alt="두 번째 최애 이미지"></div>
+              <p class="eyebrow">FAVORITE 02</p>
+              <h3 id="outFavorite2Name">—</h3>
+              <p id="outFavorite2Desc">—</p>
+            </div>
+
+            <div id="favoriteCard3" class="portrait-card favorite-card is-hidden">
+              <div class="portrait-frame"><img id="favorite3Preview" alt="세 번째 최애 이미지"></div>
+              <p class="eyebrow">FAVORITE 03</p>
+              <h3 id="outFavorite3Name">—</h3>
+              <p id="outFavorite3Desc">—</p>
+            </div>
+
+            <div id="pairCard" class="portrait-card pair-card">
+              <div class="portrait-frame"><img id="dreamPreview" alt="페어 이미지"></div>
+              <p class="eyebrow">PAIR</p>
               <h3 id="outDreamName">Blanc × Elpis</h3>
-              <p id="outDreamDesc">연인 드림 · 서사 중심</p>
+              <p id="outDreamDesc">연인 페어 · 서사 중심</p>
             </div>
           </section>
 
@@ -154,7 +221,7 @@
           </section>
 
           <section class="sheet-section tendency-grid">
-            <div><span class="tiny-label">겹드림</span><strong id="outOverlapDream">케바케</strong></div>
+            <div><span class="tiny-label">겹페어</span><strong id="outOverlapDream">케바케</strong></div>
             <div><span class="tiny-label">1T1D</span><strong id="outOneTOneD">캐릭터별 상이</strong></div>
           </section>
 
@@ -168,7 +235,7 @@
             <p id="outNg">지나친 캐릭터 비교와 취향 강요는 어려워요.</p>
           </section>
 
-          <footer>RABBIT MOON MAKER · OUR LITTLE AI CHAT SALON</footer>
+          <footer>made with ♡ by @Elpis_for_Blanc</footer>
         </article>
       </div>
     </main>
