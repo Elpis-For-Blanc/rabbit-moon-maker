@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>AI Chat Friend Sheet Maker</title>
-  <link rel="stylesheet" href="app-mini.css?v=20260901">
+  <link rel="stylesheet" href="app-home.css?v=20260901-2217">
 </head>
 <body>
   <main class="app-shell">
@@ -188,31 +188,153 @@
     <section class="preview">
       <div class="preview-label">LIVE PREVIEW</div>
       <div class="canvas-wrap">
-        <article id="sheet" class="sheet mini-home-sheet">
-          <header class="sheet-header no-title-ribbon">
-            
-            <div class="user-line">
-              <h2 id="outNickname">닉네임</h2>
-              <span>♡</span>
-              <p id="outTwitter">@your_id</p>
+        <article id="sheet" class="sheet homepage-sheet">
+          <header class="home-topbar">
+            <div class="home-title">
+              <div class="home-title-row">
+                <span class="home-heart">♡</span>
+                <h2 id="outNickname">닉네임</h2>
+                <span class="home-suffix">'s home</span>
+              </div>
+              <div class="home-subline">
+                <span id="outTwitter">@your_id</span>
+                <span class="dot">·</span>
+                <span id="outIntro">AI채팅과 페어 이야기를 좋아해요 ♡</span>
+              </div>
             </div>
-            <p id="outIntro">AI채팅과 페어 이야기를 좋아해요 ♡</p>
-            <div class="platform-box">
-              <small>PLATFORM</small>
-              <div id="outPlatforms" class="tag-list"></div>
-            </div>
+
+            <nav class="home-nav" aria-label="decorative navigation">
+              <span class="active">HOME</span>
+              <span>ABOUT</span>
+              <span>ARCHIVE</span>
+              <span class="online">♡ online</span>
+            </nav>
           </header>
 
-          <div class="sheet-body">
-            <section class="characters-area">
-              <div class="section-head"><span>FAVORITE &amp; PAIR</span><span>♡</span></div>
-              <div id="characterCards" class="character-grid" data-total="2">
-                <article id="favoriteCard1" class="character-card">
-                  <div class="image-frame"><img id="favoritePreview" alt="" hidden></div>
-                  <small>FAVORITE 01</small>
-                  <h3 id="outFavoriteName"></h3>
-                  <p id="outFavoriteDesc">가장 좋아하는 캐릭터</p>
-                </article>
+          <div class="home-body">
+            <aside class="home-sidebar">
+              <section class="side-box profile-box">
+                <div class="mini-title"><span>PROFILE</span><span>♡</span></div>
+                <div class="profile-lines">
+                  <div><small>NAME</small><strong id="sideNickname">닉네임</strong></div>
+                  <div><small>ID</small><strong id="sideTwitter">@your_id</strong></div>
+                </div>
+                <div class="platform-box">
+                  <small>PLATFORM</small>
+                  <div id="outPlatforms" class="tag-list"></div>
+                </div>
+              </section>
+
+              <section class="side-box">
+                <div class="mini-title"><span>AI CHAT</span><span>01</span></div>
+                <div id="outPlayStyles" class="tag-list sidebar-tags"></div>
+              </section>
+
+              <section class="side-box mini-prefs">
+                <div class="mini-title"><span>PREFERENCE</span><span>02</span></div>
+                <div class="pref-row">
+                  <small>드림 성향</small>
+                  <strong id="outDreamTendency">온리</strong>
+                </div>
+                <div class="pref-row">
+                  <small>1T1D</small>
+                  <strong id="outOneTOneD">캐릭터별 상이</strong>
+                </div>
+              </section>
+
+              <section class="side-box">
+                <div class="mini-title"><span>SOCIAL</span><span>03</span></div>
+                <div id="outSocialStyles" class="tag-list sidebar-tags"></div>
+              </section>
+            </aside>
+
+            <main class="home-main">
+              <section id="favoriteSection" class="archive-board favorite-board">
+                <div class="board-head">
+                  <div><span class="board-icon">♡</span><b>FAVORITE CHARACTERS</b></div>
+                  <small>MY LITTLE ARCHIVE</small>
+                </div>
+                <div id="favoriteGrid" class="archive-grid" data-total="1">
+                  <article id="favoriteCard1" class="archive-card">
+                    <div class="archive-image"><img id="favoritePreview" alt="" hidden></div>
+                    <div class="archive-caption">
+                      <small>FAVORITE 01</small>
+                      <h3 id="outFavoriteName"></h3>
+                      <p id="outFavoriteDesc">가장 좋아하는 캐릭터</p>
+                    </div>
+                  </article>
+                  <article id="favoriteCard2" class="archive-card hidden">
+                    <div class="archive-image"><img id="favorite2Preview" alt="" hidden></div>
+                    <div class="archive-caption">
+                      <small>FAVORITE 02</small>
+                      <h3 id="outFavorite2Name">—</h3>
+                      <p id="outFavorite2Desc">—</p>
+                    </div>
+                  </article>
+                  <article id="favoriteCard3" class="archive-card hidden">
+                    <div class="archive-image"><img id="favorite3Preview" alt="" hidden></div>
+                    <div class="archive-caption">
+                      <small>FAVORITE 03</small>
+                      <h3 id="outFavorite3Name">—</h3>
+                      <p id="outFavorite3Desc">—</p>
+                    </div>
+                  </article>
+                </div>
+              </section>
+
+              <section id="pairSection" class="archive-board pair-board">
+                <div class="board-head">
+                  <div><span class="board-icon">♡</span><b>PAIR ARCHIVE</b></div>
+                  <small>OUR STORY</small>
+                </div>
+                <div id="pairGrid" class="archive-grid pair-grid" data-total="1">
+                  <article id="pairCard1" class="archive-card">
+                    <div class="archive-image"><img id="pairPreview" alt="" hidden></div>
+                    <div class="archive-caption">
+                      <small>PAIR 01</small>
+                      <h3 id="outPairName"></h3>
+                      <p id="outPairDesc">연인 페어 · 서사 중심</p>
+                    </div>
+                  </article>
+                  <article id="pairCard2" class="archive-card hidden">
+                    <div class="archive-image"><img id="pair2Preview" alt="" hidden></div>
+                    <div class="archive-caption">
+                      <small>PAIR 02</small>
+                      <h3 id="outPair2Name">—</h3>
+                      <p id="outPair2Desc">—</p>
+                    </div>
+                  </article>
+                  <article id="pairCard3" class="archive-card hidden">
+                    <div class="archive-image"><img id="pair3Preview" alt="" hidden></div>
+                    <div class="archive-caption">
+                      <small>PAIR 03</small>
+                      <h3 id="outPair3Name">—</h3>
+                      <p id="outPair3Desc">—</p>
+                    </div>
+                  </article>
+                </div>
+              </section>
+
+              <section class="bottom-board">
+                <div class="notice-box">
+                  <div class="board-head small">
+                    <div><span class="board-icon">♡</span><b>NOTICE / NG</b></div>
+                  </div>
+                  <p id="outNg"></p>
+                </div>
+                <div class="status-box">
+                  <div class="status-row"><span>STATUS</span><strong>♡ OPEN</strong></div>
+                  <div class="counter-row"><span>today</span><b>0001</b><span>total</span><b>0000</b></div>
+                </div>
+              </section>
+            </main>
+          </div>
+
+          <footer class="home-footer">
+            <span>♡ AI CHAT FRIEND SHEET</span>
+            <span>made with ♡ by @Elpis_for_Blanc</span>
+          </footer>
+        </article>
                 <article id="favoriteCard2" class="character-card hidden">
                   <div class="image-frame"><img id="favorite2Preview" alt="" hidden></div>
                   <small>FAVORITE 02</small>
@@ -277,6 +399,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"
       onerror="this.onerror=null;this.src='https://unpkg.com/html2canvas@1.4.1/dist/html2canvas.min.js'"></script>
-  <script src="app-mini.js?v=20260901"></script>
+  <script src="app-home.js?v=20260901-2217"></script>
 </body>
 </html>
