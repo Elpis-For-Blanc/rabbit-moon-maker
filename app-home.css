@@ -1392,3 +1392,53 @@ input[type=text],select,textarea{
   object-position:center !important;
   transform:none !important;
 }
+
+/* ===== definitive uploaded-image ratio fix v3 ===== */
+.homepage-sheet .archive-image{
+  width:132px !important;
+  height:82px !important;
+  min-width:132px !important;
+  min-height:82px !important;
+  max-width:132px !important;
+  max-height:82px !important;
+  aspect-ratio:auto !important;
+  overflow:hidden !important;
+  position:relative !important;
+}
+.homepage-sheet .archive-image img:not([hidden]){
+  position:absolute !important;
+  inset:0 !important;
+  width:132px !important;
+  height:82px !important;
+  min-width:132px !important;
+  min-height:82px !important;
+  max-width:132px !important;
+  max-height:82px !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+  transform:none !important;
+}
+
+/* With three cards, keep the same image ratio but use a smaller frame. */
+.homepage-sheet .archive-grid[data-total="3"] .archive-image{
+  width:112px !important;
+  height:70px !important;
+  min-width:112px !important;
+  min-height:70px !important;
+  max-width:112px !important;
+  max-height:70px !important;
+}
+.homepage-sheet .archive-grid[data-total="3"] .archive-image img:not([hidden]){
+  width:112px !important;
+  height:70px !important;
+  min-width:112px !important;
+  min-height:70px !important;
+  max-width:112px !important;
+  max-height:70px !important;
+}
+
+/* Never stretch the image during export. */
+.exporting-sheet .archive-image img:not([hidden]){
+  object-fit:cover !important;
+  object-position:center center !important;
+}

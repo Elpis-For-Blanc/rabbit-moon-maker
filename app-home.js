@@ -1,35 +1,4 @@
 
-function makeCoverCropDataURL(img, targetW, targetH){
-  try{
-    const sw=img.naturalWidth || img.width;
-    const sh=img.naturalHeight || img.height;
-    if(!sw || !sh || !targetW || !targetH) return img.src;
-
-    const targetRatio=targetW/targetH;
-    const sourceRatio=sw/sh;
-    let sx=0, sy=0, cropW=sw, cropH=sh;
-
-    if(sourceRatio > targetRatio){
-      cropW=sh*targetRatio;
-      sx=(sw-cropW)/2;
-    }else{
-      cropH=sw/targetRatio;
-      sy=(sh-cropH)/2;
-    }
-
-    const scale=2;
-    const canvas=document.createElement('canvas');
-    canvas.width=Math.max(1,Math.round(targetW*scale));
-    canvas.height=Math.max(1,Math.round(targetH*scale));
-    const ctx=canvas.getContext('2d');
-    ctx.imageSmoothingEnabled=true;
-    ctx.imageSmoothingQuality='high';
-    ctx.drawImage(img,sx,sy,cropW,cropH,0,0,canvas.width,canvas.height);
-    return canvas.toDataURL('image/png');
-  }catch(_){
-    return img.src;
-  }
-}
 
 
 function applySheetFont(fontValue){
@@ -274,23 +243,6 @@ $('downloadBtn').onclick=async()=>{
       }
     }));
 
-    // html2canvas can render object-fit:cover differently from the browser.
-    // Prepare already-cropped bitmaps with the exact frame aspect ratio.
-    // clientWidth/clientHeight are used intentionally: unlike getBoundingClientRect,
-    // they are not affected by the scaled LIVE PREVIEW transform.
-    const exportImageCrops=exportImages.map(img=>{
-      const frame=img.closest('.archive-image');
-      const card=img.closest('.archive-card');
-      const w=Math.max(1,Math.round(frame?.clientWidth || 112));
-      const h=Math.max(1,Math.round(frame?.clientHeight || 80));
-      return {
-        cardId:card?.id || '',
-        src:makeCoverCropDataURL(img,w,h),
-        width:w,
-        height:h
-      };
-    });
-
     const canvas=await window.html2canvas(sheet,{
       scale:2,
       backgroundColor:'#fffdfd',
@@ -314,31 +266,6 @@ $('downloadBtn').onclick=async()=>{
           clone.style.setProperty('--pale', rootStyle.getPropertyValue('--pale').trim() || '#fff5f9');
           clone.style.setProperty('--line', rootStyle.getPropertyValue('--line').trim() || '#efd6e0');
           clone.style.setProperty('--sheet-font', rootStyle.getPropertyValue('--sheet-font').trim() || 'sans-serif');
-
-          exportImageCrops.forEach(info=>{
-            if(!info.cardId) return;
-            const card=doc.getElementById(info.cardId);
-            const frame=card?.querySelector('.archive-image');
-            const img=frame?.querySelector('img:not([hidden])');
-            if(frame){
-              frame.style.width='';
-              frame.style.height='';
-              frame.style.minWidth='';
-              frame.style.minHeight='';
-              frame.style.maxWidth='';
-              frame.style.maxHeight='';
-            }
-            if(img){
-              img.src=info.src;
-              img.style.position='absolute';
-              img.style.inset='0';
-              img.style.width='100%';
-              img.style.height='100%';
-              img.style.objectFit='fill';
-              img.style.objectPosition='center';
-              img.style.transform='none';
-            }
-          });
         }
       }
     });
