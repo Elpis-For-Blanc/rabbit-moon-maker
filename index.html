@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AI Chat Friend Sheet Maker</title>
+  <link rel="stylesheet" href="app-home.css?v=20260902-cropfix2">
+</head>
+<body>
+  <main class="app-shell">
+    <aside class="editor">
+      <div class="editor-brand">
+        <p>AI CHAT FRIEND SHEET MAKER</p>
+        <h1>AI채팅 트친소 시트</h1>
+      </div>
+
+      <section class="panel">
+        <h2>♡ 기본 정보</h2>
+        <label>닉네임<input id="nickname" type="text" value="닉네임" maxlength="18"></label>
+        <label>X 아이디<input id="twitterId" type="text" value="@your_id" maxlength="24"></label>
+        <label>한 줄 소개<input id="intro" type="text" value="AI채팅과 페어 이야기를 좋아해요 ♡" maxlength="46"></label>
+      </section>
+
+      <section class="panel">
+        <h2>♡ 사용 플랫폼</h2>
+        <div class="chip-editor" data-target="platforms">
+          <label><input type="checkbox" value="케이브덕" checked><span>케이브덕</span></label>
+          <label><input type="checkbox" value="제타"><span>제타</span></label>
+          <label><input type="checkbox" value="크랙"><span>크랙</span></label>
+              <label><input type="checkbox" value="로판AI"><span>로판AI</span></label>
+              <label><input type="checkbox" value="팅글"><span>팅글</span></label>
+              <label><input type="checkbox" value="플레이툰"><span>플레이툰</span></label>
+              <label><input type="checkbox" value="블룸"><span>블룸</span></label>
+              <label><input type="checkbox" value="위프"><span>위프</span></label>
+              <label><input type="checkbox" value="바베챗"><span>바베챗</span></label>
+              <label><input type="checkbox" value="멜팅"><span>멜팅</span></label>
+              <label><input type="checkbox" value="루모"><span>루모</span></label>
+              <label><input type="checkbox" value="티팟"><span>티팟</span></label>
+              <label><input type="checkbox" value="엘린"><span>엘린</span></label>
+        </div>
+        <label>기타 플랫폼<input id="platformOther" type="text" placeholder="직접 입력" maxlength="20"></label>
+      </section>
+
+      <section class="panel">
+        <div class="section-title-row">
+          <h2>♡ 최애</h2><span class="hint">최대 3명</span>
+        </div>
+
+        <div class="entry-card">
+          <b>01</b>
+          <label>캐릭터명<input id="favoriteName" type="text" value="" placeholder="캐릭터명" maxlength="24"></label>
+          <label>설명<input id="favoriteDesc" type="text" value="가장 좋아하는 캐릭터" maxlength="42"></label>
+          <label>이미지<input id="favoriteImage" type="file" accept="image/*"></label>
+        </div>
+
+        <label class="switch-row">
+          <input id="favorite2Enabled" type="checkbox"><span class="switch"></span><span>두 번째 최애 추가</span>
+        </label>
+        <div id="favorite2Fields" class="entry-card hidden">
+          <b>02</b>
+          <label>캐릭터명<input id="favorite2Name" type="text" maxlength="24"></label>
+          <label>설명<input id="favorite2Desc" type="text" maxlength="42"></label>
+          <label>이미지<input id="favorite2Image" type="file" accept="image/*"></label>
+        </div>
+
+        <label class="switch-row">
+          <input id="favorite3Enabled" type="checkbox"><span class="switch"></span><span>세 번째 최애 추가</span>
+        </label>
+        <div id="favorite3Fields" class="entry-card hidden">
+          <b>03</b>
+          <label>캐릭터명<input id="favorite3Name" type="text" maxlength="24"></label>
+          <label>설명<input id="favorite3Desc" type="text" maxlength="42"></label>
+          <label>이미지<input id="favorite3Image" type="file" accept="image/*"></label>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="section-title-row">
+          <h2>♡ 페어</h2>
+          <label class="switch-row compact">
+            <input id="pairEnabled" type="checkbox" checked><span class="switch"></span><span>표시</span>
+          </label>
+        </div>
+
+        <div id="pairFields">
+          <div class="entry-card">
+            <b>01</b>
+            <label>페어명<input id="pairName" type="text" value="" placeholder="페어명" maxlength="24"></label>
+            <label>관계 / 설명<input id="pairDesc" type="text" value="연인 페어 · 서사 중심" maxlength="42"></label>
+            <label>이미지<input id="pairImage" type="file" accept="image/*"></label>
+          </div>
+
+          <label class="switch-row">
+            <input id="pair2Enabled" type="checkbox"><span class="switch"></span><span>두 번째 페어 추가</span>
+          </label>
+          <div id="pair2Fields" class="entry-card hidden">
+            <b>02</b>
+            <label>페어명<input id="pair2Name" type="text" maxlength="24"></label>
+            <label>관계 / 설명<input id="pair2Desc" type="text" maxlength="42"></label>
+            <label>이미지<input id="pair2Image" type="file" accept="image/*"></label>
+          </div>
+
+          <label class="switch-row">
+            <input id="pair3Enabled" type="checkbox"><span class="switch"></span><span>세 번째 페어 추가</span>
+          </label>
+          <div id="pair3Fields" class="entry-card hidden">
+            <b>03</b>
+            <label>페어명<input id="pair3Name" type="text" maxlength="24"></label>
+            <label>관계 / 설명<input id="pair3Desc" type="text" maxlength="42"></label>
+            <label>이미지<input id="pair3Image" type="file" accept="image/*"></label>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>♡ AI채팅 성향</h2>
+        <div class="chip-editor" data-target="playStyles">
+          <label><input type="checkbox" value="순애" checked><span>순애</span></label>
+          <label><input type="checkbox" value="서사 중심" checked><span>서사 중심</span></label>
+          <label><input type="checkbox" value="로맨스"><span>로맨스</span></label>
+          <label><input type="checkbox" value="피폐"><span>피폐</span></label>
+          <label><input type="checkbox" value="일상"><span>일상</span></label>
+          <label><input type="checkbox" value="개그"><span>개그</span></label>
+          <label><input type="checkbox" value="세계관 몰입"><span>세계관 몰입</span></label>
+          <label><input type="checkbox" value="장문"><span>장문</span></label>
+        </div>
+        <div class="custom-add tendency-custom-add">
+          <input id="playStyleInput" type="text" maxlength="24" placeholder="예: 감정선 중심">
+          <button id="playStyleAddBtn" type="button">추가</button>
+        </div>
+        <div id="playStyleEditorTags" class="editor-tags"></div>
+      </section>
+
+      <section class="panel two-grid">
+        <label>드림 성향
+          <select id="dreamTendency">
+            <option value="온리">온리</option>
+            <option value="CBC">CBC</option>
+            <option value="오픈">오픈</option>
+          </select>
+        </label>
+        <label>1T1D
+          <select id="oneTOneD">
+            <option value="필요">필요</option>
+            <option value="필요 (필수 X)">필요 (필수 X)</option>
+            <option value="캐릭터별 상이" selected>캐릭터별 상이</option>
+            <option value="불필요">불필요</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="panel">
+        <h2>♡ 교류 성향</h2>
+        <div class="custom-add">
+          <input id="socialInput" type="text" maxlength="24" placeholder="예: 마음 위주">
+          <button id="socialAddBtn" type="button">추가</button>
+        </div>
+        <div id="socialEditorTags" class="editor-tags"></div>
+      </section>
+
+      <section class="panel">
+        <h2>♡ NG / 참고</h2>
+        <textarea id="ngText" rows="7" maxlength="600" placeholder="NG / 참고 사항을 작성해 주세요"></textarea>
+      </section>
+
+      <section class="panel">
+        <h2>♡ 폰트</h2>
+        <select id="sheetFont">
+          <option value="gowun">고운돋움</option>
+          <option value="noto">노토 산스</option>
+          <option value="myeongjo">나눔명조</option>
+          <option value="gaegu">개구</option>
+          <option value="jua">주아</option>
+          <option value="serif">클래식 명조</option>
+        </select>
+      </section>
+
+      <section class="panel">
+        <h2>♡ 컬러</h2>
+        <div class="colors">
+          <button type="button" class="color-preset" data-color="#e77aa8" style="--c:#e77aa8"></button>
+          <button type="button" class="color-preset" data-color="#ba9ee8" style="--c:#ba9ee8"></button>
+          <button type="button" class="color-preset" data-color="#8ebbea" style="--c:#8ebbea"></button>
+          <button type="button" class="color-preset" data-color="#86cdbb" style="--c:#86cdbb"></button>
+          <button type="button" class="color-preset" data-color="#e8b96c" style="--c:#e8b96c"></button>
+          <button type="button" class="color-preset" data-color="#dc7178" style="--c:#dc7178"></button>
+          <button type="button" class="color-preset" data-color="#4c454a" style="--c:#4c454a"></button>
+        </div>
+        <div class="color-custom">
+          <input id="themeColor" type="color" value="#e77aa8">
+          <input id="themeHex" type="text" value="#e77aa8" maxlength="7">
+        </div>
+      </section>
+
+      <button id="downloadBtn" class="download" type="button">♡ PNG로 저장하기 ♡</button>
+    </aside>
+
+    <section class="preview">
+      <div class="preview-label">LIVE PREVIEW</div>
+      <div class="canvas-wrap">
+        <article id="sheet" class="sheet homepage-sheet">
+          <header class="home-topbar">
+            <div class="home-title">
+              <div class="home-title-row">
+                <span class="home-heart">♡</span>
+                <h2 id="outNickname">닉네임</h2>
+                
+              </div>
+              <div class="home-subline">
+                <span id="outTwitter">@your_id</span>
+                <span class="dot">·</span>
+                <span id="outIntro">AI채팅과 페어 이야기를 좋아해요 ♡</span>
+              </div>
+            </div>
+          </header>
+
+          <div class="home-body">
+            <aside class="home-sidebar">
+              <section class="side-box profile-box">
+                <div class="mini-title"><span>PLATFORM</span><span>♡</span></div>
+<div class="platform-box">
+                  <div id="outPlatforms" class="tag-list"></div>
+                </div>
+              </section>
+
+              <section class="side-box">
+                <div class="mini-title"><span>AI CHAT</span><span>01</span></div>
+                <div id="outPlayStyles" class="tag-list sidebar-tags"></div>
+              </section>
+
+              <section class="side-box mini-prefs">
+                <div class="mini-title"><span>DREAM & 1T1D</span><span>02</span></div>
+                <div class="pref-row">
+                  <small>드림 성향</small>
+                  <strong id="outDreamTendency">온리</strong>
+                </div>
+                <div class="pref-row">
+                  <small>1T1D</small>
+                  <strong id="outOneTOneD">캐릭터별 상이</strong>
+                </div>
+              </section>
+
+              <section class="side-box">
+                <div class="mini-title"><span>SOCIAL</span><span>03</span></div>
+                <div id="outSocialStyles" class="tag-list sidebar-tags"></div>
+              </section>
+            </aside>
+
+            <main class="home-main">
+              <section id="favoriteSection" class="archive-board favorite-board">
+                <div class="board-head">
+                  <div><span class="board-icon">♡</span><b>FAVORITE CHARACTERS</b></div>
+                  <small>MY LITTLE ARCHIVE</small>
+                </div>
+                <div id="favoriteGrid" class="archive-grid" data-total="1">
+                  <article id="favoriteCard1" class="archive-card">
+                    <div class="archive-image"><img id="favoritePreview" alt="" hidden></div>
+                    <div class="archive-caption">
+                      <small>FAVORITE 01</small>
+                      <h3 id="outFavoriteName"></h3>
+                      <p id="outFavoriteDesc">가장 좋아하는 캐릭터</p>
+                    </div>
+                  </article>
+                  <article id="favoriteCard2" class="archive-card hidden">
+                    <div class="archive-image"><img id="favorite2Preview" alt="" hidden></div>
+                    <div class="archive-caption">
+                      <small>FAVORITE 02</small>
+                      <h3 id="outFavorite2Name">—</h3>
+                      <p id="outFavorite2Desc">—</p>
+                    </div>
+                  </article>
+                  <article id="favoriteCard3" class="archive-card hidden">
+                    <div class="archive-image"><img id="favorite3Preview" alt="" hidden></div>
+                    <div class="archive-caption">
+                      <small>FAVORITE 03</small>
+                      <h3 id="outFavorite3Name">—</h3>
+                      <p id="outFavorite3Desc">—</p>
+                    </div>
+                  </article>
+                </div>
+              </section>
+
+              <section id="pairSection" class="archive-board pair-board">
+                <div class="board-head">
+                  <div><span class="board-icon">♡</span><b>PAIR ARCHIVE</b></div>
+                  <small>OUR STORY</small>
+                </div>
+                <div id="pairGrid" class="archive-grid pair-grid" data-total="1">
+                  <article id="pairCard1" class="archive-card">
+                    <div class="archive-image"><img id="pairPreview" alt="" hidden></div>
+                    <div class="archive-caption">
+                      <small>PAIR 01</small>
+                      <h3 id="outPairName"></h3>
+                      <p id="outPairDesc">연인 페어 · 서사 중심</p>
+                    </div>
+                  </article>
+                  <article id="pairCard2" class="archive-card hidden">
+                    <div class="archive-image"><img id="pair2Preview" alt="" hidden></div>
+                    <div class="archive-caption">
+                      <small>PAIR 02</small>
+                      <h3 id="outPair2Name">—</h3>
+                      <p id="outPair2Desc">—</p>
+                    </div>
+                  </article>
+                  <article id="pairCard3" class="archive-card hidden">
+                    <div class="archive-image"><img id="pair3Preview" alt="" hidden></div>
+                    <div class="archive-caption">
+                      <small>PAIR 03</small>
+                      <h3 id="outPair3Name">—</h3>
+                      <p id="outPair3Desc">—</p>
+                    </div>
+                  </article>
+                </div>
+              </section>
+
+              <section class="bottom-board">
+                <div class="notice-box">
+                  <div class="board-head small">
+                    <div><span class="board-icon">♡</span><b>NOTICE / NG</b></div>
+                  </div>
+                  <p id="outNg"></p>
+                </div>
+              </section>
+            </main>
+          </div>
+
+          <footer class="home-footer">
+            <span>♡ AI CHAT FRIEND SHEET</span>
+            <span>made with ♡ by @Elpis_for_Blanc</span>
+          </footer>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"
+      onerror="this.onerror=null;this.src='https://unpkg.com/html2canvas@1.4.1/dist/html2canvas.min.js'"></script>
+  <script defer src="app-home.js?v=20260902-cropfix2"></script>
+
+<div id="cropModal" class="crop-modal" aria-hidden="true">
+ <div class="crop-dialog">
+  <div class="crop-head"><b>♡ 이미지 크롭</b><button type="button" id="cropX">×</button></div>
+  <div class="crop-wrap"><div id="cropBox" class="crop-box"><img id="cropImg" alt=""></div></div>
+  <div class="crop-tools"><label>확대 <input id="cropZoom" type="range" min="1" max="3" value="1" step=".01"></label><small>사진을 드래그해서 원하는 위치를 맞춰주세요.</small></div>
+  <div class="crop-buttons"><button type="button" id="cropCancel">취소</button><button type="button" id="cropOK">♡ 적용</button></div>
+ </div>
+</div>
+</body>
+</html>
