@@ -1,0 +1,4073 @@
+@import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Gowun+Dodum&family=Jua&family=Nanum+Myeongjo:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+:root{
+  --theme:#e77aa8;
+  --deep:#81445f;
+  --soft:#f8dce8;
+  --pale:#fff5f9;
+  --line:#efd6e0;
+  --sheet-font:"Gowun Dodum","Noto Sans KR",sans-serif;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  color:#4a3a42;
+  font-family:"Gowun Dodum","Noto Sans KR",sans-serif;
+  background:
+    radial-gradient(circle at 1px 1px,#f3dbe5 1px,transparent 1.1px) 0 0/16px 16px,
+    #fff9fb;
+}
+button,input,select,textarea{font:inherit}
+.app-shell{
+  width:min(1460px,100%);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:310px minmax(0,1fr);
+  min-height:100vh;
+}
+.editor{
+  padding:18px 14px 36px;
+  border-right:1px solid var(--line);
+  background:rgba(255,251,253,.96);
+}
+.editor-brand,.panel{
+  border:1px solid var(--line);
+  background:#fff;
+  border-radius:14px;
+}
+.editor-brand{
+  padding:14px 16px;
+  margin-bottom:12px;
+}
+.editor-brand p{
+  margin:0 0 4px;
+  font:700 8px/1.2 Georgia,serif;
+  letter-spacing:1.6px;
+  color:var(--theme);
+}
+.editor-brand h1{
+  margin:0;
+  font-size:19px;
+}
+.panel{
+  padding:13px;
+  margin-bottom:10px;
+}
+.panel h2{
+  margin:0 0 10px;
+  font-size:12px;
+  color:var(--theme);
+}
+.panel label{
+  display:block;
+  margin:8px 0;
+  font-size:10px;
+  color:#8c7480;
+}
+input[type=text],select,textarea{
+  width:100%;
+  margin-top:5px;
+  padding:9px 10px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:#fff;
+  color:#4b3d44;
+  outline:none;
+}
+input:focus,select:focus,textarea:focus{border-color:var(--theme)}
+input[type=file]{
+  display:block;
+  width:100%;
+  margin-top:5px;
+  font-size:10px;
+}
+.section-title-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+}
+.section-title-row h2{margin:0}
+.hint{
+  font-size:9px;
+  color:#a68a97;
+}
+.entry-card{
+  position:relative;
+  padding:11px 10px 8px;
+  margin-top:8px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:linear-gradient(#fff,var(--pale));
+}
+.entry-card>b{
+  position:absolute;
+  right:9px;
+  top:8px;
+  color:var(--theme);
+  font:700 8px Georgia,serif;
+}
+.switch-row{
+  display:flex!important;
+  align-items:center;
+  gap:8px;
+  margin:10px 0 4px!important;
+  cursor:pointer;
+  user-select:none;
+}
+.switch-row.compact{margin:0!important}
+.switch-row input{display:none}
+.switch{
+  position:relative;
+  width:34px;height:19px;
+  border-radius:999px;
+  border:1px solid #ddcbd3;
+  background:#eee5e9;
+}
+.switch::after{
+  content:"";
+  position:absolute;
+  width:13px;height:13px;
+  top:2px;left:2px;
+  border-radius:50%;
+  background:#fff;
+  box-shadow:0 1px 4px #0002;
+  transition:.18s;
+}
+.switch-row input:checked+.switch{background:var(--theme);border-color:var(--theme)}
+.switch-row input:checked+.switch::after{transform:translateX(15px)}
+.hidden{display:none!important}
+.chip-editor{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
+.chip-editor label{margin:0}
+.chip-editor input{display:none}
+.chip-editor span{
+  display:inline-block;
+  padding:6px 8px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:#fff;
+  font-size:9px;
+  cursor:pointer;
+}
+.chip-editor input:checked+span{
+  color:var(--deep);
+  border-color:var(--theme);
+  background:var(--pale);
+}
+.two-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+.custom-add{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:7px;
+}
+.custom-add input{margin:0}
+.custom-add button,.download{
+  border:0;
+  border-radius:10px;
+  background:var(--theme);
+  color:white;
+  font-weight:700;
+  cursor:pointer;
+}
+.custom-add button{padding:0 14px}
+.editor-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:9px;
+}
+.editor-tags button{
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:5px 8px;
+  background:var(--pale);
+  color:var(--deep);
+  font-size:9px;
+  cursor:pointer;
+}
+.colors{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.color-preset{
+  width:26px;height:26px;
+  border:2px solid white;
+  border-radius:50%;
+  background:var(--c);
+  box-shadow:0 0 0 1px #ddd;
+  cursor:pointer;
+}
+.color-custom{
+  display:grid;
+  grid-template-columns:44px 1fr;
+  gap:7px;
+  margin-top:9px;
+}
+.color-custom input[type=color]{
+  width:44px;height:38px;
+  padding:0;
+  border:0;
+  background:transparent;
+}
+.color-custom input[type=text]{margin:0}
+.download{
+  width:100%;
+  padding:13px;
+  font-size:12px;
+}
+.preview{
+  padding:18px 20px 40px;
+  overflow:auto;
+}
+.preview-label{
+  width:max-content;
+  margin:0 0 10px 4px;
+  padding:4px 9px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:#fff;
+  color:var(--theme);
+  font:700 8px Georgia,serif;
+  letter-spacing:1.4px;
+}
+.canvas-wrap{
+  min-width:960px;
+}
+.sheet{
+  position:relative;
+  width:960px;
+  height:540px;
+  margin:0 auto;
+  padding:18px 20px 14px;
+  overflow:hidden;
+  display:grid;
+  grid-template-rows:84px 1fr 18px;
+  gap:10px;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:
+    radial-gradient(circle at 1px 1px,rgba(231,122,168,.14) 1px,transparent 1.1px) 0 0/15px 15px,
+    #fffdfd;
+  box-shadow:0 10px 28px #7d526414;
+  font-family:var(--sheet-font);
+}
+.sheet::before{
+  content:"";
+  position:absolute;
+  inset:8px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  pointer-events:none;
+}
+.sheet-header{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:250px minmax(0,1fr) 285px;
+  grid-template-rows:32px 26px;
+  gap:3px 14px;
+  align-items:center;
+  padding:8px 10px;
+  border:1px solid var(--line);
+  border-radius:13px;
+  background:#ffffffd9;
+}
+.title-ribbon{
+  grid-row:1/span 2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:44px;
+  padding:0 14px;
+  border-radius:5px;
+  background:var(--theme);
+  color:#fff;
+  font:700 11px Georgia,serif;
+  letter-spacing:1.4px;
+  box-shadow:0 3px 0 var(--deep);
+}
+.user-line{
+  display:flex;
+  align-items:baseline;
+  gap:8px;
+  min-width:0;
+}
+.user-line h2{
+  margin:0;
+  font-size:22px;
+  color:var(--deep);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.user-line span{color:var(--theme)}
+.user-line p{
+  margin:0;
+  font-size:9px;
+  color:#89727c;
+}
+.sheet-header>p{
+  margin:0;
+  font-size:9px;
+  color:#9d8791;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.platform-box{
+  grid-column:3;
+  grid-row:1/span 2;
+  min-width:0;
+  align-self:stretch;
+  padding:8px 10px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:#fff;
+}
+.platform-box small{
+  display:block;
+  margin-bottom:6px;
+  color:var(--theme);
+  font:700 8px Georgia,serif;
+  letter-spacing:1.2px;
+}
+.sheet-body{
+  position:relative;
+  z-index:1;
+  min-width:0;
+  min-height:0;
+  display:grid;
+  grid-template-columns:62% 38%;
+  gap:10px;
+}
+.characters-area{
+  min-width:0;
+  min-height:0;
+  display:grid;
+  grid-template-rows:24px 1fr;
+  gap:7px;
+  padding:9px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#ffffffd9;
+}
+.section-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  color:var(--deep);
+  font:700 9px Georgia,serif;
+  letter-spacing:1.1px;
+}
+.character-grid{
+  min-width:0;
+  min-height:0;
+  height:100%;
+  display:grid;
+  gap:8px;
+}
+.character-grid[data-total="1"]{grid-template-columns:1fr}
+.character-grid[data-total="2"]{grid-template-columns:repeat(2,minmax(0,1fr))}
+.character-grid[data-total="3"]{grid-template-columns:repeat(3,minmax(0,1fr))}
+.character-grid[data-total="4"]{grid-template-columns:repeat(4,minmax(0,1fr))}
+.character-grid[data-total="5"],
+.character-grid[data-total="6"]{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-template-rows:repeat(2,minmax(0,1fr));
+}
+.character-card{
+  min-width:0;
+  min-height:0;
+  padding:8px;
+  display:grid;
+  grid-template-rows:minmax(0,1fr) auto auto 18px;
+  gap:2px;
+  justify-items:center;
+  align-items:center;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:linear-gradient(#fff,var(--pale));
+}
+.image-frame{
+  position:relative;
+  width:min(100%,150px);
+  aspect-ratio:1/1;
+  align-self:center;
+  overflow:hidden;
+  border:1px solid var(--theme);
+  border-radius:9px;
+  background:
+    radial-gradient(circle at 1px 1px,rgba(231,122,168,.14) 1px,transparent 1.15px) 0 0/10px 10px,
+    var(--pale);
+}
+.character-grid[data-total="1"] .image-frame{width:min(100%,220px)}
+.character-grid[data-total="2"] .image-frame{width:min(100%,170px)}
+.character-grid[data-total="3"] .image-frame{width:min(100%,135px)}
+.character-grid[data-total="4"] .image-frame{width:min(100%,108px)}
+.character-grid[data-total="5"] .image-frame,
+.character-grid[data-total="6"] .image-frame{width:min(100%,80px)}
+.image-frame img[hidden]{display:none}
+.image-frame img:not([hidden]){
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+.character-card small{
+  color:var(--theme);
+  font:700 7px Georgia,serif;
+  letter-spacing:.8px;
+}
+.character-card h3{
+  width:100%;
+  margin:0;
+  color:var(--deep);
+  font-size:10px;
+  line-height:1.1;
+  text-align:center;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.character-card>p{
+  width:100%;
+  height:18px;
+  margin:0;
+  color:#88737d;
+  font-size:7px;
+  line-height:9px;
+  text-align:center;
+  overflow:hidden;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+}
+.info-area{
+  min-width:0;
+  min-height:0;
+  display:grid;
+  grid-template-rows:1fr 62px 1fr 1fr;
+  gap:8px;
+}
+.info-card,.dual-card{
+  min-width:0;
+  min-height:0;
+  padding:9px 10px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:#ffffffd9;
+}
+.info-title{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  margin-bottom:6px;
+}
+.info-title b{
+  width:18px;height:18px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:var(--soft);
+  color:var(--theme);
+  font-size:6px;
+}
+.info-title h3{
+  margin:0;
+  color:var(--deep);
+  font-size:9px;
+}
+.tag-list{
+  display:flex;
+  flex-wrap:wrap;
+  align-content:flex-start;
+  gap:4px;
+}
+.tag{
+  max-width:100%;
+  padding:3px 6px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:var(--pale);
+  color:var(--deep);
+  font-size:7px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.dual-card{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:7px;
+}
+.dual-card>div{
+  min-width:0;
+  padding:7px 8px;
+  border-radius:8px;
+  background:var(--pale);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:2px;
+}
+.dual-card span{font-size:6.5px;color:#9a808b}
+.dual-card strong{
+  color:var(--deep);
+  font-size:9px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.ng-card p{
+  margin:0;
+  color:#826f78;
+  font-size:7.5px;
+  line-height:1.4;
+  overflow:hidden;
+  display:-webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
+}
+.sheet footer{
+  position:relative;
+  z-index:1;
+  align-self:end;
+  color:#ae8798;
+  font:400 7.5px Georgia,serif;
+  text-align:center;
+}
+@media(max-width:900px){
+  .app-shell{grid-template-columns:1fr}
+  .editor{border-right:0;border-bottom:1px solid var(--line)}
+  .preview{padding-left:12px;padding-right:12px}
+}
+
+
+/* ===== Header without AI CHAT FRIEND SHEET ribbon ===== */
+.sheet-header.no-title-ribbon{
+  grid-template-columns:minmax(0,1fr) 285px;
+  grid-template-rows:32px 26px;
+}
+.sheet-header.no-title-ribbon .user-line{
+  grid-column:1;
+  grid-row:1;
+}
+.sheet-header.no-title-ribbon > p{
+  grid-column:1;
+  grid-row:2;
+}
+.sheet-header.no-title-ribbon .platform-box{
+  grid-column:2;
+  grid-row:1 / span 2;
+}
+
+.tendency-custom-add{
+  margin-top:10px;
+}
+
+.tendency-custom-add button,
+#playStyleAddBtn{
+  min-width:52px;
+}
+
+/* ===== v5: larger, more readable preview typography ===== */
+.title-ribbon{font-size:13px}
+.user-line h2{font-size:25px}
+.user-line p{font-size:11px}
+.sheet-header>p{font-size:11px}
+.platform-box small{font-size:9px}
+.section-head{font-size:11px}
+.character-card small{font-size:8.5px}
+.character-card h3{font-size:13px}
+.character-card>p{
+  height:24px;
+  font-size:9px;
+  line-height:12px;
+}
+.info-title h3{font-size:11px}
+.info-title b{font-size:7px}
+.tag{
+  padding:4px 7px;
+  font-size:9px;
+}
+.dual-card span{font-size:8px}
+.dual-card strong{font-size:11px}
+.ng-card p{
+  font-size:9px;
+  line-height:1.5;
+}
+.sheet footer{font-size:8.5px}
+
+/* Keep dense 5–6 character layouts readable without overflow */
+.character-grid[data-total="5"] .character-card h3,
+.character-grid[data-total="6"] .character-card h3{font-size:10px}
+.character-grid[data-total="5"] .character-card>p,
+.character-grid[data-total="6"] .character-card>p{
+  height:18px;
+  font-size:7.5px;
+  line-height:9px;
+}
+.character-grid[data-total="5"] .character-card small,
+.character-grid[data-total="6"] .character-card small{font-size:7px}
+
+/* =========================================================
+   v6 — SERENDIPITY HOME inspired, landscape sheet
+   thin pink borders / white archive panels / dotted field
+   ========================================================= */
+:root{
+  --ser-line:var(--line);
+  --ser-head:var(--pale);
+  --ser-ink:var(--deep);
+}
+.sheet{
+  padding:12px 14px 10px;
+  grid-template-rows:76px 1fr 16px;
+  gap:8px;
+  border:1px solid var(--ser-line);
+  border-radius:3px;
+  background:
+    radial-gradient(circle at 1px 1px,rgba(231,122,168,.16) 1px,transparent 1.15px) 0 0/14px 14px,
+    #fff;
+  box-shadow:none;
+}
+.sheet::before{
+  inset:5px;
+  border:1px solid var(--pale);
+  border-radius:2px;
+}
+.sheet-header.no-title-ribbon{
+  padding:0;
+  grid-template-columns:minmax(0,1fr) 300px;
+  grid-template-rows:38px 30px;
+  gap:0;
+  border:1px solid var(--ser-line);
+  border-radius:10px;
+  background:#fff;
+  overflow:hidden;
+}
+.sheet-header.no-title-ribbon .user-line{
+  padding:7px 12px 2px;
+}
+.sheet-header.no-title-ribbon > p{
+  padding:1px 12px 7px;
+}
+.sheet-header.no-title-ribbon .platform-box{
+  margin:0;
+  padding:8px 12px;
+  border:0;
+  border-left:1px solid var(--ser-line);
+  border-radius:0;
+  background:#fffafd;
+}
+.user-line h2{color:var(--theme)}
+.platform-box small{
+  color:var(--deep);
+  letter-spacing:1px;
+}
+.sheet-body{
+  grid-template-columns:64% 36%;
+  gap:8px;
+}
+.characters-area{
+  padding:0;
+  grid-template-rows:31px 1fr;
+  gap:0;
+  border:1px solid var(--ser-line);
+  border-radius:10px;
+  background:#fff;
+  overflow:hidden;
+}
+.section-head{
+  padding:0 11px;
+  border-bottom:1px solid var(--ser-line);
+  background:var(--ser-head);
+  color:var(--deep);
+  font-family:var(--sheet-font);
+  font-size:10px;
+  letter-spacing:.6px;
+}
+.character-grid{
+  padding:9px;
+  gap:8px;
+}
+.character-card{
+  padding:7px;
+  border:1px solid var(--line);
+  border-radius:9px;
+  background:#fff;
+}
+.image-frame{
+  border:1px solid var(--line);
+  border-radius:7px;
+  background:
+    radial-gradient(circle at 1px 1px,rgba(231,122,168,.14) 1px,transparent 1.15px) 0 0/10px 10px,
+    #fff7fa;
+}
+.character-card small{color:var(--theme)}
+.character-card h3{color:var(--deep)}
+.info-area{
+  grid-template-rows:1.05fr 62px 1fr 1fr;
+  gap:8px;
+}
+.info-card,.dual-card{
+  padding:0;
+  border:1px solid var(--ser-line);
+  border-radius:10px;
+  background:#fff;
+}
+.info-title{
+  min-height:29px;
+  margin:0;
+  padding:5px 9px;
+  border-bottom:1px solid var(--line);
+  background:var(--ser-head);
+}
+.info-title b{
+  background:var(--soft);
+  color:var(--theme);
+}
+.info-title h3{color:var(--deep)}
+.info-card>.tag-list{
+  padding:9px;
+}
+.tag{
+  border:1px solid var(--line);
+  background:#fff7fa;
+  color:var(--deep);
+}
+.dual-card{
+  padding:7px;
+  gap:6px;
+}
+.dual-card>div{
+  border:1px solid var(--line);
+  background:#fff7fa;
+}
+.dual-card strong{color:var(--deep)}
+.ng-card p{
+  padding:8px 10px;
+}
+.sheet footer{
+  color:var(--deep);
+  letter-spacing:.35px;
+}
+
+/* The editor follows the same personal-home visual language */
+.editor{
+  background:
+    radial-gradient(circle at 1px 1px,var(--soft) 1px,transparent 1.1px) 0 0/15px 15px,
+    #fff9fb;
+}
+.editor-brand,.panel{
+  border:1px solid var(--line);
+  border-radius:12px;
+  box-shadow:none;
+}
+.editor-brand{
+  background:linear-gradient(#fff,#fff8fb);
+}
+.panel{
+  background:#fff;
+}
+.panel h2{
+  padding-bottom:7px;
+  border-bottom:1px solid var(--line);
+}
+input[type=text],select,textarea{
+  border-color:var(--line);
+  border-radius:9px;
+  background:#fffafd;
+}
+.entry-card{
+  border-color:var(--line);
+  border-radius:9px;
+  background:#fff9fb;
+}
+.download{
+  border:1px solid var(--theme);
+  border-radius:999px;
+  background:#fff;
+  color:var(--deep);
+}
+.download:hover{
+  background:var(--pale);
+}
+
+/* ===== v7: preserve NG textarea line breaks ===== */
+#outNg{
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  word-break:keep-all;
+}
+
+/* ===== v11: balanced character cards + stable PNG export ===== */
+.character-card{
+  grid-template-rows:minmax(0,1fr) auto auto auto;
+  align-content:stretch;
+}
+.character-grid[data-total="1"] .image-frame{width:min(100%,245px)}
+.character-grid[data-total="2"] .image-frame{width:min(100%,205px)}
+.character-grid[data-total="3"] .image-frame{width:min(100%,150px)}
+.character-card>p{
+  height:auto;
+  min-height:18px;
+  padding-bottom:2px;
+}
+
+/* html2canvas export gets explicit pixel geometry so Grid does not reflow */
+.exporting-sheet{
+  width:960px !important;
+  height:540px !important;
+  min-width:960px !important;
+  max-width:960px !important;
+  transform:none !important;
+  zoom:1 !important;
+}
+.exporting-sheet .sheet-body{
+  grid-template-columns:602px 338px !important;
+}
+.exporting-sheet .characters-area,
+.exporting-sheet .info-area,
+.exporting-sheet .character-grid,
+.exporting-sheet .character-card{
+  min-height:0 !important;
+}
+.exporting-sheet .image-frame img{
+  display:block;
+}
+
+
+/* =========================================================
+   MINI HOMEPAGE REBUILD
+   A real miniature personal-homepage layout, not a rearranged card.
+   ========================================================= */
+
+.homepage-sheet{
+  position:relative;
+  width:960px;
+  height:540px;
+  margin:0 auto;
+  padding:11px;
+  overflow:hidden;
+  display:grid;
+  grid-template-rows:64px minmax(0,1fr) 23px;
+  gap:7px;
+  border:1px solid var(--line);
+  border-radius:4px;
+  background:
+    radial-gradient(circle at 1px 1px,var(--line) 1px,transparent 1.15px) 0 0/14px 14px,
+    #fff;
+  box-shadow:0 8px 22px #6f4a5812;
+  font-family:var(--sheet-font);
+}
+.homepage-sheet::before{display:none}
+
+/* top homepage header */
+.home-topbar{
+  min-width:0;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  align-items:center;
+  gap:16px;
+  padding:8px 13px;
+  border:1px solid var(--line);
+  background:#fff;
+}
+.home-title{min-width:0}
+.home-title-row{
+  display:flex;
+  align-items:baseline;
+  gap:5px;
+  min-width:0;
+}
+.home-heart{
+  color:var(--theme);
+  font-size:15px;
+}
+.home-title h2{
+  margin:0;
+  max-width:230px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  color:var(--deep);
+  font-size:20px;
+  line-height:1;
+}
+.home-suffix{
+  color:#9b7e8b;
+  font:italic 10px Georgia,serif;
+}
+.home-subline{
+  margin-top:5px;
+  display:flex;
+  min-width:0;
+  gap:6px;
+  color:#8e7882;
+  font-size:8.5px;
+}
+.home-subline span:last-child{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.home-subline .dot{color:var(--theme)}
+.home-nav{
+  display:flex;
+  align-items:center;
+  align-self:stretch;
+  gap:3px;
+  font:700 7.5px Georgia,serif;
+  letter-spacing:.7px;
+}
+.home-nav span{
+  padding:6px 8px;
+  border:1px solid transparent;
+  color:#9a818c;
+}
+.home-nav .active{
+  border-color:var(--line);
+  background:var(--soft);
+  color:var(--deep);
+}
+.home-nav .online{
+  margin-left:5px;
+  color:var(--theme);
+}
+
+/* true sidebar + content page */
+.home-body{
+  min-height:0;
+  display:grid;
+  grid-template-columns:188px minmax(0,1fr);
+  gap:7px;
+}
+.home-sidebar{
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.side-box{
+  min-height:0;
+  border:1px solid var(--line);
+  background:#fff;
+}
+.side-box:nth-child(2){flex:1}
+.mini-title{
+  height:23px;
+  padding:0 7px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid var(--line);
+  background:var(--soft);
+  color:var(--deep);
+  font:700 7.5px Georgia,serif;
+  letter-spacing:.8px;
+}
+.profile-lines{
+  padding:7px 8px 3px;
+}
+.profile-lines>div{
+  display:grid;
+  grid-template-columns:35px 1fr;
+  gap:5px;
+  align-items:center;
+  padding:3px 0;
+  border-bottom:1px dotted var(--line);
+}
+.profile-lines small,
+.pref-row small{
+  color:#a58b96;
+  font:700 6.5px Georgia,serif;
+}
+.profile-lines strong{
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  color:#59464f;
+  font-size:8.5px;
+}
+.home-sidebar .platform-box{
+  margin:4px 7px 7px;
+  min-width:0;
+  padding:6px;
+  border:1px solid var(--line);
+  border-radius:0;
+  background:var(--pale);
+}
+.home-sidebar .platform-box small{
+  margin:0 0 4px;
+  color:var(--deep);
+  font-size:6.5px;
+}
+.home-sidebar .tag-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:3px;
+}
+.home-sidebar .tag{
+  padding:2px 4px;
+  border:1px solid var(--line);
+  border-radius:2px;
+  background:var(--soft);
+  color:var(--deep);
+  font-size:6.8px;
+}
+.sidebar-tags{
+  padding:7px;
+  align-content:flex-start;
+}
+.mini-prefs{flex:none}
+.pref-row{
+  display:flex;
+  justify-content:space-between;
+  gap:6px;
+  padding:6px 7px;
+  border-bottom:1px dotted var(--line);
+}
+.pref-row:last-child{border-bottom:0}
+.pref-row strong{
+  color:var(--deep);
+  font-size:7.5px;
+  text-align:right;
+}
+
+/* homepage main */
+.home-main{
+  min-height:0;
+  display:grid;
+  grid-template-rows:minmax(0,1fr) minmax(0,1fr) 66px;
+  gap:6px;
+}
+.home-main.no-pair{
+  grid-template-rows:minmax(0,1fr) 66px;
+}
+.home-main.no-pair .favorite-board{grid-row:1}
+.home-main.no-pair .bottom-board{grid-row:2}
+
+.archive-board,
+.bottom-board>*{
+  min-width:0;
+  min-height:0;
+  border:1px solid var(--line);
+  background:#fff;
+}
+.archive-board{
+  display:grid;
+  grid-template-rows:25px minmax(0,1fr);
+}
+.board-head{
+  padding:0 8px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid var(--line);
+  background:var(--soft);
+}
+.board-head>div{
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+.board-head b{
+  color:var(--deep);
+  font:700 8px Georgia,serif;
+  letter-spacing:.8px;
+}
+.board-head small{
+  color:#aa8c99;
+  font:700 6px Georgia,serif;
+  letter-spacing:.8px;
+}
+.board-icon{color:var(--theme)}
+
+.archive-grid{
+  min-width:0;
+  min-height:0;
+  padding:7px;
+  display:grid;
+  gap:7px;
+}
+.archive-grid[data-total="1"]{grid-template-columns:1fr}
+.archive-grid[data-total="2"]{grid-template-columns:repeat(2,minmax(0,1fr))}
+.archive-grid[data-total="3"]{grid-template-columns:repeat(3,minmax(0,1fr))}
+.archive-card{
+  min-width:0;
+  min-height:0;
+  display:grid;
+  grid-template-columns:112px minmax(0,1fr);
+  gap:8px;
+  align-items:center;
+  padding:6px;
+  border:1px solid var(--line);
+  background:#fff;
+}
+.archive-grid[data-total="2"] .archive-card,
+.archive-grid[data-total="3"] .archive-card{
+  grid-template-columns:1fr;
+  grid-template-rows:minmax(0,1fr) auto;
+  gap:4px;
+  text-align:center;
+}
+.archive-image{
+  position:relative;
+  width:100%;
+  height:100%;
+  min-height:0;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:
+    radial-gradient(circle at 1px 1px,var(--line) 1px,transparent 1.1px) 0 0/10px 10px,
+    var(--pale);
+}
+.archive-grid[data-total="1"] .archive-image{max-width:150px}
+.archive-grid[data-total="2"] .archive-image{max-width:100%;height:76px}
+.archive-grid[data-total="3"] .archive-image{max-width:100%;height:66px}
+.archive-image img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+}
+.archive-image img[hidden]{display:none}
+.archive-caption{min-width:0}
+.archive-caption small{
+  display:block;
+  margin-bottom:2px;
+  color:var(--theme);
+  font:700 6.5px Georgia,serif;
+  letter-spacing:.6px;
+}
+.archive-caption h3{
+  margin:0;
+  color:var(--deep);
+  font-size:10px;
+  line-height:1.2;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.archive-caption p{
+  margin:3px 0 0;
+  color:#907b84;
+  font-size:7px;
+  line-height:1.25;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.bottom-board{
+  min-height:0;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 155px;
+  gap:6px;
+}
+.notice-box{
+  display:grid;
+  grid-template-rows:23px minmax(0,1fr);
+}
+.board-head.small{height:23px}
+.notice-box p{
+  margin:0;
+  padding:6px 8px;
+  overflow:hidden;
+  color:#78636d;
+  font-size:7.5px;
+  line-height:1.35;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  word-break:keep-all;
+}
+.status-box{
+  padding:7px 8px;
+  display:grid;
+  align-content:center;
+  gap:7px;
+}
+.status-row,
+.counter-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.status-row span,
+.counter-row span{
+  color:#a28a95;
+  font:700 6px Georgia,serif;
+  letter-spacing:.5px;
+}
+.status-row strong{
+  color:var(--theme);
+  font:700 7px Georgia,serif;
+}
+.counter-row{
+  justify-content:flex-start;
+  gap:5px;
+  padding-top:5px;
+  border-top:1px dotted var(--line);
+}
+.counter-row b{
+  color:var(--deep);
+  font:700 7px Georgia,serif;
+}
+
+/* tiny homepage footer */
+.home-footer{
+  min-height:0;
+  padding:0 8px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border:1px solid var(--line);
+  background:var(--soft);
+  color:#8d7480;
+  font:700 6.5px Georgia,serif;
+  letter-spacing:.45px;
+}
+
+/* export geometry */
+.exporting-sheet.homepage-sheet{
+  width:960px!important;
+  height:540px!important;
+  min-width:960px!important;
+  max-width:960px!important;
+  transform:none!important;
+  zoom:1!important;
+}
+.exporting-sheet.homepage-sheet .home-body{
+  grid-template-columns:188px 741px!important;
+}
+
+/* ===== refined mini-home layout ===== */
+.home-topbar{grid-template-columns:minmax(0,1fr)!important}
+.home-title-row{gap:6px!important}
+.home-title h2{max-width:360px!important;font-size:22px!important}
+.home-suffix,.home-nav{display:none!important}
+
+/* sidebar is one cleaner visual column rather than repeated chunky cards */
+.home-sidebar{
+  border:1px solid var(--line);
+  background:#fff;
+  gap:0!important;
+  overflow:hidden;
+}
+.home-sidebar .side-box{
+  border:0!important;
+  border-bottom:1px solid var(--line)!important;
+}
+.home-sidebar .side-box:last-child{border-bottom:0!important}
+.home-sidebar .profile-box .platform-box{
+  margin:7px!important;
+  background:#fff!important;
+}
+.home-sidebar .mini-title{
+  background:var(--soft)!important;
+}
+
+/* Give character archives more visual weight */
+.home-body{grid-template-columns:172px minmax(0,1fr)!important}
+.archive-card{grid-template-columns:132px minmax(0,1fr)!important}
+.archive-grid[data-total="2"] .archive-image{height:82px!important}
+.archive-grid[data-total="3"] .archive-image{height:72px!important}
+.archive-caption h3{font-size:11px!important}
+.archive-caption small{font-size:6px!important}
+
+/* NG/NOTE now uses the full bottom width */
+.bottom-board{grid-template-columns:1fr!important}
+.notice-box{width:100%!important}
+
+/* editor: requested platform choices wrap neatly */
+.platform-extra-options{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0}
+.exporting-sheet.homepage-sheet .home-body{grid-template-columns:172px 757px!important}
+
+/* ===== font setting applies to the entire generated sheet ===== */
+#sheet,
+#sheet *,
+#sheet *::before,
+#sheet *::after{
+  font-family:var(--sheet-font) !important;
+}
+
+/* Preserve icon/symbol rendering while still inheriting the selected text font */
+#sheet input,
+#sheet button,
+#sheet select,
+#sheet textarea{
+  font-family:var(--sheet-font) !important;
+}
+
+/* ===== platform + longer NG fix ===== */
+#ngText{
+  min-height:150px;
+  resize:vertical;
+  line-height:1.65;
+}
+
+/* Give NG/NOTE more room in the fixed 960x540 export. */
+.home-main{
+  grid-template-rows:minmax(0,1fr) minmax(0,1fr) 92px !important;
+}
+.home-main.no-pair{
+  grid-template-rows:minmax(0,1fr) 92px !important;
+}
+.notice-box p{
+  padding:7px 9px;
+  font-size:7.2px;
+  line-height:1.32;
+}
+#outNg.ng-medium{font-size:6.7px;line-height:1.27}
+#outNg.ng-long{font-size:6.1px;line-height:1.22}
+
+/* ===== remove/contain legacy preview overflow ===== */
+.canvas-wrap{
+  overflow:hidden;
+}
+.preview{
+  min-width:0;
+}
+.homepage-sheet{
+  contain:layout paint;
+}
+
+/* ===== image export consistency fix ===== */
+.archive-image{
+  position:relative !important;
+  flex:none;
+}
+.archive-image img:not([hidden]){
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  max-width:none !important;
+  max-height:none !important;
+  display:block !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+  transform:none !important;
+}
+
+/* html2canvas sometimes recalculates percentage image sizes inside Grid.
+   Export uses fixed geometry copied from the live preview. */
+.exporting-sheet .archive-image{
+  overflow:hidden !important;
+}
+.exporting-sheet .archive-image img:not([hidden]){
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+}
+
+/* ===== PNG image crop fidelity v2 =====
+   Export receives an already center-cropped bitmap, so html2canvas no longer
+   has to emulate object-fit: cover. */
+.exporting-sheet .archive-image img:not([hidden]){
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  max-width:none !important;
+  max-height:none !important;
+  object-fit:fill !important;
+  object-position:center !important;
+  transform:none !important;
+}
+
+/* ===== definitive uploaded-image ratio fix v3 ===== */
+.homepage-sheet .archive-image{
+  width:132px !important;
+  height:82px !important;
+  min-width:132px !important;
+  min-height:82px !important;
+  max-width:132px !important;
+  max-height:82px !important;
+  aspect-ratio:auto !important;
+  overflow:hidden !important;
+  position:relative !important;
+}
+.homepage-sheet .archive-image img:not([hidden]){
+  position:absolute !important;
+  inset:0 !important;
+  width:132px !important;
+  height:82px !important;
+  min-width:132px !important;
+  min-height:82px !important;
+  max-width:132px !important;
+  max-height:82px !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+  transform:none !important;
+}
+
+/* With three cards, keep the same image ratio but use a smaller frame. */
+.homepage-sheet .archive-grid[data-total="3"] .archive-image{
+  width:112px !important;
+  height:70px !important;
+  min-width:112px !important;
+  min-height:70px !important;
+  max-width:112px !important;
+  max-height:70px !important;
+}
+.homepage-sheet .archive-grid[data-total="3"] .archive-image img:not([hidden]){
+  width:112px !important;
+  height:70px !important;
+  min-width:112px !important;
+  min-height:70px !important;
+  max-width:112px !important;
+  max-height:70px !important;
+}
+
+/* Never stretch the image during export. */
+.exporting-sheet .archive-image img:not([hidden]){
+  object-fit:cover !important;
+  object-position:center center !important;
+}
+
+/* ===== PNG export image fix v4 =====
+   Live preview uses the normal <img>. During PNG export JS hides that image
+   and creates a background layer, avoiding html2canvas object-fit stretching. */
+.archive-image{
+  overflow:hidden !important;
+  position:relative !important;
+}
+.archive-image img:not([hidden]){
+  display:block;
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+}
+.export-image-bg{
+  pointer-events:none;
+}
+.exporting-sheet .archive-image > img{
+  display:none !important;
+}
+.exporting-sheet .archive-image .export-image-bg{
+  display:block !important;
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  background-repeat:no-repeat !important;
+  background-position:center center !important;
+  background-size:cover !important;
+}
+
+/* ===== 1:1 character / pair image frames ===== */
+.homepage-sheet .archive-image,
+.homepage-sheet .archive-grid[data-total="3"] .archive-image{
+  width:92px !important;
+  height:92px !important;
+  min-width:92px !important;
+  min-height:92px !important;
+  max-width:92px !important;
+  max-height:92px !important;
+  aspect-ratio:1 / 1 !important;
+  overflow:hidden !important;
+  position:relative !important;
+}
+
+.homepage-sheet .archive-image img:not([hidden]),
+.homepage-sheet .archive-grid[data-total="3"] .archive-image img:not([hidden]){
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  min-width:100% !important;
+  min-height:100% !important;
+  max-width:100% !important;
+  max-height:100% !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+}
+
+/* PNG export keeps the exact same square crop */
+.exporting-sheet .archive-image,
+.exporting-sheet .archive-grid[data-total="3"] .archive-image{
+  width:92px !important;
+  height:92px !important;
+  min-width:92px !important;
+  min-height:92px !important;
+  max-width:92px !important;
+  max-height:92px !important;
+  aspect-ratio:1 / 1 !important;
+}
+.exporting-sheet .archive-image .export-image-bg{
+  background-size:cover !important;
+  background-position:center center !important;
+}
+
+.crop-modal{display:none;position:fixed;inset:0;z-index:99999;background:rgba(60,40,50,.4);align-items:center;justify-content:center;padding:16px}
+.crop-modal.open{display:flex}.crop-dialog{width:min(420px,94vw);background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 15px 45px rgba(0,0,0,.16)}
+.crop-head{height:45px;padding:0 14px;display:flex;align-items:center;justify-content:space-between;background:var(--soft);color:var(--deep);font-family:var(--sheet-font)}
+.crop-head button{border:0;background:none;font-size:23px;color:inherit;cursor:pointer}.crop-wrap{padding:18px;display:flex;justify-content:center}
+.crop-box{width:320px;height:320px;max-width:78vw;max-height:78vw;position:relative;overflow:hidden;background:var(--pale);border:1px solid var(--line);cursor:grab;touch-action:none}
+.crop-box.drag{cursor:grabbing}.crop-box img{position:absolute;left:50%;top:50%;max-width:none!important;max-height:none!important;pointer-events:none;user-select:none}
+.crop-tools{padding:0 18px 13px;font:12px var(--sheet-font);color:var(--deep)}.crop-tools label{display:flex;gap:10px;align-items:center}.crop-tools input{flex:1}.crop-tools small{display:block;margin-top:7px;opacity:.65}
+.crop-buttons{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 18px 18px}.crop-buttons button{height:38px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--deep);font-family:var(--sheet-font);cursor:pointer}.crop-buttons #cropOK{background:var(--soft)}
+
+/* ===== multi design themes ===== */
+.theme-picker{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.theme-choice{min-height:48px;padding:7px 8px;border:1px solid var(--line);border-radius:9px;background:#fff;color:#6f5963;text-align:left;cursor:pointer;transition:.15s}
+.theme-choice b,.theme-choice small{display:block}.theme-choice b{font-size:9px}.theme-choice small{margin-top:2px;font-size:8px;opacity:.65}
+.theme-choice.active{background:var(--soft);border-color:var(--theme);color:var(--deep);box-shadow:inset 0 0 0 1px var(--theme)}
+
+/* Simple Pink: the former SERENDIPITY default */
+.homepage-sheet[data-design-theme="simple-pink"]{--theme-deco:"♡"}
+
+/* Princess Pink — ribbon/heart feeling, no crown or lace */
+.homepage-sheet[data-design-theme="princess-pink"]{background:linear-gradient(135deg,#fff 0 48%,var(--pale) 48% 52%,#fff 52% 100%)}
+.homepage-sheet[data-design-theme="princess-pink"] .home-topbar,.homepage-sheet[data-design-theme="princess-pink"] .home-footer{border-style:double;border-width:3px}
+.homepage-sheet[data-design-theme="princess-pink"] .mini-title,.homepage-sheet[data-design-theme="princess-pink"] .board-head{background:linear-gradient(90deg,var(--pale),var(--soft),var(--pale))}
+.homepage-sheet[data-design-theme="princess-pink"] .board-icon::after{content:" ୨୧"}
+.homepage-sheet[data-design-theme="princess-pink"] .archive-card{border-radius:8px}
+
+/* Angel Core */
+.homepage-sheet[data-design-theme="angel-core"]{background:radial-gradient(circle at 12% 15%,#fff 0 3px,transparent 4px),radial-gradient(circle at 84% 28%,#fff 0 2px,transparent 3px),linear-gradient(135deg,var(--pale),#fff)}
+.homepage-sheet[data-design-theme="angel-core"] .mini-title,.homepage-sheet[data-design-theme="angel-core"] .board-head{background:linear-gradient(90deg,#fff,var(--soft),#fff)}
+.homepage-sheet[data-design-theme="angel-core"] .board-icon::after{content:" ✧"}.homepage-sheet[data-design-theme="angel-core"] .side-box,.homepage-sheet[data-design-theme="angel-core"] .archive-board{box-shadow:0 2px 8px color-mix(in srgb,var(--theme) 12%,transparent)}
+
+/* Sweet Strawberry */
+.homepage-sheet[data-design-theme="sweet-strawberry"]{background:linear-gradient(90deg,transparent 49%,var(--line) 50%,transparent 51%) 0 0/18px 18px,linear-gradient(transparent 49%,var(--line) 50%,transparent 51%) 0 0/18px 18px,#fff}
+.homepage-sheet[data-design-theme="sweet-strawberry"] .mini-title,.homepage-sheet[data-design-theme="sweet-strawberry"] .board-head{background:var(--soft)}
+.homepage-sheet[data-design-theme="sweet-strawberry"] .board-icon::after{content:" ♡"}.homepage-sheet[data-design-theme="sweet-strawberry"] .archive-card{border-radius:10px}
+
+/* Blue Archive */
+.homepage-sheet[data-design-theme="blue-archive"]{background:repeating-linear-gradient(0deg,#fff 0 19px,var(--pale) 20px)}
+.homepage-sheet[data-design-theme="blue-archive"] .mini-title,.homepage-sheet[data-design-theme="blue-archive"] .board-head{background:#fff;border-left:4px solid var(--theme)}
+.homepage-sheet[data-design-theme="blue-archive"] .archive-card{border-left:3px solid var(--theme)}
+
+/* Black Ribbon */
+.homepage-sheet[data-design-theme="black-ribbon"]{background:#19171a;color:#eee;--dark-surface:#242126}
+.homepage-sheet[data-design-theme="black-ribbon"] .home-topbar,.homepage-sheet[data-design-theme="black-ribbon"] .home-sidebar,.homepage-sheet[data-design-theme="black-ribbon"] .side-box,.homepage-sheet[data-design-theme="black-ribbon"] .archive-board,.homepage-sheet[data-design-theme="black-ribbon"] .archive-card,.homepage-sheet[data-design-theme="black-ribbon"] .bottom-board>*{background:#242126;border-color:#4a4248}
+.homepage-sheet[data-design-theme="black-ribbon"] .mini-title,.homepage-sheet[data-design-theme="black-ribbon"] .board-head,.homepage-sheet[data-design-theme="black-ribbon"] .home-footer{background:#302b31;border-color:#4a4248}
+.homepage-sheet[data-design-theme="black-ribbon"] .archive-caption h3,.homepage-sheet[data-design-theme="black-ribbon"] .profile-lines strong{color:#fff}.homepage-sheet[data-design-theme="black-ribbon"] .archive-caption p,.homepage-sheet[data-design-theme="black-ribbon"] .home-subline{color:#c8bac1}
+.homepage-sheet[data-design-theme="black-ribbon"] .board-icon::after{content:" ୨୧"}
+
+/* Cream Diary */
+.homepage-sheet[data-design-theme="cream-diary"]{background:repeating-linear-gradient(0deg,#fffaf0 0 20px,#eadfc9 21px);box-shadow:inset 18px 0 0 #f2dfc4}
+.homepage-sheet[data-design-theme="cream-diary"] .home-topbar,.homepage-sheet[data-design-theme="cream-diary"] .side-box,.homepage-sheet[data-design-theme="cream-diary"] .archive-board,.homepage-sheet[data-design-theme="cream-diary"] .archive-card{background:#fffdf7}
+.homepage-sheet[data-design-theme="cream-diary"] .mini-title,.homepage-sheet[data-design-theme="cream-diary"] .board-head{background:#f5ead8}.homepage-sheet[data-design-theme="cream-diary"] .archive-card{transform:rotate(-.15deg)}
+
+/* Pixel Home */
+.homepage-sheet[data-design-theme="pixel-home"],.homepage-sheet[data-design-theme="pixel-home"] *{border-radius:0!important}
+.homepage-sheet[data-design-theme="pixel-home"]{background:linear-gradient(45deg,var(--pale) 25%,transparent 25%) 0 0/8px 8px,linear-gradient(-45deg,var(--pale) 25%,transparent 25%) 0 0/8px 8px,#fff;image-rendering:pixelated}
+.homepage-sheet[data-design-theme="pixel-home"] .home-topbar,.homepage-sheet[data-design-theme="pixel-home"] .side-box,.homepage-sheet[data-design-theme="pixel-home"] .archive-board,.homepage-sheet[data-design-theme="pixel-home"] .archive-card{box-shadow:2px 2px 0 var(--line)}
+.homepage-sheet[data-design-theme="pixel-home"] .mini-title,.homepage-sheet[data-design-theme="pixel-home"] .board-head{background:var(--theme);color:#fff}.homepage-sheet[data-design-theme="pixel-home"] .mini-title span,.homepage-sheet[data-design-theme="pixel-home"] .board-head b,.homepage-sheet[data-design-theme="pixel-home"] .board-icon{color:#fff}
+
+/* Cyber Chat */
+.homepage-sheet[data-design-theme="cyber-chat"]{background:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px),#11151b;background-size:15px 15px;color:#e9f7ff}
+.homepage-sheet[data-design-theme="cyber-chat"] .home-topbar,.homepage-sheet[data-design-theme="cyber-chat"] .home-sidebar,.homepage-sheet[data-design-theme="cyber-chat"] .side-box,.homepage-sheet[data-design-theme="cyber-chat"] .archive-board,.homepage-sheet[data-design-theme="cyber-chat"] .archive-card,.homepage-sheet[data-design-theme="cyber-chat"] .bottom-board>*{background:#171d25;border-color:color-mix(in srgb,var(--theme) 45%,#26313c)}
+.homepage-sheet[data-design-theme="cyber-chat"] .mini-title,.homepage-sheet[data-design-theme="cyber-chat"] .board-head,.homepage-sheet[data-design-theme="cyber-chat"] .home-footer{background:#10151c;border-color:var(--theme)}
+.homepage-sheet[data-design-theme="cyber-chat"] .archive-caption h3{color:#fff}.homepage-sheet[data-design-theme="cyber-chat"] .archive-caption p,.homepage-sheet[data-design-theme="cyber-chat"] .home-subline{color:#9fb2c0}.homepage-sheet[data-design-theme="cyber-chat"] .board-icon::after{content:" +"}
+
+/* ===== DELUXE THEMES: stronger identity, no bow/ribbon motifs ===== */
+#sheet{--shadow:rgba(80,50,65,.10)}
+#sheet .home-topbar,#sheet .home-sidebar,#sheet .archive-board,#sheet .notice-box,#sheet .home-footer{box-shadow:0 5px 16px var(--shadow)}
+#sheet .mini-title,#sheet .board-head{position:relative;overflow:hidden}
+#sheet .mini-title::after,#sheet .board-head::after{content:"";position:absolute;right:8px;top:50%;width:25px;height:1px;background:linear-gradient(90deg,transparent,var(--theme));opacity:.55}
+
+/* Simple Pink: polished pink stationery */
+#sheet[data-design-theme="simple-pink"]{--theme:#d985a5;--deep:#9c536f;--soft:#fff0f5;--pale:#fff8fb;--line:#edc8d6;--shadow:rgba(190,105,140,.12);background:radial-gradient(circle at 9% 15%,#f5bfd233 0 2px,transparent 2.5px),radial-gradient(circle at 91% 82%,#f2b4cb2e 0 2px,transparent 2.5px),linear-gradient(135deg,#fffafd,#fff4f8 55%,#fffafd);background-size:28px 28px,34px 34px,auto}
+#sheet[data-design-theme="simple-pink"] .home-topbar{border-top:3px double var(--theme)}
+#sheet[data-design-theme="simple-pink"] .archive-card{box-shadow:inset 0 0 0 3px #fff}
+
+/* Princess Pink: ornate salon/cameo, not ribbon */
+#sheet[data-design-theme="princess-pink"]{--theme:#d65f94;--deep:#8f3f65;--soft:#ffe7f1;--pale:#fff7fb;--line:#e8a9c3;--shadow:rgba(165,67,111,.16);background:radial-gradient(ellipse at top left,#ffd7e8 0 7%,transparent 22%),radial-gradient(ellipse at bottom right,#f8c4da 0 8%,transparent 25%),linear-gradient(120deg,#fff8fc,#ffeaf3 48%,#fff8fc)}
+#sheet[data-design-theme="princess-pink"] .home-topbar,#sheet[data-design-theme="princess-pink"] .home-footer{border:3px double #df8caf}
+#sheet[data-design-theme="princess-pink"] .mini-title,#sheet[data-design-theme="princess-pink"] .board-head{background:linear-gradient(90deg,#ffe3ef,#fff7fb,#ffe3ef)}
+#sheet[data-design-theme="princess-pink"] .archive-image{border-radius:50%;outline:3px double #efb4cc;outline-offset:2px}
+#sheet[data-design-theme="princess-pink"] .tag{border-radius:999px!important}
+
+/* Angel Core: luminous sky, halos and rays */
+#sheet[data-design-theme="angel-core"]{--theme:#9abbd2;--deep:#66889f;--soft:#eef8ff;--pale:#fbfdff;--line:#c9deea;--shadow:rgba(104,151,180,.13);background:radial-gradient(circle at 50% -10%,#fff 0 15%,#e8f7ff 36%,transparent 58%),repeating-linear-gradient(115deg,transparent 0 38px,#dceefa55 39px 40px),#fbfdff}
+#sheet[data-design-theme="angel-core"] .home-topbar{background:linear-gradient(90deg,#fff,#eef9ff,#fff)}
+#sheet[data-design-theme="angel-core"] .home-title-row::before{content:"✧";color:#9bbfd6;font-size:18px}
+#sheet[data-design-theme="angel-core"] .archive-image{border-radius:50%;box-shadow:0 0 0 4px #fff,0 0 0 5px var(--line),0 0 18px #b9ddf055}
+#sheet[data-design-theme="angel-core"] .board-icon{font-size:0}#sheet[data-design-theme="angel-core"] .board-icon::after{content:"✦";font-size:9px}
+
+/* Sweet Strawberry: pâtisserie + strawberry seed/check texture */
+#sheet[data-design-theme="sweet-strawberry"]{--theme:#df6e82;--deep:#a24657;--soft:#ffe9eb;--pale:#fff9f5;--line:#efb8bd;--shadow:rgba(190,78,98,.14);background:radial-gradient(ellipse at 12px 10px,#d95f7330 0 1.5px,transparent 2px) 0 0/26px 22px,linear-gradient(90deg,#fff8f4 50%,#fffdfb 50%) 0 0/18px 18px}
+#sheet[data-design-theme="sweet-strawberry"] .mini-title,#sheet[data-design-theme="sweet-strawberry"] .board-head{background:linear-gradient(90deg,#ffe4e7,#fff5ee)}
+#sheet[data-design-theme="sweet-strawberry"] .archive-card{border-radius:10px;background:#fffdf9}
+#sheet[data-design-theme="sweet-strawberry"] .archive-image{border-radius:8px;box-shadow:0 3px 0 #f4c4c8}
+#sheet[data-design-theme="sweet-strawberry"] .home-title-row::before{content:"🍓";font-size:12px}
+
+/* Blue Archive: dossier / indexing interface */
+#sheet[data-design-theme="blue-archive"]{--theme:#679bc8;--deep:#315f89;--soft:#eaf4fc;--pale:#f7fbff;--line:#b7d2e8;--shadow:rgba(54,103,145,.12);background:linear-gradient(#d9eaf633 1px,transparent 1px),linear-gradient(90deg,#d9eaf633 1px,transparent 1px),#f8fcff;background-size:18px 18px}
+#sheet[data-design-theme="blue-archive"] .home-topbar{border-left:5px solid var(--theme)}
+#sheet[data-design-theme="blue-archive"] .mini-title,#sheet[data-design-theme="blue-archive"] .board-head{background:linear-gradient(90deg,#dceefa,#f7fbff)}
+#sheet[data-design-theme="blue-archive"] .archive-card{border-left:3px solid var(--theme)}
+#sheet[data-design-theme="blue-archive"] .archive-caption small::before{content:"FILE / ";opacity:.6}
+
+/* Black Ribbon: name retained, visual is luxury black editorial; no ribbons */
+#sheet[data-design-theme="black-ribbon"]{--theme:#d99ab2;--deep:#f3dbe5;--soft:#29252a;--pale:#211e22;--line:#51454c;--shadow:rgba(0,0,0,.25);color:#eee;background:linear-gradient(135deg,#181619 0 25%,#201c21 25% 50%,#181619 50% 75%,#201c21 75%) 0 0/26px 26px}
+#sheet[data-design-theme="black-ribbon"] .home-topbar,#sheet[data-design-theme="black-ribbon"] .home-sidebar,#sheet[data-design-theme="black-ribbon"] .side-box,#sheet[data-design-theme="black-ribbon"] .archive-board,#sheet[data-design-theme="black-ribbon"] .archive-card,#sheet[data-design-theme="black-ribbon"] .notice-box,#sheet[data-design-theme="black-ribbon"] .home-footer{background:#211e22;color:#eee;border-color:#51454c}
+#sheet[data-design-theme="black-ribbon"] .mini-title,#sheet[data-design-theme="black-ribbon"] .board-head{background:linear-gradient(90deg,#302930,#211e22);color:#f4dce5}
+#sheet[data-design-theme="black-ribbon"] .archive-image{box-shadow:0 0 0 1px #8c6675,0 0 0 4px #211e22,0 0 0 5px #51454c}
+#sheet[data-design-theme="black-ribbon"] .home-title h2,#sheet[data-design-theme="black-ribbon"] .archive-caption h3{color:#f5e7ed}
+
+/* Cream Diary: paper ephemera / ruled journal */
+#sheet[data-design-theme="cream-diary"]{--theme:#b78d69;--deep:#755c48;--soft:#f5eadb;--pale:#fffaf1;--line:#d9c5aa;--shadow:rgba(110,82,57,.13);background:repeating-linear-gradient(0deg,#fffaf1 0 20px,#e9dccb88 21px 22px)}
+#sheet[data-design-theme="cream-diary"] .home-topbar,#sheet[data-design-theme="cream-diary"] .archive-board,#sheet[data-design-theme="cream-diary"] .notice-box{background:#fffaf1}
+#sheet[data-design-theme="cream-diary"] .mini-title,#sheet[data-design-theme="cream-diary"] .board-head{background:#efe1cd;border-bottom:1px dashed #b99d7c}
+#sheet[data-design-theme="cream-diary"] .archive-card{transform:rotate(-.25deg);box-shadow:2px 3px 0 #d7c4aa55}
+#sheet[data-design-theme="cream-diary"] .tag{border-style:dashed!important}
+
+/* Pixel Home: unmistakable 2000s mini-home UI */
+#sheet[data-design-theme="pixel-home"]{--theme:#d16d9a;--deep:#713e59;--soft:#ffddeb;--pale:#fff7fb;--line:#8f6680;--shadow:rgba(91,53,74,.16);image-rendering:pixelated;background:linear-gradient(45deg,#f9d6e5 25%,transparent 25%) 0 0/8px 8px,linear-gradient(-45deg,#f9d6e5 25%,transparent 25%) 0 0/8px 8px,#fff5fa}
+#sheet[data-design-theme="pixel-home"] *{border-radius:0!important}
+#sheet[data-design-theme="pixel-home"] .home-topbar,#sheet[data-design-theme="pixel-home"] .home-sidebar,#sheet[data-design-theme="pixel-home"] .archive-board,#sheet[data-design-theme="pixel-home"] .notice-box{box-shadow:3px 3px 0 #8f6680}
+#sheet[data-design-theme="pixel-home"] .mini-title,#sheet[data-design-theme="pixel-home"] .board-head{background:repeating-linear-gradient(90deg,#ffd6e7 0 5px,#ffeaf3 5px 10px)}
+#sheet[data-design-theme="pixel-home"] .board-icon{font-size:0}#sheet[data-design-theme="pixel-home"] .board-icon::after{content:"◆";font-size:7px}
+
+/* Cyber Chat: neon glass terminal / circuitry */
+#sheet[data-design-theme="cyber-chat"]{--theme:#76e4e7;--deep:#bdfcff;--soft:#102d35;--pale:#0b2028;--line:#24606b;--shadow:rgba(0,230,235,.14);color:#dffcff;background:linear-gradient(#42cbd11c 1px,transparent 1px),linear-gradient(90deg,#42cbd11c 1px,transparent 1px),radial-gradient(circle at 85% 10%,#2ee5e52a,transparent 28%),#07171d;background-size:20px 20px,20px 20px,auto,auto}
+#sheet[data-design-theme="cyber-chat"] .home-topbar,#sheet[data-design-theme="cyber-chat"] .home-sidebar,#sheet[data-design-theme="cyber-chat"] .side-box,#sheet[data-design-theme="cyber-chat"] .archive-board,#sheet[data-design-theme="cyber-chat"] .archive-card,#sheet[data-design-theme="cyber-chat"] .notice-box,#sheet[data-design-theme="cyber-chat"] .home-footer{background:#0a1c23;color:#dcfbff;border-color:#24606b;box-shadow:0 0 12px #32dbe51c,inset 0 0 14px #2adbe20a}
+#sheet[data-design-theme="cyber-chat"] .mini-title,#sheet[data-design-theme="cyber-chat"] .board-head{background:linear-gradient(90deg,#12333d,#0a1c23);color:#aef9fb}
+#sheet[data-design-theme="cyber-chat"] .home-title h2,#sheet[data-design-theme="cyber-chat"] .archive-caption h3{color:#d9ffff;text-shadow:0 0 8px #5ff9ff55}
+#sheet[data-design-theme="cyber-chat"] .archive-image{box-shadow:0 0 0 1px #63f4f4,0 0 13px #50e8ee44}
+#sheet[data-design-theme="cyber-chat"] .tag{background:#12323a!important;color:#aef9fb!important;border-color:#2b6973!important}
+
+/* no cheap bow/ribbon decorations anywhere */
+#sheet [class*="ribbon"]::before,#sheet [class*="ribbon"]::after,#sheet [class*="bow"]::before,#sheet [class*="bow"]::after{content:none!important}
+
+/* Design theme control: keep at the top of the editing controls */
+#themeSelect{position:relative}
+.theme-control,.theme-field,[data-control="theme"]{order:-100!important}
+
+/* =========================================================
+   REFINED THEME SYSTEM
+   Richer visual identity, no bows/ribbons/crowns/lace gimmicks.
+   ========================================================= */
+
+/* Common polish */
+#sheet{
+  --theme-shadow:rgba(55,38,47,.10);
+  --theme-highlight:rgba(255,255,255,.72);
+}
+#sheet .home-topbar,
+#sheet .home-sidebar,
+#sheet .archive-board,
+#sheet .notice-box,
+#sheet .home-footer{
+  box-shadow:0 8px 24px var(--theme-shadow);
+}
+#sheet .mini-title,
+#sheet .board-head{
+  position:relative;
+  overflow:hidden;
+}
+#sheet .mini-title::after,
+#sheet .board-head::after{
+  content:"";
+  position:absolute;
+  right:8px;
+  top:50%;
+  width:30px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--theme));
+  opacity:.45;
+}
+
+/* ---------- SIMPLE PINK ----------
+   modern stationery / translucent blush / hairline rules */
+#sheet[data-design-theme="simple-pink"]{
+  --theme:#d57f9f;
+  --deep:#91536b;
+  --soft:#fbe9f0;
+  --pale:#fff8fb;
+  --line:#e9c5d3;
+  --theme-shadow:rgba(167,94,121,.11);
+  background:
+    radial-gradient(circle at 14% 18%,rgba(221,137,169,.14) 0 2px,transparent 2.3px),
+    radial-gradient(circle at 86% 78%,rgba(221,137,169,.10) 0 1.5px,transparent 1.8px),
+    linear-gradient(135deg,#fffdfd 0%,#fff6fa 52%,#fffdfd 100%);
+  background-size:34px 34px,28px 28px,auto;
+}
+#sheet[data-design-theme="simple-pink"] .home-topbar{
+  border-top:2px solid var(--theme);
+  border-bottom:1px solid var(--line);
+}
+#sheet[data-design-theme="simple-pink"] .archive-card{
+  background:linear-gradient(180deg,#fff 0%,#fffafb 100%);
+  box-shadow:inset 0 0 0 3px #fff;
+}
+#sheet[data-design-theme="simple-pink"] .mini-title,
+#sheet[data-design-theme="simple-pink"] .board-head{
+  background:linear-gradient(90deg,#fbe8ef 0%,#fff8fb 72%);
+}
+
+/* ---------- PRINCESS PINK ----------
+   jewel-box salon / cameo geometry / pearl-like highlights */
+#sheet[data-design-theme="princess-pink"]{
+  --theme:#c95d8a;
+  --deep:#803f5d;
+  --soft:#f9e2eb;
+  --pale:#fff8fb;
+  --line:#dfacc1;
+  --theme-shadow:rgba(137,59,91,.15);
+  background:
+    radial-gradient(ellipse at 0% 0%,rgba(220,121,160,.20),transparent 27%),
+    radial-gradient(ellipse at 100% 100%,rgba(225,143,174,.18),transparent 30%),
+    linear-gradient(135deg,#fff9fc,#fcebf2 48%,#fff9fc);
+}
+#sheet[data-design-theme="princess-pink"] .home-topbar,
+#sheet[data-design-theme="princess-pink"] .home-footer{
+  border:3px double var(--line);
+  background:linear-gradient(90deg,#fff,#f9e7ef,#fff);
+}
+#sheet[data-design-theme="princess-pink"] .mini-title,
+#sheet[data-design-theme="princess-pink"] .board-head{
+  background:linear-gradient(90deg,#f6dbe6,#fff7fa 50%,#f6dbe6);
+  letter-spacing:.08em;
+}
+#sheet[data-design-theme="princess-pink"] .archive-image{
+  border-radius:50%;
+  outline:1px solid var(--theme);
+  outline-offset:3px;
+  box-shadow:
+    0 0 0 5px #fff,
+    0 0 0 6px var(--line),
+    0 8px 18px rgba(154,71,104,.12);
+}
+#sheet[data-design-theme="princess-pink"] .tag{
+  border-radius:999px!important;
+  background:linear-gradient(180deg,#fff,#f9e7ef)!important;
+}
+#sheet[data-design-theme="princess-pink"] .home-title-row::before{
+  content:"✦";
+  font-size:10px;
+  color:var(--theme);
+}
+
+/* ---------- ANGEL CORE ----------
+   airy ivory / blue-white glow / halos / prismatic light */
+#sheet[data-design-theme="angel-core"]{
+  --theme:#9fbfd4;
+  --deep:#5e7f96;
+  --soft:#edf7fc;
+  --pale:#fbfdff;
+  --line:#cbdfe9;
+  --theme-shadow:rgba(101,145,174,.12);
+  background:
+    radial-gradient(circle at 50% -12%,#fff 0 14%,rgba(224,244,255,.85) 34%,transparent 58%),
+    repeating-linear-gradient(115deg,transparent 0 42px,rgba(204,230,244,.34) 43px 44px),
+    linear-gradient(180deg,#fbfdff,#f5fbff);
+}
+#sheet[data-design-theme="angel-core"] .home-topbar{
+  background:linear-gradient(90deg,#fff,rgba(232,247,255,.92),#fff);
+  box-shadow:0 0 24px rgba(151,201,229,.18);
+}
+#sheet[data-design-theme="angel-core"] .home-title-row::before{
+  content:"✧";
+  font-size:17px;
+  color:#8fb9d0;
+}
+#sheet[data-design-theme="angel-core"] .archive-image{
+  border-radius:50%;
+  box-shadow:
+    0 0 0 4px #fff,
+    0 0 0 5px var(--line),
+    0 0 22px rgba(142,198,229,.20);
+}
+#sheet[data-design-theme="angel-core"] .board-icon{font-size:0}
+#sheet[data-design-theme="angel-core"] .board-icon::after{
+  content:"✦";
+  font-size:8px;
+  color:var(--theme);
+}
+#sheet[data-design-theme="angel-core"] .mini-title,
+#sheet[data-design-theme="angel-core"] .board-head{
+  background:linear-gradient(90deg,#eef8fd,#fff,#eef8fd);
+}
+
+/* ---------- SWEET STRAWBERRY ----------
+   pâtisserie / strawberry milk / seed motif, no emoji decoration */
+#sheet[data-design-theme="sweet-strawberry"]{
+  --theme:#d96f80;
+  --deep:#9b4653;
+  --soft:#fde9eb;
+  --pale:#fff9f5;
+  --line:#eebbc0;
+  --theme-shadow:rgba(171,74,88,.13);
+  background:
+    radial-gradient(ellipse at 12px 10px,rgba(205,83,103,.18) 0 1.4px,transparent 1.8px) 0 0/26px 22px,
+    linear-gradient(90deg,#fff8f4 50%,#fffdf9 50%) 0 0/20px 20px;
+}
+#sheet[data-design-theme="sweet-strawberry"] .home-title-row::before{
+  content:"✣";
+  color:#cc5f71;
+  font-size:11px;
+}
+#sheet[data-design-theme="sweet-strawberry"] .mini-title,
+#sheet[data-design-theme="sweet-strawberry"] .board-head{
+  background:linear-gradient(90deg,#fbe1e4,#fff5ef);
+}
+#sheet[data-design-theme="sweet-strawberry"] .archive-card{
+  border-radius:9px;
+  background:linear-gradient(180deg,#fff,#fffaf6);
+}
+#sheet[data-design-theme="sweet-strawberry"] .archive-image{
+  border-radius:8px;
+  box-shadow:0 4px 0 rgba(226,136,148,.25);
+}
+#sheet[data-design-theme="sweet-strawberry"] .tag{
+  background:#fff4f2!important;
+}
+
+/* ---------- BLUE ARCHIVE ----------
+   clean dossier / blueprint grid / index marks */
+#sheet[data-design-theme="blue-archive"]{
+  --theme:#6699c4;
+  --deep:#315d83;
+  --soft:#e9f3fb;
+  --pale:#f7fbff;
+  --line:#b9d3e7;
+  --theme-shadow:rgba(54,101,142,.11);
+  background:
+    linear-gradient(rgba(116,169,210,.10) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(116,169,210,.10) 1px,transparent 1px),
+    #f8fcff;
+  background-size:18px 18px;
+}
+#sheet[data-design-theme="blue-archive"] .home-topbar{
+  border-left:5px solid var(--theme);
+  background:linear-gradient(90deg,#f6fbff,#fff);
+}
+#sheet[data-design-theme="blue-archive"] .mini-title,
+#sheet[data-design-theme="blue-archive"] .board-head{
+  background:linear-gradient(90deg,#dcecf8,#f8fcff);
+}
+#sheet[data-design-theme="blue-archive"] .archive-card{
+  border-left:3px solid var(--theme);
+  background:#fcfeff;
+}
+#sheet[data-design-theme="blue-archive"] .archive-caption small::before{
+  content:"FILE / ";
+  opacity:.55;
+}
+#sheet[data-design-theme="blue-archive"] .tag{
+  border-radius:2px!important;
+}
+
+/* ---------- BLACK RIBBON ----------
+   luxury black editorial; name retained, no literal ribbon decoration */
+#sheet[data-design-theme="black-ribbon"]{
+  --theme:#d19aaf;
+  --deep:#f1dce5;
+  --soft:#2b262b;
+  --pale:#211d21;
+  --line:#51464d;
+  --theme-shadow:rgba(0,0,0,.25);
+  color:#ece7e9;
+  background:
+    linear-gradient(135deg,#191619 0 25%,#201c20 25% 50%,#191619 50% 75%,#201c20 75%) 0 0/28px 28px;
+}
+#sheet[data-design-theme="black-ribbon"] .home-topbar,
+#sheet[data-design-theme="black-ribbon"] .home-sidebar,
+#sheet[data-design-theme="black-ribbon"] .side-box,
+#sheet[data-design-theme="black-ribbon"] .archive-board,
+#sheet[data-design-theme="black-ribbon"] .archive-card,
+#sheet[data-design-theme="black-ribbon"] .notice-box,
+#sheet[data-design-theme="black-ribbon"] .home-footer{
+  background:#211d21;
+  color:#eee8eb;
+  border-color:#51464d;
+}
+#sheet[data-design-theme="black-ribbon"] .mini-title,
+#sheet[data-design-theme="black-ribbon"] .board-head{
+  background:linear-gradient(90deg,#342b31,#211d21);
+  color:#f0dce4;
+}
+#sheet[data-design-theme="black-ribbon"] .archive-image{
+  box-shadow:
+    0 0 0 1px #8f6877,
+    0 0 0 4px #211d21,
+    0 0 0 5px #51464d;
+}
+#sheet[data-design-theme="black-ribbon"] .home-title h2,
+#sheet[data-design-theme="black-ribbon"] .archive-caption h3{
+  color:#f5e9ee;
+}
+#sheet[data-design-theme="black-ribbon"] .tag{
+  background:#302930!important;
+  color:#f0dce4!important;
+  border-color:#5f5058!important;
+}
+
+/* ---------- CREAM DIARY ----------
+   warm paper / ruled journal / stamped labels */
+#sheet[data-design-theme="cream-diary"]{
+  --theme:#ae8767;
+  --deep:#725a47;
+  --soft:#f2e6d6;
+  --pale:#fffaf0;
+  --line:#d7c3a9;
+  --theme-shadow:rgba(105,78,55,.12);
+  background:
+    repeating-linear-gradient(0deg,#fffaf1 0 20px,rgba(213,195,168,.48) 21px 22px);
+}
+#sheet[data-design-theme="cream-diary"] .home-topbar,
+#sheet[data-design-theme="cream-diary"] .archive-board,
+#sheet[data-design-theme="cream-diary"] .notice-box{
+  background:#fffaf1;
+}
+#sheet[data-design-theme="cream-diary"] .mini-title,
+#sheet[data-design-theme="cream-diary"] .board-head{
+  background:#efe1ce;
+  border-bottom:1px dashed #b99b79;
+}
+#sheet[data-design-theme="cream-diary"] .archive-card{
+  transform:rotate(-.18deg);
+  box-shadow:2px 3px 0 rgba(175,143,104,.14);
+}
+#sheet[data-design-theme="cream-diary"] .tag{
+  border-style:dashed!important;
+  background:#fff9ef!important;
+}
+
+/* ---------- PIXEL HOME ----------
+   crisp 2000s mini-home / pixel window UI */
+#sheet[data-design-theme="pixel-home"]{
+  --theme:#ce6d99;
+  --deep:#713d58;
+  --soft:#ffddea;
+  --pale:#fff7fb;
+  --line:#8e667d;
+  --theme-shadow:rgba(88,52,72,.15);
+  image-rendering:pixelated;
+  background:
+    linear-gradient(45deg,#f8d6e4 25%,transparent 25%) 0 0/8px 8px,
+    linear-gradient(-45deg,#f8d6e4 25%,transparent 25%) 0 0/8px 8px,
+    #fff5fa;
+}
+#sheet[data-design-theme="pixel-home"] *{
+  border-radius:0!important;
+}
+#sheet[data-design-theme="pixel-home"] .home-topbar,
+#sheet[data-design-theme="pixel-home"] .home-sidebar,
+#sheet[data-design-theme="pixel-home"] .archive-board,
+#sheet[data-design-theme="pixel-home"] .notice-box{
+  box-shadow:3px 3px 0 #8e667d;
+}
+#sheet[data-design-theme="pixel-home"] .mini-title,
+#sheet[data-design-theme="pixel-home"] .board-head{
+  background:repeating-linear-gradient(90deg,#ffd6e6 0 5px,#ffeaf2 5px 10px);
+}
+#sheet[data-design-theme="pixel-home"] .board-icon{font-size:0}
+#sheet[data-design-theme="pixel-home"] .board-icon::after{
+  content:"◆";
+  font-size:7px;
+}
+#sheet[data-design-theme="pixel-home"] .tag{
+  border-radius:0!important;
+  box-shadow:1px 1px 0 #8e667d;
+}
+
+/* ---------- CYBER CHAT ----------
+   neon terminal / scan grid / glass circuitry */
+#sheet[data-design-theme="cyber-chat"]{
+  --theme:#69dfe4;
+  --deep:#c0fbfd;
+  --soft:#102c34;
+  --pale:#0a2027;
+  --line:#245f69;
+  --theme-shadow:rgba(0,225,232,.14);
+  color:#ddfbfd;
+  background:
+    linear-gradient(rgba(66,203,209,.10) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(66,203,209,.10) 1px,transparent 1px),
+    radial-gradient(circle at 86% 12%,rgba(43,228,229,.16),transparent 28%),
+    #07171c;
+  background-size:20px 20px,20px 20px,auto,auto;
+}
+#sheet[data-design-theme="cyber-chat"] .home-topbar,
+#sheet[data-design-theme="cyber-chat"] .home-sidebar,
+#sheet[data-design-theme="cyber-chat"] .side-box,
+#sheet[data-design-theme="cyber-chat"] .archive-board,
+#sheet[data-design-theme="cyber-chat"] .archive-card,
+#sheet[data-design-theme="cyber-chat"] .notice-box,
+#sheet[data-design-theme="cyber-chat"] .home-footer{
+  background:#0a1c23;
+  color:#dcfbff;
+  border-color:#245f69;
+  box-shadow:0 0 12px rgba(50,219,229,.10),inset 0 0 14px rgba(42,219,226,.04);
+}
+#sheet[data-design-theme="cyber-chat"] .mini-title,
+#sheet[data-design-theme="cyber-chat"] .board-head{
+  background:linear-gradient(90deg,#12323c,#0a1c23);
+  color:#aef8fa;
+}
+#sheet[data-design-theme="cyber-chat"] .home-title h2,
+#sheet[data-design-theme="cyber-chat"] .archive-caption h3{
+  color:#dcffff;
+  text-shadow:0 0 8px rgba(95,249,255,.30);
+}
+#sheet[data-design-theme="cyber-chat"] .archive-image{
+  box-shadow:0 0 0 1px #62eff1,0 0 13px rgba(80,232,238,.24);
+}
+#sheet[data-design-theme="cyber-chat"] .tag{
+  background:#12323a!important;
+  color:#aef8fa!important;
+  border-color:#2b6872!important;
+}
+
+/* Explicitly suppress any bow/ribbon decoration hooks */
+#sheet [class*="ribbon"]::before,
+#sheet [class*="ribbon"]::after,
+#sheet [class*="bow"]::before,
+#sheet [class*="bow"]::after{
+  content:none!important;
+  display:none!important;
+}
+
+/* Theme picker itself: clean swatch cards, no ribbon-style ornament */
+.theme-choice{
+  position:relative;
+  overflow:hidden;
+  border-radius:10px!important;
+  box-shadow:none!important;
+}
+.theme-choice::before{
+  content:"";
+  display:block;
+  width:100%;
+  height:4px;
+  margin-bottom:7px;
+  border-radius:999px;
+  background:var(--theme);
+  opacity:.65;
+}
+
+.theme-picker{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:8px!important;
+}
+.theme-choice{
+  min-height:58px!important;
+  padding:9px 10px!important;
+  text-align:left!important;
+  background:#fff!important;
+  border:1px solid var(--line)!important;
+}
+.theme-choice b{
+  display:block;
+  font-size:10px;
+  color:#5f4b54;
+}
+.theme-choice small{
+  display:block;
+  margin-top:2px;
+  font-size:8px;
+  color:#9a818c;
+}
+.theme-choice.active{
+  border-color:var(--theme)!important;
+  background:var(--pale)!important;
+}
+
+/* === NO RIBBONS / NO BOWS — 2026-09-06 === */
+/* Decorative tails, folded tabs, corner ribbons, bow-like ornaments */
+#sheet .board-head::before,
+#sheet .board-head::after,
+#sheet .home-topbar::before,
+#sheet .home-topbar::after,
+#sheet .side-box::before,
+#sheet .side-box::after,
+#sheet .archive-board::before,
+#sheet .archive-board::after,
+#sheet .archive-card::before,
+#sheet .archive-card::after,
+#sheet .notice-box::before,
+#sheet .notice-box::after,
+#sheet .home-footer::before,
+#sheet .home-footer::after,
+#sheet .archive-caption::before,
+#sheet .archive-caption::after {
+  content: none !important;
+  display: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  clip-path: none !important;
+  background-image: none !important;
+}
+
+/* No ribbon-tail geometry anywhere inside the preview */
+#sheet [class*="ribbon"],
+#sheet [class*="bow"] {
+  display:none !important;
+}
+
+/* Princess Pink: elegant frame instead of ribbon/bow ornament */
+#sheet[data-design-theme="princess-pink"] .home-topbar,
+#sheet[data-design-theme="princess-pink"] .archive-board,
+#sheet[data-design-theme="princess-pink"] .side-box {
+  border-style: solid !important;
+}
+
+/* =========================================================
+   THEME IDENTITY PASS
+   Each theme gets its own ornament language.
+   Hearts are retained only where they fit the theme.
+   ========================================================= */
+
+/* Default mark handling */
+#sheet .theme-mark,
+#sheet .board-icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:12px;
+}
+#sheet .theme-mark::after,
+#sheet .board-icon::after{
+  content:none;
+}
+
+/* ---------- SIMPLE PINK ----------
+   Clean, understated, soft hearts are appropriate here. */
+#sheet[data-design-theme="simple-pink"] .home-heart,
+#sheet[data-design-theme="simple-pink"] .side-mark,
+#sheet[data-design-theme="simple-pink"] .board-icon{
+  color:var(--theme);
+}
+#sheet[data-design-theme="simple-pink"] .home-topbar,
+#sheet[data-design-theme="simple-pink"] .archive-board,
+#sheet[data-design-theme="simple-pink"] .side-box{
+  border-radius:8px;
+}
+#sheet[data-design-theme="simple-pink"] .mini-title,
+#sheet[data-design-theme="simple-pink"] .board-head{
+  letter-spacing:.08em;
+}
+
+/* ---------- PRINCESS PINK ----------
+   Refined jewel-box/salon. Replace hearts with small diamond sparkle. */
+#sheet[data-design-theme="princess-pink"] .home-heart,
+#sheet[data-design-theme="princess-pink"] .side-mark,
+#sheet[data-design-theme="princess-pink"] .board-icon{
+  font-size:0 !important;
+}
+#sheet[data-design-theme="princess-pink"] .home-heart::after,
+#sheet[data-design-theme="princess-pink"] .side-mark::after,
+#sheet[data-design-theme="princess-pink"] .board-icon::after{
+  content:"✦";
+  font-size:9px;
+  color:var(--theme);
+}
+#sheet[data-design-theme="princess-pink"] .home-topbar{
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.95),rgba(250,229,238,.95),rgba(255,255,255,.95));
+}
+#sheet[data-design-theme="princess-pink"] .archive-board{
+  border:1px solid var(--line);
+  box-shadow:0 7px 20px rgba(139,60,93,.10);
+}
+#sheet[data-design-theme="princess-pink"] .archive-card{
+  background:linear-gradient(180deg,#fff,#fff9fb);
+}
+#sheet[data-design-theme="princess-pink"] .board-head{
+  border-bottom:3px double var(--line);
+}
+
+/* ---------- ANGEL CORE ----------
+   No hearts. Use light stars/halo geometry. */
+#sheet[data-design-theme="angel-core"] .home-heart,
+#sheet[data-design-theme="angel-core"] .side-mark,
+#sheet[data-design-theme="angel-core"] .board-icon{
+  font-size:0 !important;
+}
+#sheet[data-design-theme="angel-core"] .home-heart::after{
+  content:"✧";
+  font-size:15px;
+  color:#94bfd6;
+  text-shadow:0 0 8px rgba(145,197,226,.45);
+}
+#sheet[data-design-theme="angel-core"] .side-mark::after,
+#sheet[data-design-theme="angel-core"] .board-icon::after{
+  content:"·";
+  font-size:18px;
+  line-height:0;
+  color:#9ec8dd;
+}
+#sheet[data-design-theme="angel-core"] .home-topbar,
+#sheet[data-design-theme="angel-core"] .archive-board,
+#sheet[data-design-theme="angel-core"] .side-box{
+  border-color:#d2e6f0;
+}
+#sheet[data-design-theme="angel-core"] .archive-board{
+  background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(247,252,255,.96));
+}
+#sheet[data-design-theme="angel-core"] .board-head{
+  background:linear-gradient(90deg,#eff9fd,#fff,#eff9fd);
+  box-shadow:inset 0 -1px 0 rgba(159,198,219,.35);
+}
+
+/* ---------- SWEET STRAWBERRY ----------
+   Remove hearts. Use seed/flower-dot detail, cream bakery card shapes. */
+#sheet[data-design-theme="sweet-strawberry"] .home-heart,
+#sheet[data-design-theme="sweet-strawberry"] .side-mark,
+#sheet[data-design-theme="sweet-strawberry"] .board-icon{
+  font-size:0 !important;
+}
+#sheet[data-design-theme="sweet-strawberry"] .home-heart::after,
+#sheet[data-design-theme="sweet-strawberry"] .side-mark::after,
+#sheet[data-design-theme="sweet-strawberry"] .board-icon::after{
+  content:"✿";
+  font-size:8px;
+  color:#cf6676;
+}
+#sheet[data-design-theme="sweet-strawberry"] .home-topbar,
+#sheet[data-design-theme="sweet-strawberry"] .archive-board,
+#sheet[data-design-theme="sweet-strawberry"] .side-box{
+  border-radius:10px;
+}
+#sheet[data-design-theme="sweet-strawberry"] .archive-board,
+#sheet[data-design-theme="sweet-strawberry"] .side-box{
+  background:#fffdf9;
+}
+#sheet[data-design-theme="sweet-strawberry"] .board-head{
+  background:linear-gradient(90deg,#fce3e5,#fff4ec);
+}
+#sheet[data-design-theme="sweet-strawberry"] .tag{
+  border-radius:999px !important;
+}
+
+/* ---------- BLUE ARCHIVE ----------
+   No hearts. Use file/index marks and square UI. */
+#sheet[data-design-theme="blue-archive"] .home-heart,
+#sheet[data-design-theme="blue-archive"] .side-mark,
+#sheet[data-design-theme="blue-archive"] .board-icon{
+  font-size:0 !important;
+}
+#sheet[data-design-theme="blue-archive"] .home-heart::after,
+#sheet[data-design-theme="blue-archive"] .side-mark::after,
+#sheet[data-design-theme="blue-archive"] .board-icon::after{
+  content:"▰";
+  font-size:7px;
+  color:var(--theme);
+}
+#sheet[data-design-theme="blue-archive"] .home-topbar,
+#sheet[data-design-theme="blue-archive"] .archive-board,
+#sheet[data-design-theme="blue-archive"] .archive-card,
+#sheet[data-design-theme="blue-archive"] .side-box,
+#sheet[data-design-theme="blue-archive"] .tag{
+  border-radius:2px !important;
+}
+#sheet[data-design-theme="blue-archive"] .board-head{
+  border-left:4px solid var(--theme);
+  padding-left:7px;
+}
+#sheet[data-design-theme="blue-archive"] .archive-caption small{
+  font-family:monospace !important;
+  letter-spacing:.08em;
+}
+
+/* ---------- BLACK EDITORIAL ----------
+   Absolutely no hearts or cute ornaments. Editorial bars and serif lines. */
+#sheet[data-design-theme="black-ribbon"] .home-heart,
+#sheet[data-design-theme="black-ribbon"] .side-mark,
+#sheet[data-design-theme="black-ribbon"] .board-icon{
+  display:none !important;
+}
+#sheet[data-design-theme="black-ribbon"] .home-topbar{
+  border-top:4px solid #d6a0b5 !important;
+  border-bottom:1px solid #5a4b53 !important;
+}
+#sheet[data-design-theme="black-ribbon"] .board-head{
+  border-left:3px solid #d6a0b5;
+  padding-left:8px;
+  text-transform:uppercase;
+}
+#sheet[data-design-theme="black-ribbon"] .archive-card{
+  box-shadow:none !important;
+  border-color:#54474e !important;
+}
+#sheet[data-design-theme="black-ribbon"] .tag{
+  border-radius:0 !important;
+}
+#sheet[data-design-theme="black-ribbon"] .home-footer{
+  border-top:1px solid #7b626e !important;
+}
+
+/* ---------- CREAM DIARY ----------
+   No hearts. Use ink dot / paper marks. */
+#sheet[data-design-theme="cream-diary"] .home-heart,
+#sheet[data-design-theme="cream-diary"] .side-mark,
+#sheet[data-design-theme="cream-diary"] .board-icon{
+  font-size:0 !important;
+}
+#sheet[data-design-theme="cream-diary"] .home-heart::after,
+#sheet[data-design-theme="cream-diary"] .side-mark::after,
+#sheet[data-design-theme="cream-diary"] .board-icon::after{
+  content:"•";
+  font-size:12px;
+  color:#9d795d;
+}
+#sheet[data-design-theme="cream-diary"] .home-topbar,
+#sheet[data-design-theme="cream-diary"] .archive-board,
+#sheet[data-design-theme="cream-diary"] .side-box{
+  border-radius:1px !important;
+}
+#sheet[data-design-theme="cream-diary"] .board-head{
+  font-family:Georgia,serif !important;
+  letter-spacing:.08em;
+}
+#sheet[data-design-theme="cream-diary"] .archive-caption small{
+  text-transform:lowercase;
+  letter-spacing:.12em;
+}
+
+/* ---------- PIXEL HOME ----------
+   No hearts. Pixel diamond/cursor geometry only. */
+#sheet[data-design-theme="pixel-home"] .home-heart,
+#sheet[data-design-theme="pixel-home"] .side-mark,
+#sheet[data-design-theme="pixel-home"] .board-icon{
+  font-size:0 !important;
+}
+#sheet[data-design-theme="pixel-home"] .home-heart::after,
+#sheet[data-design-theme="pixel-home"] .side-mark::after,
+#sheet[data-design-theme="pixel-home"] .board-icon::after{
+  content:"◆";
+  font-size:7px;
+  color:var(--theme);
+}
+#sheet[data-design-theme="pixel-home"] .home-topbar{
+  border:2px solid #8e667d !important;
+  box-shadow:3px 3px 0 #8e667d !important;
+}
+#sheet[data-design-theme="pixel-home"] .board-head{
+  border-bottom:2px solid #8e667d !important;
+}
+#sheet[data-design-theme="pixel-home"] .archive-card{
+  border:2px solid #a9859b !important;
+}
+
+/* ---------- CYBER CHAT ----------
+   No hearts. Terminal brackets, neon bars, scanline language. */
+#sheet[data-design-theme="cyber-chat"] .home-heart,
+#sheet[data-design-theme="cyber-chat"] .side-mark,
+#sheet[data-design-theme="cyber-chat"] .board-icon{
+  font-size:0 !important;
+}
+#sheet[data-design-theme="cyber-chat"] .home-heart::after{
+  content:"[ ]";
+  font-size:7px;
+  color:#70eef0;
+  letter-spacing:-1px;
+}
+#sheet[data-design-theme="cyber-chat"] .side-mark::after,
+#sheet[data-design-theme="cyber-chat"] .board-icon::after{
+  content:"▮";
+  font-size:6px;
+  color:#70eef0;
+  text-shadow:0 0 7px rgba(90,239,244,.6);
+}
+#sheet[data-design-theme="cyber-chat"] .home-topbar{
+  border-left:3px solid #69e3e7 !important;
+  border-right:1px solid #234f58 !important;
+}
+#sheet[data-design-theme="cyber-chat"] .board-head{
+  background:
+    linear-gradient(90deg,rgba(34,100,112,.46),rgba(10,29,36,.92));
+  border-left:2px solid #67e8ec;
+}
+#sheet[data-design-theme="cyber-chat"] .archive-card{
+  background:rgba(7,24,30,.72) !important;
+}
+#sheet[data-design-theme="cyber-chat"] .archive-board{
+  backdrop-filter:blur(2px);
+}
+
+/* Footer treatment by theme */
+#sheet[data-design-theme="simple-pink"] .footer-label::before{content:"♡ ";color:var(--theme)}
+#sheet[data-design-theme="princess-pink"] .footer-label::before{content:"✦ ";color:var(--theme)}
+#sheet[data-design-theme="angel-core"] .footer-label::before{content:"✧ ";color:var(--theme)}
+#sheet[data-design-theme="sweet-strawberry"] .footer-label::before{content:"✿ ";color:var(--theme)}
+#sheet[data-design-theme="blue-archive"] .footer-label::before{content:"▰ ";color:var(--theme)}
+#sheet[data-design-theme="black-ribbon"] .footer-label::before{content:"";display:none}
+#sheet[data-design-theme="cream-diary"] .footer-label::before{content:"• ";color:var(--theme)}
+#sheet[data-design-theme="pixel-home"] .footer-label::before{content:"◆ ";color:var(--theme)}
+#sheet[data-design-theme="cyber-chat"] .footer-label::before{content:"▮ ";color:var(--theme)}
+
+/* =========================================================
+   FINAL THEME POLISH — cleaner Pixel Home + global custom color
+   ========================================================= */
+
+/* User-selected color must drive all theme accents/background tones. */
+#sheet .mini-title,
+#sheet .board-head{
+  color:var(--deep) !important;
+}
+#sheet .tag,
+#sheet .platform-box,
+#sheet .pref-row,
+#sheet .home-footer{
+  border-color:var(--line) !important;
+}
+
+/* BLUE DOSSIER — cleaner archival/data-file identity */
+#sheet[data-design-theme="blue-archive"]{
+  background:
+    linear-gradient(var(--line) 1px,transparent 1px),
+    linear-gradient(90deg,var(--line) 1px,transparent 1px),
+    var(--pale) !important;
+  background-size:20px 20px !important;
+}
+#sheet[data-design-theme="blue-archive"] .home-topbar,
+#sheet[data-design-theme="blue-archive"] .archive-board,
+#sheet[data-design-theme="blue-archive"] .side-box{
+  background:linear-gradient(180deg,#ffffff,var(--pale)) !important;
+}
+#sheet[data-design-theme="blue-archive"] .board-head,
+#sheet[data-design-theme="blue-archive"] .mini-title{
+  background:linear-gradient(90deg,var(--soft),var(--pale)) !important;
+}
+
+/* PIXEL HOME — replace strange diagonal/check motifs with a tidy micro-grid. */
+#sheet[data-design-theme="pixel-home"]{
+  background:
+    linear-gradient(var(--line) 1px,transparent 1px),
+    linear-gradient(90deg,var(--line) 1px,transparent 1px),
+    var(--pale) !important;
+  background-size:8px 8px !important;
+}
+#sheet[data-design-theme="pixel-home"] .home-topbar,
+#sheet[data-design-theme="pixel-home"] .home-sidebar,
+#sheet[data-design-theme="pixel-home"] .archive-board,
+#sheet[data-design-theme="pixel-home"] .notice-box{
+  background:#fff !important;
+  border-color:var(--deep) !important;
+  box-shadow:3px 3px 0 var(--deep) !important;
+}
+#sheet[data-design-theme="pixel-home"] .board-head,
+#sheet[data-design-theme="pixel-home"] .mini-title{
+  background:
+    linear-gradient(90deg,var(--soft),var(--pale)) !important;
+  border-bottom:2px solid var(--deep) !important;
+}
+#sheet[data-design-theme="pixel-home"] .archive-card{
+  border:2px solid var(--line) !important;
+  background:#fff !important;
+}
+#sheet[data-design-theme="pixel-home"] .tag{
+  background:var(--soft) !important;
+  border-color:var(--deep) !important;
+  box-shadow:1px 1px 0 var(--deep) !important;
+}
+
+/* Ensure light themes react throughout to custom color */
+#sheet[data-design-theme="simple-pink"] .home-topbar,
+#sheet[data-design-theme="simple-pink"] .archive-card,
+#sheet[data-design-theme="princess-pink"] .home-topbar,
+#sheet[data-design-theme="princess-pink"] .archive-card,
+#sheet[data-design-theme="angel-core"] .home-topbar,
+#sheet[data-design-theme="angel-core"] .archive-board,
+#sheet[data-design-theme="sweet-strawberry"] .archive-board,
+#sheet[data-design-theme="sweet-strawberry"] .side-box,
+#sheet[data-design-theme="cream-diary"] .home-topbar,
+#sheet[data-design-theme="cream-diary"] .archive-board,
+#sheet[data-design-theme="cream-diary"] .notice-box{
+  border-color:var(--line) !important;
+}
+#sheet[data-design-theme="simple-pink"] .mini-title,
+#sheet[data-design-theme="simple-pink"] .board-head,
+#sheet[data-design-theme="princess-pink"] .mini-title,
+#sheet[data-design-theme="princess-pink"] .board-head,
+#sheet[data-design-theme="angel-core"] .mini-title,
+#sheet[data-design-theme="angel-core"] .board-head,
+#sheet[data-design-theme="sweet-strawberry"] .mini-title,
+#sheet[data-design-theme="sweet-strawberry"] .board-head,
+#sheet[data-design-theme="cream-diary"] .mini-title,
+#sheet[data-design-theme="cream-diary"] .board-head{
+  background:linear-gradient(90deg,var(--soft),var(--pale),var(--soft)) !important;
+}
+
+/* Dark themes also follow selected accent globally */
+#sheet[data-design-theme="black-ribbon"] .home-topbar,
+#sheet[data-design-theme="black-ribbon"] .home-sidebar,
+#sheet[data-design-theme="black-ribbon"] .side-box,
+#sheet[data-design-theme="black-ribbon"] .archive-board,
+#sheet[data-design-theme="black-ribbon"] .archive-card,
+#sheet[data-design-theme="black-ribbon"] .notice-box,
+#sheet[data-design-theme="black-ribbon"] .home-footer,
+#sheet[data-design-theme="cyber-chat"] .home-topbar,
+#sheet[data-design-theme="cyber-chat"] .home-sidebar,
+#sheet[data-design-theme="cyber-chat"] .side-box,
+#sheet[data-design-theme="cyber-chat"] .archive-board,
+#sheet[data-design-theme="cyber-chat"] .archive-card,
+#sheet[data-design-theme="cyber-chat"] .notice-box,
+#sheet[data-design-theme="cyber-chat"] .home-footer{
+  border-color:var(--line) !important;
+}
+#sheet[data-design-theme="black-ribbon"] .mini-title,
+#sheet[data-design-theme="black-ribbon"] .board-head,
+#sheet[data-design-theme="cyber-chat"] .mini-title,
+#sheet[data-design-theme="cyber-chat"] .board-head{
+  background:linear-gradient(90deg,var(--soft),var(--pale)) !important;
+}
+#sheet[data-design-theme="black-ribbon"] .home-title h2,
+#sheet[data-design-theme="black-ribbon"] .archive-caption h3,
+#sheet[data-design-theme="cyber-chat"] .home-title h2,
+#sheet[data-design-theme="cyber-chat"] .archive-caption h3{
+  color:var(--deep) !important;
+}
+
+/* ===== global custom-color propagation ===== */
+#sheet .home-topbar,
+#sheet .home-sidebar,
+#sheet .side-box,
+#sheet .archive-board,
+#sheet .archive-card,
+#sheet .notice-box,
+#sheet .home-footer,
+#sheet .platform-box,
+#sheet .tag,
+#sheet .pref-row,
+#sheet .archive-image{
+  border-color:var(--line) !important;
+}
+#sheet .mini-title,
+#sheet .board-head{
+  background:linear-gradient(90deg,var(--soft),var(--pale)) !important;
+  color:var(--deep) !important;
+}
+#sheet .tag,
+#sheet .platform-box,
+#sheet .pref-row{
+  background:var(--soft) !important;
+  color:var(--deep) !important;
+}
+#sheet .home-title h2,
+#sheet .archive-caption h3,
+#sheet .archive-caption small,
+#sheet .home-footer{
+  color:var(--deep) !important;
+}
+
+/* Blue Index */
+#sheet[data-design-theme="blue-archive"]{
+  background:
+    linear-gradient(var(--line) 1px,transparent 1px),
+    linear-gradient(90deg,var(--line) 1px,transparent 1px),
+    var(--pale) !important;
+  background-size:20px 20px !important;
+}
+#sheet[data-design-theme="blue-archive"] .home-topbar,
+#sheet[data-design-theme="blue-archive"] .archive-board,
+#sheet[data-design-theme="blue-archive"] .side-box{
+  background:linear-gradient(180deg,#fff,var(--pale)) !important;
+}
+#sheet[data-design-theme="blue-archive"] .board-head{
+  border-left:4px solid var(--theme) !important;
+}
+
+/* Light themes: custom color affects the full accent system */
+#sheet[data-design-theme="simple-pink"],
+#sheet[data-design-theme="princess-pink"],
+#sheet[data-design-theme="angel-core"],
+#sheet[data-design-theme="sweet-strawberry"],
+#sheet[data-design-theme="blue-archive"],
+#sheet[data-design-theme="cream-diary"],
+#sheet[data-design-theme="pixel-home"]{
+  color:var(--deep) !important;
+}
+
+/* Dark themes: chosen color becomes luminous accent while dark structure remains */
+#sheet[data-design-theme="black-ribbon"],
+#sheet[data-design-theme="cyber-chat"]{
+  background-color:var(--pale) !important;
+}
+#sheet[data-design-theme="black-ribbon"] .home-topbar,
+#sheet[data-design-theme="black-ribbon"] .home-sidebar,
+#sheet[data-design-theme="black-ribbon"] .side-box,
+#sheet[data-design-theme="black-ribbon"] .archive-board,
+#sheet[data-design-theme="black-ribbon"] .archive-card,
+#sheet[data-design-theme="black-ribbon"] .notice-box,
+#sheet[data-design-theme="black-ribbon"] .home-footer,
+#sheet[data-design-theme="cyber-chat"] .home-topbar,
+#sheet[data-design-theme="cyber-chat"] .home-sidebar,
+#sheet[data-design-theme="cyber-chat"] .side-box,
+#sheet[data-design-theme="cyber-chat"] .archive-board,
+#sheet[data-design-theme="cyber-chat"] .archive-card,
+#sheet[data-design-theme="cyber-chat"] .notice-box,
+#sheet[data-design-theme="cyber-chat"] .home-footer{
+  background:var(--pale) !important;
+  border-color:var(--line) !important;
+}
+#sheet[data-design-theme="black-ribbon"] .mini-title,
+#sheet[data-design-theme="black-ribbon"] .board-head,
+#sheet[data-design-theme="cyber-chat"] .mini-title,
+#sheet[data-design-theme="cyber-chat"] .board-head{
+  background:linear-gradient(90deg,var(--soft),var(--pale)) !important;
+  color:var(--deep) !important;
+}
+
+/* =========================================================
+   DARK THEME REWORK
+   Black Editorial = restrained luxury editorial
+   Cyber Chat      = clean neon interface, not muddy/over-glowy
+   ========================================================= */
+
+/* ---------- BLACK EDITORIAL ----------
+   Keep the page truly black/charcoal with one refined accent.
+   Avoid pink fog, checker texture, and overly cute details. */
+#sheet[data-design-theme="black-ribbon"]{
+  background:
+    linear-gradient(180deg,#151416 0%,#1b191c 100%) !important;
+  color:#f1edf0 !important;
+}
+#sheet[data-design-theme="black-ribbon"] .home-topbar,
+#sheet[data-design-theme="black-ribbon"] .home-sidebar,
+#sheet[data-design-theme="black-ribbon"] .side-box,
+#sheet[data-design-theme="black-ribbon"] .archive-board,
+#sheet[data-design-theme="black-ribbon"] .archive-card,
+#sheet[data-design-theme="black-ribbon"] .notice-box,
+#sheet[data-design-theme="black-ribbon"] .home-footer{
+  background:#1d1b1e !important;
+  border-color:#4b454a !important;
+  color:#eee9ec !important;
+  box-shadow:none !important;
+}
+#sheet[data-design-theme="black-ribbon"] .home-topbar{
+  border-top:3px solid var(--theme) !important;
+  border-bottom:1px solid #4b454a !important;
+}
+#sheet[data-design-theme="black-ribbon"] .mini-title,
+#sheet[data-design-theme="black-ribbon"] .board-head{
+  background:#252226 !important;
+  color:#f0ebee !important;
+  border-bottom:1px solid #4b454a !important;
+}
+#sheet[data-design-theme="black-ribbon"] .board-head{
+  border-left:3px solid var(--theme) !important;
+}
+#sheet[data-design-theme="black-ribbon"] .archive-card{
+  border-left:1px solid #4b454a !important;
+}
+#sheet[data-design-theme="black-ribbon"] .archive-image{
+  border:1px solid #5d555a !important;
+  box-shadow:none !important;
+}
+#sheet[data-design-theme="black-ribbon"] .tag,
+#sheet[data-design-theme="black-ribbon"] .platform-box,
+#sheet[data-design-theme="black-ribbon"] .pref-row{
+  background:#262327 !important;
+  border-color:#514a4f !important;
+  color:#efe9ed !important;
+  border-radius:2px !important;
+}
+#sheet[data-design-theme="black-ribbon"] .home-title h2,
+#sheet[data-design-theme="black-ribbon"] .archive-caption h3,
+#sheet[data-design-theme="black-ribbon"] .archive-caption small,
+#sheet[data-design-theme="black-ribbon"] .home-subline,
+#sheet[data-design-theme="black-ribbon"] .home-footer{
+  color:#f2edf0 !important;
+  text-shadow:none !important;
+}
+#sheet[data-design-theme="black-ribbon"] .home-heart,
+#sheet[data-design-theme="black-ribbon"] .side-mark,
+#sheet[data-design-theme="black-ribbon"] .board-icon{
+  display:none !important;
+}
+#sheet[data-design-theme="black-ribbon"] .mini-title::after,
+#sheet[data-design-theme="black-ribbon"] .board-head::after{
+  background:linear-gradient(90deg,transparent,var(--theme)) !important;
+  opacity:.7 !important;
+}
+
+/* ---------- CYBER CHAT ----------
+   Cleaner terminal/grid aesthetic with crisp neon accents. */
+#sheet[data-design-theme="cyber-chat"]{
+  background:
+    linear-gradient(rgba(90,220,230,.08) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(90,220,230,.08) 1px,transparent 1px),
+    radial-gradient(circle at 86% 12%,rgba(90,220,230,.14),transparent 26%),
+    #07151a !important;
+  background-size:22px 22px,22px 22px,auto,auto !important;
+  color:#d9f8fa !important;
+}
+#sheet[data-design-theme="cyber-chat"] .home-topbar,
+#sheet[data-design-theme="cyber-chat"] .home-sidebar,
+#sheet[data-design-theme="cyber-chat"] .side-box,
+#sheet[data-design-theme="cyber-chat"] .archive-board,
+#sheet[data-design-theme="cyber-chat"] .archive-card,
+#sheet[data-design-theme="cyber-chat"] .notice-box,
+#sheet[data-design-theme="cyber-chat"] .home-footer{
+  background:#0a1b21 !important;
+  border-color:#23545d !important;
+  color:#ddfbfc !important;
+  box-shadow:none !important;
+}
+#sheet[data-design-theme="cyber-chat"] .home-topbar{
+  border-left:3px solid var(--theme) !important;
+  border-bottom:1px solid #23545d !important;
+}
+#sheet[data-design-theme="cyber-chat"] .mini-title,
+#sheet[data-design-theme="cyber-chat"] .board-head{
+  background:#0f2830 !important;
+  color:#d7fbfc !important;
+  border-bottom:1px solid #28616b !important;
+}
+#sheet[data-design-theme="cyber-chat"] .board-head{
+  border-left:2px solid var(--theme) !important;
+}
+#sheet[data-design-theme="cyber-chat"] .archive-image{
+  border:1px solid var(--theme) !important;
+  box-shadow:0 0 10px rgba(90,220,230,.22) !important;
+}
+#sheet[data-design-theme="cyber-chat"] .tag,
+#sheet[data-design-theme="cyber-chat"] .platform-box,
+#sheet[data-design-theme="cyber-chat"] .pref-row{
+  background:#102931 !important;
+  border-color:#2c6670 !important;
+  color:#d4f8fa !important;
+  border-radius:2px !important;
+}
+#sheet[data-design-theme="cyber-chat"] .home-title h2,
+#sheet[data-design-theme="cyber-chat"] .archive-caption h3{
+  color:#e6ffff !important;
+  text-shadow:0 0 7px rgba(90,220,230,.25) !important;
+}
+#sheet[data-design-theme="cyber-chat"] .home-subline,
+#sheet[data-design-theme="cyber-chat"] .archive-caption small,
+#sheet[data-design-theme="cyber-chat"] .home-footer{
+  color:#9bd7db !important;
+}
+#sheet[data-design-theme="cyber-chat"] .home-heart,
+#sheet[data-design-theme="cyber-chat"] .side-mark,
+#sheet[data-design-theme="cyber-chat"] .board-icon{
+  font-size:0 !important;
+}
+#sheet[data-design-theme="cyber-chat"] .home-heart::after{
+  content:"[]";
+  font-size:7px;
+  letter-spacing:-1px;
+  color:var(--theme);
+}
+#sheet[data-design-theme="cyber-chat"] .side-mark::after,
+#sheet[data-design-theme="cyber-chat"] .board-icon::after{
+  content:"▮";
+  font-size:6px;
+  color:var(--theme);
+  text-shadow:0 0 6px rgba(90,220,230,.40);
+}
+
+/* =========================================================
+   SAME COLOR, DIFFERENT THEME — stronger structural differences
+   User accent color remains the same, but every theme uses it differently.
+   ========================================================= */
+
+/* SIMPLE PINK — airy, flat, stationery */
+#sheet[data-design-theme="simple-pink"]{
+  background:
+    radial-gradient(circle at 12px 12px,var(--line) 1px,transparent 1.2px) 0 0/24px 24px,
+    #fff !important;
+}
+#sheet[data-design-theme="simple-pink"] .home-topbar,
+#sheet[data-design-theme="simple-pink"] .archive-board,
+#sheet[data-design-theme="simple-pink"] .side-box{
+  background:#fff !important;
+  border:1px solid var(--line) !important;
+  box-shadow:none !important;
+}
+#sheet[data-design-theme="simple-pink"] .mini-title,
+#sheet[data-design-theme="simple-pink"] .board-head{
+  background:var(--soft) !important;
+  border-bottom:1px solid var(--line) !important;
+}
+
+/* PRINCESS PINK — glossy salon / double frames / rounded */
+#sheet[data-design-theme="princess-pink"]{
+  background:
+    radial-gradient(circle at 0 0,var(--soft) 0,transparent 28%),
+    radial-gradient(circle at 100% 100%,var(--soft) 0,transparent 30%),
+    var(--pale) !important;
+}
+#sheet[data-design-theme="princess-pink"] .home-topbar,
+#sheet[data-design-theme="princess-pink"] .archive-board,
+#sheet[data-design-theme="princess-pink"] .side-box{
+  border:3px double var(--line) !important;
+  border-radius:12px !important;
+  background:linear-gradient(180deg,#fff,var(--pale)) !important;
+  box-shadow:0 8px 18px rgba(90,50,65,.10) !important;
+}
+#sheet[data-design-theme="princess-pink"] .archive-image{
+  border-radius:50% !important;
+  outline:1px solid var(--theme);
+  outline-offset:3px;
+}
+#sheet[data-design-theme="princess-pink"] .tag{border-radius:999px!important}
+
+/* ANGEL CORE — luminous, translucent, soft blue-white regardless of accent hue */
+#sheet[data-design-theme="angel-core"]{
+  background:
+    radial-gradient(circle at 50% -10%,#fff 0 16%,var(--pale) 38%,transparent 62%),
+    repeating-linear-gradient(115deg,transparent 0 44px,var(--line) 45px 46px),
+    #fbfdff !important;
+}
+#sheet[data-design-theme="angel-core"] .home-topbar,
+#sheet[data-design-theme="angel-core"] .archive-board,
+#sheet[data-design-theme="angel-core"] .side-box{
+  background:rgba(255,255,255,.88) !important;
+  border:1px solid var(--line) !important;
+  box-shadow:0 0 20px rgba(130,180,210,.12) !important;
+}
+#sheet[data-design-theme="angel-core"] .archive-image{
+  border-radius:50% !important;
+  box-shadow:0 0 0 4px #fff,0 0 0 5px var(--line),0 0 18px rgba(160,200,225,.18)!important;
+}
+
+/* SWEET STRAWBERRY — creamy café cards, rounded, dotted seed texture */
+#sheet[data-design-theme="sweet-strawberry"]{
+  background:
+    radial-gradient(ellipse at 10px 8px,var(--line) 0 1.4px,transparent 1.8px) 0 0/24px 20px,
+    linear-gradient(90deg,#fffaf7 50%,#fffdfb 50%) 0 0/18px 18px !important;
+}
+#sheet[data-design-theme="sweet-strawberry"] .home-topbar,
+#sheet[data-design-theme="sweet-strawberry"] .archive-board,
+#sheet[data-design-theme="sweet-strawberry"] .side-box{
+  background:#fffdf9 !important;
+  border-radius:10px !important;
+  border:1px solid var(--line) !important;
+}
+#sheet[data-design-theme="sweet-strawberry"] .archive-card{
+  border-radius:10px!important;
+  box-shadow:0 3px 0 var(--line)!important;
+}
+
+/* BLUE INDEX — rigid index/database layout */
+#sheet[data-design-theme="blue-archive"]{
+  background:
+    linear-gradient(var(--line) 1px,transparent 1px),
+    linear-gradient(90deg,var(--line) 1px,transparent 1px),
+    #f9fcff !important;
+  background-size:20px 20px!important;
+}
+#sheet[data-design-theme="blue-archive"] .home-topbar,
+#sheet[data-design-theme="blue-archive"] .archive-board,
+#sheet[data-design-theme="blue-archive"] .side-box{
+  border-radius:2px!important;
+  background:#fff!important;
+  border:1px solid var(--line)!important;
+  box-shadow:none!important;
+}
+#sheet[data-design-theme="blue-archive"] .board-head,
+#sheet[data-design-theme="blue-archive"] .mini-title{
+  border-left:4px solid var(--theme)!important;
+  background:var(--pale)!important;
+}
+#sheet[data-design-theme="blue-archive"] .archive-card{
+  border-left:3px solid var(--theme)!important;
+}
+
+/* BLACK EDITORIAL — monochrome editorial, accent only as a thin line */
+#sheet[data-design-theme="black-ribbon"]{
+  background:linear-gradient(180deg,#141316,#1a181b)!important;
+}
+#sheet[data-design-theme="black-ribbon"] .home-topbar,
+#sheet[data-design-theme="black-ribbon"] .archive-board,
+#sheet[data-design-theme="black-ribbon"] .side-box,
+#sheet[data-design-theme="black-ribbon"] .archive-card,
+#sheet[data-design-theme="black-ribbon"] .notice-box,
+#sheet[data-design-theme="black-ribbon"] .home-footer{
+  background:#1d1b1e!important;
+  border-color:#474147!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+#sheet[data-design-theme="black-ribbon"] .home-topbar{
+  border-top:3px solid var(--theme)!important;
+}
+#sheet[data-design-theme="black-ribbon"] .board-head,
+#sheet[data-design-theme="black-ribbon"] .mini-title{
+  background:#252226!important;
+  border-left:3px solid var(--theme)!important;
+}
+#sheet[data-design-theme="black-ribbon"] .tag{
+  background:#262327!important;
+  border-radius:0!important;
+}
+
+/* CREAM DIARY — warm paper, ruled, hand-placed effect */
+#sheet[data-design-theme="cream-diary"]{
+  background:
+    repeating-linear-gradient(0deg,#fffaf1 0 20px,var(--line) 21px 22px)!important;
+}
+#sheet[data-design-theme="cream-diary"] .home-topbar,
+#sheet[data-design-theme="cream-diary"] .archive-board,
+#sheet[data-design-theme="cream-diary"] .side-box{
+  background:#fffaf1!important;
+  border:1px solid var(--line)!important;
+  border-radius:1px!important;
+}
+#sheet[data-design-theme="cream-diary"] .board-head,
+#sheet[data-design-theme="cream-diary"] .mini-title{
+  background:var(--soft)!important;
+  border-bottom:1px dashed var(--deep)!important;
+}
+#sheet[data-design-theme="cream-diary"] .archive-card{
+  transform:rotate(-.2deg);
+  box-shadow:2px 3px 0 rgba(120,90,60,.10)!important;
+}
+
+/* PIXEL HOME — tiny grid, hard edges, faux window boxes */
+#sheet[data-design-theme="pixel-home"]{
+  background:
+    linear-gradient(var(--line) 1px,transparent 1px),
+    linear-gradient(90deg,var(--line) 1px,transparent 1px),
+    var(--pale)!important;
+  background-size:8px 8px!important;
+}
+#sheet[data-design-theme="pixel-home"] *{border-radius:0!important}
+#sheet[data-design-theme="pixel-home"] .home-topbar,
+#sheet[data-design-theme="pixel-home"] .archive-board,
+#sheet[data-design-theme="pixel-home"] .side-box,
+#sheet[data-design-theme="pixel-home"] .notice-box{
+  background:#fff!important;
+  border:2px solid var(--deep)!important;
+  box-shadow:3px 3px 0 var(--deep)!important;
+}
+#sheet[data-design-theme="pixel-home"] .board-head,
+#sheet[data-design-theme="pixel-home"] .mini-title{
+  background:repeating-linear-gradient(90deg,var(--soft) 0 6px,var(--pale) 6px 12px)!important;
+  border-bottom:2px solid var(--deep)!important;
+}
+#sheet[data-design-theme="pixel-home"] .tag{box-shadow:1px 1px 0 var(--deep)!important}
+
+/* CYBER CHAT — dark HUD, neon only on active edges */
+#sheet[data-design-theme="cyber-chat"]{
+  background:
+    linear-gradient(rgba(70,210,220,.08) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(70,210,220,.08) 1px,transparent 1px),
+    #07151a!important;
+  background-size:22px 22px!important;
+}
+#sheet[data-design-theme="cyber-chat"] .home-topbar,
+#sheet[data-design-theme="cyber-chat"] .archive-board,
+#sheet[data-design-theme="cyber-chat"] .side-box,
+#sheet[data-design-theme="cyber-chat"] .archive-card,
+#sheet[data-design-theme="cyber-chat"] .notice-box,
+#sheet[data-design-theme="cyber-chat"] .home-footer{
+  background:#0a1b21!important;
+  border:1px solid #23545d!important;
+  border-radius:2px!important;
+  box-shadow:none!important;
+}
+#sheet[data-design-theme="cyber-chat"] .home-topbar{
+  border-left:3px solid var(--theme)!important;
+}
+#sheet[data-design-theme="cyber-chat"] .board-head,
+#sheet[data-design-theme="cyber-chat"] .mini-title{
+  background:#0f2830!important;
+  border-left:2px solid var(--theme)!important;
+}
+#sheet[data-design-theme="cyber-chat"] .archive-image{
+  border:1px solid var(--theme)!important;
+  box-shadow:0 0 9px rgba(80,220,230,.20)!important;
+}
+
+/* Same user color, but theme identity remains via layout/material/pattern */
+
+/* Sweet Strawberry — clean decoration pass
+   Remove cross/flower-like symbols; keep a modern strawberry-cafe mood. */
+#sheet[data-design-theme="sweet-strawberry"] .board-head::before,
+#sheet[data-design-theme="sweet-strawberry"] .board-head::after,
+#sheet[data-design-theme="sweet-strawberry"] .mini-title::before,
+#sheet[data-design-theme="sweet-strawberry"] .mini-title::after,
+#sheet[data-design-theme="sweet-strawberry"] .home-topbar::before,
+#sheet[data-design-theme="sweet-strawberry"] .home-topbar::after,
+#sheet[data-design-theme="sweet-strawberry"] .home-footer::before,
+#sheet[data-design-theme="sweet-strawberry"] .home-footer::after{
+  content:none !important;
+  display:none !important;
+}
+#sheet[data-design-theme="sweet-strawberry"] .board-head,
+#sheet[data-design-theme="sweet-strawberry"] .mini-title{
+  background:linear-gradient(90deg,var(--soft),var(--pale)) !important;
+}
+#sheet[data-design-theme="sweet-strawberry"] .board-head{
+  padding-left:12px !important;
+}
+
+/* =========================================================
+   Princess Pink tab/header cleanup
+   Remove white protruding slivers from section tabs.
+   ========================================================= */
+#sheet[data-design-theme="princess-pink"] .board-head,
+#sheet[data-design-theme="princess-pink"] .mini-title{
+  position:relative !important;
+  overflow:hidden !important;
+  background:linear-gradient(90deg,var(--soft),var(--pale),var(--soft)) !important;
+  border-top:0 !important;
+  border-right:0 !important;
+  border-left:0 !important;
+  box-shadow:none !important;
+}
+
+/* Kill any decorative caps/tails that can peek out as white blocks */
+#sheet[data-design-theme="princess-pink"] .board-head::before,
+#sheet[data-design-theme="princess-pink"] .board-head::after,
+#sheet[data-design-theme="princess-pink"] .mini-title::before,
+#sheet[data-design-theme="princess-pink"] .mini-title::after{
+  content:none !important;
+  display:none !important;
+  width:0 !important;
+  height:0 !important;
+  border:0 !important;
+  background:none !important;
+  box-shadow:none !important;
+  clip-path:none !important;
+}
+
+/* Keep the surrounding panels rounded without letting the header spill outside */
+#sheet[data-design-theme="princess-pink"] .archive-board,
+#sheet[data-design-theme="princess-pink"] .side-box,
+#sheet[data-design-theme="princess-pink"] .notice-box{
+  overflow:hidden !important;
+  background:#fff !important;
+}
+
+/* Make the tab edge feel intentional and clean */
+#sheet[data-design-theme="princess-pink"] .board-head{
+  border-bottom:1px solid var(--line) !important;
+  border-radius:9px 9px 0 0 !important;
+}
+#sheet[data-design-theme="princess-pink"] .mini-title{
+  border-bottom:1px solid var(--line) !important;
+}
+
+/* =========================================================
+   Princess Pink — sidebar white-gap cleanup
+   Fill PLATFORM / AI CHAT / DREAM & 1T1D / SOCIAL areas
+   with a soft theme tint instead of stark white.
+   ========================================================= */
+#sheet[data-design-theme="princess-pink"] .home-sidebar{
+  background:var(--pale) !important;
+  border-color:var(--line) !important;
+}
+
+#sheet[data-design-theme="princess-pink"] .side-box,
+#sheet[data-design-theme="princess-pink"] .side-box.profile-box,
+#sheet[data-design-theme="princess-pink"] .side-box.mini-prefs{
+  background:linear-gradient(180deg,var(--pale),var(--soft)) !important;
+  border-color:var(--line) !important;
+}
+
+#sheet[data-design-theme="princess-pink"] .platform-box,
+#sheet[data-design-theme="princess-pink"] .sidebar-tags,
+#sheet[data-design-theme="princess-pink"] .pref-row{
+  background:var(--pale) !important;
+  border-color:var(--line) !important;
+}
+
+#sheet[data-design-theme="princess-pink"] .side-box:nth-child(2){
+  background:
+    linear-gradient(180deg,var(--pale) 0%,var(--soft) 100%) !important;
+}
+
+#sheet[data-design-theme="princess-pink"] .mini-title{
+  background:linear-gradient(90deg,var(--soft),var(--pale),var(--soft)) !important;
+}
+
+/* Keep tags readable on the tinted background */
+#sheet[data-design-theme="princess-pink"] .tag{
+  background:#fffafc !important;
+  border-color:var(--line) !important;
+}
+
+/* Princess Pink: remove the actual white body strips behind sidebar sections */
+#sheet[data-design-theme="princess-pink"] .home-sidebar,
+#sheet[data-design-theme="princess-pink"] .side-box,
+#sheet[data-design-theme="princess-pink"] .side-box > *,
+#sheet[data-design-theme="princess-pink"] .side-content,
+#sheet[data-design-theme="princess-pink"] .platform-box,
+#sheet[data-design-theme="princess-pink"] .sidebar-tags,
+#sheet[data-design-theme="princess-pink"] .pref-row,
+#sheet[data-design-theme="princess-pink"] .mini-prefs,
+#sheet[data-design-theme="princess-pink"] .profile-box{
+  background-color:var(--pale) !important;
+}
+
+/* Fill the large empty AI CHAT body and the rows below with the theme tint */
+#sheet[data-design-theme="princess-pink"] .side-box{
+  background:var(--pale) !important;
+}
+#sheet[data-design-theme="princess-pink"] .side-box .mini-title{
+  background:var(--soft) !important;
+}
+#sheet[data-design-theme="princess-pink"] .side-box:not(:first-child){
+  background:linear-gradient(180deg,var(--pale) 0%,var(--pale) 100%) !important;
+}
+
+/* Some sidebar areas are direct children rather than .side-box bodies */
+#sheet[data-design-theme="princess-pink"] .home-sidebar > div,
+#sheet[data-design-theme="princess-pink"] .home-sidebar > section{
+  background-color:var(--pale) !important;
+}
+
+/* Preserve the darker pink title strips */
+#sheet[data-design-theme="princess-pink"] .home-sidebar .mini-title{
+  background:linear-gradient(90deg,var(--soft),var(--pale),var(--soft)) !important;
+}
+
+/* Princess Pink — keep tabs, remove ONLY the backing whitespace */
+#sheet[data-design-theme="princess-pink"] .home-sidebar{
+  background:transparent !important;
+  box-shadow:none !important;
+}
+
+/* No large white/pink backing card behind each group */
+#sheet[data-design-theme="princess-pink"] .side-box,
+#sheet[data-design-theme="princess-pink"] .side-box.profile-box,
+#sheet[data-design-theme="princess-pink"] .side-box.mini-prefs{
+  background:transparent !important;
+  box-shadow:none !important;
+  border-color:transparent !important;
+}
+
+/* Do not paint full-width wrappers */
+#sheet[data-design-theme="princess-pink"] .side-content,
+#sheet[data-design-theme="princess-pink"] .sidebar-tags{
+  background:transparent !important;
+  box-shadow:none !important;
+}
+
+/* Explicitly restore/preserve the existing title-tab surface.
+   Only the backing area is transparent. */
+#sheet[data-design-theme="princess-pink"] .mini-title{
+  display:flex !important;
+  width:max-content !important;
+  max-width:100% !important;
+  background:linear-gradient(90deg,var(--soft),var(--pale),var(--soft)) !important;
+  border:1px solid var(--line) !important;
+  border-radius:999px !important;
+  padding:5px 11px !important;
+  overflow:hidden !important;
+}
+
+/* Avoid pseudo tails/plates behind the tab */
+#sheet[data-design-theme="princess-pink"] .mini-title::before,
+#sheet[data-design-theme="princess-pink"] .mini-title::after{
+  content:none !important;
+  display:none !important;
+}
+
+
+/* =========================================================
+   PIXEL HOME — refined pixel dither theme
+   Replaces the old stripe motif with CSS-only retro pixels.
+   ========================================================= */
+#sheet[data-design-theme="pixel-home"]{
+  background-color:var(--paper) !important;
+  background-image:
+    linear-gradient(45deg, color-mix(in srgb,var(--main) 9%,transparent) 25%, transparent 25%),
+    linear-gradient(-45deg, color-mix(in srgb,var(--main) 9%,transparent) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, color-mix(in srgb,var(--main) 9%,transparent) 75%),
+    linear-gradient(-45deg, transparent 75%, color-mix(in srgb,var(--main) 9%,transparent) 75%) !important;
+  background-size:8px 8px !important;
+  background-position:0 0,0 4px,4px -4px,-4px 0 !important;
+}
+
+#sheet[data-design-theme="pixel-home"] .sheet-head,
+#sheet[data-design-theme="pixel-home"] .archive-board,
+#sheet[data-design-theme="pixel-home"] .side-box,
+#sheet[data-design-theme="pixel-home"] .notice-box{
+  background:var(--paper) !important;
+  background-image:none !important;
+}
+
+/* tiny square grid in title bars */
+#sheet[data-design-theme="pixel-home"] .board-head,
+#sheet[data-design-theme="pixel-home"] .mini-title{
+  background-color:var(--soft) !important;
+  background-image:
+    linear-gradient(90deg,color-mix(in srgb,var(--main) 15%,transparent) 1px,transparent 1px),
+    linear-gradient(color-mix(in srgb,var(--main) 15%,transparent) 1px,transparent 1px) !important;
+  background-size:6px 6px !important;
+  border-radius:0 !important;
+}
+
+/* sparse dither for empty photo areas */
+#sheet[data-design-theme="pixel-home"] .photo,
+#sheet[data-design-theme="pixel-home"] .image-box,
+#sheet[data-design-theme="pixel-home"] .archive-photo{
+  background-color:var(--pale) !important;
+  background-image:radial-gradient(circle,color-mix(in srgb,var(--main) 28%,transparent) 1px,transparent 1.2px) !important;
+  background-size:7px 7px !important;
+  border-radius:0 !important;
+}
+
+/* stepped retro-web depth */
+#sheet[data-design-theme="pixel-home"] .archive-board,
+#sheet[data-design-theme="pixel-home"] .side-box,
+#sheet[data-design-theme="pixel-home"] .notice-box,
+#sheet[data-design-theme="pixel-home"] .sheet-head{
+  border-radius:0 !important;
+  box-shadow:
+    2px 0 0 color-mix(in srgb,var(--main) 24%,transparent),
+    0 2px 0 color-mix(in srgb,var(--main) 24%,transparent) !important;
+}
+
+#sheet[data-design-theme="pixel-home"] .tag{
+  border-radius:2px !important;
+  box-shadow:1px 1px 0 color-mix(in srgb,var(--main) 28%,transparent) !important;
+}
+
+/* neutralize old stripe decorations */
+#sheet[data-design-theme="pixel-home"]::before,
+#sheet[data-design-theme="pixel-home"]::after,
+#sheet[data-design-theme="pixel-home"] .board-head::before,
+#sheet[data-design-theme="pixel-home"] .board-head::after,
+#sheet[data-design-theme="pixel-home"] .mini-title::before,
+#sheet[data-design-theme="pixel-home"] .mini-title::after{
+  background-image:none !important;
+}
+
+/* =========================================================
+   CSS-ONLY THEME ORNAMENTS
+   No image assets, ribbons, bows, crowns or lace.
+   Each theme uses a different decoration language.
+   ========================================================= */
+
+/* ---------- SIMPLE PINK ----------
+   tiny blush dots + slim corner accent */
+#sheet[data-design-theme="simple-pink"] .home-topbar{
+  position:relative;
+}
+#sheet[data-design-theme="simple-pink"] .home-topbar::after{
+  content:"";
+  position:absolute;
+  right:12px;
+  bottom:9px;
+  width:28px;
+  height:5px;
+  background:
+    radial-gradient(circle,var(--theme) 0 1.5px,transparent 1.8px)
+    0 50%/9px 5px repeat-x;
+  opacity:.42;
+}
+#sheet[data-design-theme="simple-pink"] .archive-board::after{
+  content:"";
+  position:absolute;
+  right:7px;
+  bottom:7px;
+  width:12px;
+  height:12px;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  pointer-events:none;
+}
+
+/* ---------- PRINCESS PINK ----------
+   jewel/cameo geometry: diamonds + fine inset frame */
+#sheet[data-design-theme="princess-pink"] .home-topbar{
+  position:relative;
+}
+#sheet[data-design-theme="princess-pink"] .home-topbar::after{
+  content:"◇  ◇  ◇";
+  position:absolute;
+  right:12px;
+  top:9px;
+  color:var(--theme);
+  font-size:7px;
+  letter-spacing:2px;
+  opacity:.58;
+}
+#sheet[data-design-theme="princess-pink"] .archive-board{
+  position:relative;
+}
+#sheet[data-design-theme="princess-pink"] .archive-board::after{
+  content:"";
+  position:absolute;
+  inset:4px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  pointer-events:none;
+  opacity:.55;
+}
+#sheet[data-design-theme="princess-pink"] .archive-caption::before{
+  content:"";
+  display:inline-block;
+  width:5px;
+  height:5px;
+  margin-right:4px;
+  transform:rotate(45deg);
+  background:var(--theme);
+  opacity:.5;
+  vertical-align:middle;
+}
+
+/* ---------- ANGEL CORE ----------
+   halo rings + soft light motes */
+#sheet[data-design-theme="angel-core"] .home-topbar{
+  position:relative;
+}
+#sheet[data-design-theme="angel-core"] .home-topbar::after{
+  content:"";
+  position:absolute;
+  right:16px;
+  top:12px;
+  width:24px;
+  height:8px;
+  border:1px solid var(--theme);
+  border-radius:50%;
+  opacity:.46;
+  box-shadow:
+    0 0 0 4px rgba(255,255,255,.5),
+    0 0 10px rgba(160,200,225,.18);
+}
+#sheet[data-design-theme="angel-core"] .archive-board::after{
+  content:"";
+  position:absolute;
+  right:10px;
+  bottom:9px;
+  width:18px;
+  height:18px;
+  background:
+    radial-gradient(circle at 2px 2px,var(--theme) 0 1px,transparent 1.2px),
+    radial-gradient(circle at 13px 5px,var(--theme) 0 1px,transparent 1.2px),
+    radial-gradient(circle at 8px 14px,var(--theme) 0 1px,transparent 1.2px);
+  opacity:.35;
+  pointer-events:none;
+}
+
+/* ---------- SWEET STRAWBERRY ----------
+   seed dots + cream scallop-free café label accents */
+#sheet[data-design-theme="sweet-strawberry"] .home-topbar{
+  position:relative;
+}
+#sheet[data-design-theme="sweet-strawberry"] .home-topbar::after{
+  content:"";
+  position:absolute;
+  right:12px;
+  top:10px;
+  width:25px;
+  height:14px;
+  background:
+    radial-gradient(ellipse at center,var(--theme) 0 1.3px,transparent 1.5px)
+    0 0/8px 7px repeat;
+  opacity:.38;
+  transform:rotate(-8deg);
+}
+#sheet[data-design-theme="sweet-strawberry"] .archive-card::after{
+  content:"";
+  position:absolute;
+  right:6px;
+  bottom:6px;
+  width:10px;
+  height:10px;
+  background:
+    radial-gradient(ellipse at 30% 25%,var(--theme) 0 1px,transparent 1.2px),
+    radial-gradient(ellipse at 70% 50%,var(--theme) 0 1px,transparent 1.2px),
+    radial-gradient(ellipse at 40% 80%,var(--theme) 0 1px,transparent 1.2px);
+  opacity:.32;
+}
+
+/* ---------- BLUE INDEX ----------
+   index marks + registration corners, no hearts */
+#sheet[data-design-theme="blue-archive"] .home-topbar{
+  position:relative;
+}
+#sheet[data-design-theme="blue-archive"] .home-topbar::after{
+  content:"01 / INDEX";
+  position:absolute;
+  right:10px;
+  top:10px;
+  font:700 6px monospace;
+  letter-spacing:1px;
+  color:var(--theme);
+  opacity:.62;
+}
+#sheet[data-design-theme="blue-archive"] .archive-board::after{
+  content:"";
+  position:absolute;
+  right:7px;
+  bottom:7px;
+  width:12px;
+  height:12px;
+  border-right:2px solid var(--theme);
+  border-bottom:2px solid var(--theme);
+  opacity:.45;
+  pointer-events:none;
+}
+#sheet[data-design-theme="blue-archive"] .archive-card::before{
+  content:"";
+  position:absolute;
+  left:7px;
+  top:7px;
+  width:4px;
+  height:4px;
+  background:var(--theme);
+  opacity:.55;
+}
+
+/* ---------- BLACK EDITORIAL ----------
+   luxury rule + issue number, zero cute ornaments */
+#sheet[data-design-theme="black-ribbon"] .home-topbar{
+  position:relative;
+}
+#sheet[data-design-theme="black-ribbon"] .home-topbar::after{
+  content:"ED. 01";
+  position:absolute;
+  right:10px;
+  bottom:8px;
+  font:600 6px Georgia,serif;
+  letter-spacing:1.4px;
+  color:var(--theme);
+  opacity:.72;
+}
+#sheet[data-design-theme="black-ribbon"] .archive-board{
+  position:relative;
+}
+#sheet[data-design-theme="black-ribbon"] .archive-board::after{
+  content:"";
+  position:absolute;
+  right:8px;
+  bottom:8px;
+  width:22px;
+  height:1px;
+  background:var(--theme);
+  opacity:.45;
+}
+#sheet[data-design-theme="black-ribbon"] .archive-caption::before{
+  content:"";
+  display:inline-block;
+  width:10px;
+  height:1px;
+  margin-right:5px;
+  background:var(--theme);
+  vertical-align:middle;
+  opacity:.7;
+}
+
+/* ---------- CREAM DIARY ----------
+   notebook punch holes + paper clip-like CSS stroke */
+#sheet[data-design-theme="cream-diary"] .home-topbar{
+  position:relative;
+}
+#sheet[data-design-theme="cream-diary"] .home-topbar::after{
+  content:"";
+  position:absolute;
+  right:12px;
+  top:9px;
+  width:7px;
+  height:15px;
+  border:1px solid var(--deep);
+  border-radius:4px;
+  transform:rotate(14deg);
+  opacity:.38;
+}
+#sheet[data-design-theme="cream-diary"] .home-sidebar::before{
+  content:"";
+  position:absolute;
+  left:5px;
+  top:28px;
+  bottom:16px;
+  width:5px;
+  background:
+    radial-gradient(circle,var(--deep) 0 1.5px,transparent 1.8px)
+    center top/5px 26px repeat-y;
+  opacity:.28;
+  pointer-events:none;
+}
+
+/* ---------- PIXEL HOME ----------
+   8-bit corner spark + tiny window controls */
+#sheet[data-design-theme="pixel-home"] .home-topbar{
+  position:relative;
+}
+#sheet[data-design-theme="pixel-home"] .home-topbar::after{
+  content:"";
+  position:absolute;
+  right:9px;
+  top:9px;
+  width:6px;
+  height:6px;
+  background:var(--theme);
+  box-shadow:
+    -10px 0 0 var(--soft),
+    -20px 0 0 var(--pale);
+  image-rendering:pixelated;
+}
+#sheet[data-design-theme="pixel-home"] .archive-board::after{
+  content:"";
+  position:absolute;
+  right:7px;
+  bottom:7px;
+  width:3px;
+  height:3px;
+  background:var(--theme);
+  box-shadow:
+    3px 0 0 var(--theme),
+    -3px 0 0 var(--theme),
+    0 3px 0 var(--theme),
+    0 -3px 0 var(--theme);
+  opacity:.45;
+}
+
+/* ---------- CYBER CHAT ----------
+   HUD corner brackets + scan indicator */
+#sheet[data-design-theme="cyber-chat"] .home-topbar{
+  position:relative;
+}
+#sheet[data-design-theme="cyber-chat"] .home-topbar::after{
+  content:"ONLINE";
+  position:absolute;
+  right:10px;
+  top:9px;
+  padding-left:10px;
+  font:700 6px monospace;
+  letter-spacing:1px;
+  color:var(--theme);
+  opacity:.75;
+}
+#sheet[data-design-theme="cyber-chat"] .home-topbar::before{
+  content:"";
+  position:absolute;
+  right:48px;
+  top:12px;
+  width:4px;
+  height:4px;
+  background:var(--theme);
+  box-shadow:0 0 6px var(--theme);
+}
+#sheet[data-design-theme="cyber-chat"] .archive-board::after{
+  content:"";
+  position:absolute;
+  right:7px;
+  bottom:7px;
+  width:13px;
+  height:13px;
+  border-right:1px solid var(--theme);
+  border-bottom:1px solid var(--theme);
+  opacity:.58;
+  pointer-events:none;
+}
+
+/* Keep decorations behind/around content, never blocking clicks */
+#sheet .archive-board,
+#sheet .archive-card,
+#sheet .home-sidebar{
+  position:relative;
+}
+#sheet .archive-board::after,
+#sheet .archive-card::before,
+#sheet .archive-card::after,
+#sheet .home-topbar::before,
+#sheet .home-topbar::after{
+  pointer-events:none;
+}
+
+/* =========================================================
+   SWEET STRAWBERRY — CSS strawberry before nickname
+   No image / emoji asset. Pure CSS shape.
+   ========================================================= */
+
+/* Hide the existing decorative mark in front of the nickname only for Sweet Strawberry */
+#sheet[data-design-theme="sweet-strawberry"] .home-title-row > .theme-mark,
+#sheet[data-design-theme="sweet-strawberry"] .home-title-row > .home-heart{
+  display:none !important;
+}
+
+/* Reserve room for the CSS strawberry */
+#sheet[data-design-theme="sweet-strawberry"] .home-title-row{
+  position:relative !important;
+  padding-left:17px !important;
+}
+
+/* Strawberry body */
+#sheet[data-design-theme="sweet-strawberry"] .home-title-row::before{
+  content:"" !important;
+  position:absolute !important;
+  left:1px !important;
+  top:50% !important;
+  width:10px !important;
+  height:11px !important;
+  transform:translateY(-42%) rotate(45deg) !important;
+  border-radius:62% 38% 68% 32% / 62% 34% 66% 38% !important;
+  background:var(--theme) !important;
+  box-shadow:
+    inset 1px 1px 0 rgba(255,255,255,.32),
+    0 1px 0 var(--line) !important;
+  z-index:2 !important;
+}
+
+/* Strawberry leaves + tiny seeds */
+#sheet[data-design-theme="sweet-strawberry"] .home-title-row::after{
+  content:"" !important;
+  position:absolute !important;
+  left:3px !important;
+  top:calc(50% - 8px) !important;
+  width:8px !important;
+  height:7px !important;
+  background:
+    /* three leaves */
+    linear-gradient(135deg,transparent 46%,var(--deep) 47% 63%,transparent 64%) 0 0/5px 5px no-repeat,
+    linear-gradient(45deg,transparent 46%,var(--deep) 47% 63%,transparent 64%) 4px 0/5px 5px no-repeat,
+    linear-gradient(180deg,transparent 40%,var(--deep) 41% 64%,transparent 65%) 2px 1px/5px 5px no-repeat,
+    /* small seed-like highlight dots */
+    radial-gradient(circle,#fff 0 0.7px,transparent .9px) 2px 5px/4px 4px no-repeat,
+    radial-gradient(circle,#fff 0 0.7px,transparent .9px) 5px 7px/4px 4px no-repeat !important;
+  opacity:.86 !important;
+  z-index:3 !important;
+  pointer-events:none !important;
+}
+
+/* Make sure older Sweet Strawberry cross/flower pseudo marks do not reappear at nickname */
+#sheet[data-design-theme="sweet-strawberry"] .home-title-row .board-icon,
+#sheet[data-design-theme="sweet-strawberry"] .home-title-row .side-mark{
+  display:none !important;
+}
+
+/* SWEET STRAWBERRY — nickname mark: simple strawberry character */
+#sheet[data-design-theme="sweet-strawberry"] .home-title-row{
+  padding-left:0 !important;
+}
+#sheet[data-design-theme="sweet-strawberry"] .home-title-row::before{
+  content:"🍓" !important;
+  position:static !important;
+  display:inline-block !important;
+  width:auto !important;
+  height:auto !important;
+  margin-right:7px !important;
+  transform:none !important;
+  border-radius:0 !important;
+  background:none !important;
+  box-shadow:none !important;
+  font-size:.72em !important;
+  line-height:1 !important;
+  vertical-align:.08em !important;
+}
+#sheet[data-design-theme="sweet-strawberry"] .home-title-row::after{
+  content:none !important;
+  display:none !important;
+}
+
+/* =========================================================
+   ALL THEMES — square sidebar + no backing whitespace
+   Applies to every design theme consistently.
+   ========================================================= */
+
+/* Sidebar outer column: square and clean */
+#sheet .home-sidebar{
+  background:transparent !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  overflow:visible !important;
+}
+
+/* Every sidebar section becomes one clean rectangular block */
+#sheet .home-sidebar .side-box,
+#sheet .home-sidebar .side-box.profile-box,
+#sheet .home-sidebar .side-box.mini-prefs{
+  border-radius:0 !important;
+  box-shadow:none !important;
+  overflow:hidden !important;
+  margin:0 !important;
+}
+
+/* Remove hidden/extra backing plates that create pale or white gaps */
+#sheet .home-sidebar > div,
+#sheet .home-sidebar > section,
+#sheet .home-sidebar .side-content,
+#sheet .home-sidebar .sidebar-tags{
+  border-radius:0 !important;
+}
+
+/* Sidebar section headers: full-width rectangular tabs */
+#sheet .home-sidebar .mini-title{
+  display:flex !important;
+  width:100% !important;
+  max-width:none !important;
+  min-height:0 !important;
+  margin:0 !important;
+  padding:7px 9px !important;
+  border-radius:0 !important;
+  box-sizing:border-box !important;
+  box-shadow:none !important;
+}
+
+/* No decorative tails/caps behind sidebar tabs */
+#sheet .home-sidebar .mini-title::before,
+#sheet .home-sidebar .mini-title::after{
+  content:none !important;
+  display:none !important;
+}
+
+/* Inner sidebar panels also stay rectangular */
+#sheet .home-sidebar .platform-box,
+#sheet .home-sidebar .pref-row{
+  border-radius:0 !important;
+  box-shadow:none !important;
+}
+
+/* Remove large empty backing whitespace around section content.
+   The section itself remains visible as a clean rectangle. */
+#sheet .home-sidebar .side-box{
+  background:var(--pale) !important;
+}
+#sheet .home-sidebar .side-box > *:not(.mini-title){
+  background:transparent !important;
+}
+
+/* Prevent old theme-specific rounded/pill sidebar rules from winning */
+#sheet[data-design-theme="simple-pink"] .home-sidebar *,
+#sheet[data-design-theme="princess-pink"] .home-sidebar *,
+#sheet[data-design-theme="angel-core"] .home-sidebar *,
+#sheet[data-design-theme="sweet-strawberry"] .home-sidebar *,
+#sheet[data-design-theme="blue-archive"] .home-sidebar *,
+#sheet[data-design-theme="black-ribbon"] .home-sidebar *,
+#sheet[data-design-theme="cream-diary"] .home-sidebar *,
+#sheet[data-design-theme="pixel-home"] .home-sidebar *,
+#sheet[data-design-theme="cyber-chat"] .home-sidebar *{
+  --sidebar-radius:0px;
+}
+
+/* Explicit square geometry for all theme sidebar cards */
+#sheet[data-design-theme="simple-pink"] .side-box,
+#sheet[data-design-theme="princess-pink"] .side-box,
+#sheet[data-design-theme="angel-core"] .side-box,
+#sheet[data-design-theme="sweet-strawberry"] .side-box,
+#sheet[data-design-theme="blue-archive"] .side-box,
+#sheet[data-design-theme="black-ribbon"] .side-box,
+#sheet[data-design-theme="cream-diary"] .side-box,
+#sheet[data-design-theme="pixel-home"] .side-box,
+#sheet[data-design-theme="cyber-chat"] .side-box,
+#sheet[data-design-theme="simple-pink"] .mini-title,
+#sheet[data-design-theme="princess-pink"] .mini-title,
+#sheet[data-design-theme="angel-core"] .mini-title,
+#sheet[data-design-theme="sweet-strawberry"] .mini-title,
+#sheet[data-design-theme="blue-archive"] .mini-title,
+#sheet[data-design-theme="black-ribbon"] .mini-title,
+#sheet[data-design-theme="cream-diary"] .mini-title,
+#sheet[data-design-theme="pixel-home"] .mini-title,
+#sheet[data-design-theme="cyber-chat"] .mini-title{
+  border-radius:0 !important;
+}
+
+/* Keep only tiny content chips rounded; these are not sidebar boxes */
+#sheet .home-sidebar .tag{
+  border-radius:999px !important;
+}
+
+/* Pixel Home can stay fully square even for chips */
+#sheet[data-design-theme="pixel-home"] .home-sidebar .tag{
+  border-radius:0 !important;
+}
+
+/* =========================================================
+   THEME TEXT CONTRAST PASS
+   Keep the selected accent color, but use dedicated readable
+   text colors per theme so labels never disappear into backgrounds.
+   ========================================================= */
+
+/* Theme-specific readable text variables */
+#sheet[data-design-theme="simple-pink"]{
+  --theme-text:#5a3f49;
+  --theme-muted:#8d707a;
+  --theme-heading:#7a4158;
+}
+#sheet[data-design-theme="princess-pink"]{
+  --theme-text:#553842;
+  --theme-muted:#866672;
+  --theme-heading:#743a54;
+}
+#sheet[data-design-theme="angel-core"]{
+  --theme-text:#3e5562;
+  --theme-muted:#718692;
+  --theme-heading:#52788c;
+}
+#sheet[data-design-theme="sweet-strawberry"]{
+  --theme-text:#5d4143;
+  --theme-muted:#8b6a6d;
+  --theme-heading:#874957;
+}
+#sheet[data-design-theme="blue-archive"]{
+  --theme-text:#354c5d;
+  --theme-muted:#687e8e;
+  --theme-heading:#456d8b;
+}
+#sheet[data-design-theme="cream-diary"]{
+  --theme-text:#4d4035;
+  --theme-muted:#7f6d5d;
+  --theme-heading:#6f5845;
+}
+#sheet[data-design-theme="pixel-home"]{
+  --theme-text:#3f3540;
+  --theme-muted:#736574;
+  --theme-heading:#66506a;
+}
+#sheet[data-design-theme="black-ribbon"]{
+  --theme-text:#f2edf0;
+  --theme-muted:#b9adb3;
+  --theme-heading:#ffffff;
+}
+#sheet[data-design-theme="cyber-chat"]{
+  --theme-text:#e1fbfc;
+  --theme-muted:#9bcfd3;
+  --theme-heading:#efffff;
+}
+
+/* Main readable copy */
+#sheet .home-title h2,
+#sheet .home-subline,
+#sheet .archive-caption h3,
+#sheet .archive-caption p,
+#sheet .archive-caption small,
+#sheet .side-content,
+#sheet .side-content *,
+#sheet .sidebar-tags,
+#sheet .pref-row,
+#sheet .platform-box,
+#sheet .home-footer,
+#sheet .notice-box,
+#sheet .notice-box *{
+  color:var(--theme-text) !important;
+}
+
+/* Section and sidebar headings */
+#sheet .board-head,
+#sheet .board-head *,
+#sheet .mini-title,
+#sheet .mini-title *,
+#sheet .home-sidebar .mini-title,
+#sheet .home-sidebar .mini-title *{
+  color:var(--theme-heading) !important;
+}
+
+/* Secondary text */
+#sheet .archive-caption small,
+#sheet .home-subline,
+#sheet .home-footer,
+#sheet .pref-row small,
+#sheet .side-content small{
+  color:var(--theme-muted) !important;
+}
+
+/* Tags/chips must keep legible text */
+#sheet .tag,
+#sheet .platform-box .tag,
+#sheet .sidebar-tags .tag{
+  color:var(--theme-text) !important;
+}
+
+/* Dark themes need dark-safe chip fills */
+#sheet[data-design-theme="black-ribbon"] .tag,
+#sheet[data-design-theme="black-ribbon"] .platform-box,
+#sheet[data-design-theme="black-ribbon"] .pref-row{
+  background:#2a272b !important;
+  border-color:#5b5358 !important;
+  color:#f3eef1 !important;
+}
+#sheet[data-design-theme="cyber-chat"] .tag,
+#sheet[data-design-theme="cyber-chat"] .platform-box,
+#sheet[data-design-theme="cyber-chat"] .pref-row{
+  background:#102830 !important;
+  border-color:#2a626b !important;
+  color:#ddfbfc !important;
+}
+
+/* Light themes: keep chip fill light even if accent color is very dark */
+#sheet[data-design-theme="simple-pink"] .tag,
+#sheet[data-design-theme="princess-pink"] .tag,
+#sheet[data-design-theme="angel-core"] .tag,
+#sheet[data-design-theme="sweet-strawberry"] .tag,
+#sheet[data-design-theme="blue-archive"] .tag,
+#sheet[data-design-theme="cream-diary"] .tag,
+#sheet[data-design-theme="pixel-home"] .tag{
+  background:var(--pale) !important;
+}
+
+/* Selected color remains visible as accent, not body-copy color */
+#sheet .home-heart,
+#sheet .theme-mark,
+#sheet .board-icon,
+#sheet .archive-caption::before,
+#sheet .home-topbar::after{
+  color:var(--theme) !important;
+}
+
+/* =========================================================
+   THEME NICKNAME MARKS
+   Princess Pink = 🎀
+   Angel Core    = ໒꒱.。
+   ========================================================= */
+
+/* Clear older nickname-front theme marks for these two themes */
+#sheet[data-design-theme="princess-pink"] .home-title-row > .theme-mark,
+#sheet[data-design-theme="princess-pink"] .home-title-row > .home-heart,
+#sheet[data-design-theme="angel-core"] .home-title-row > .theme-mark,
+#sheet[data-design-theme="angel-core"] .home-title-row > .home-heart{
+  display:none !important;
+}
+
+#sheet[data-design-theme="princess-pink"] .home-title-row,
+#sheet[data-design-theme="angel-core"] .home-title-row{
+  padding-left:0 !important;
+}
+
+/* Princess Pink — ribbon emoji before nickname */
+#sheet[data-design-theme="princess-pink"] .home-title-row::before{
+  content:"🎀" !important;
+  position:static !important;
+  display:inline-block !important;
+  width:auto !important;
+  height:auto !important;
+  margin-right:7px !important;
+  background:none !important;
+  border:0 !important;
+  box-shadow:none !important;
+  transform:none !important;
+  font-size:.72em !important;
+  line-height:1 !important;
+  vertical-align:.08em !important;
+}
+
+/* Angel Core — wing text mark before nickname */
+#sheet[data-design-theme="angel-core"] .home-title-row::before{
+  content:"໒꒱.。" !important;
+  position:static !important;
+  display:inline-block !important;
+  width:auto !important;
+  height:auto !important;
+  margin-right:7px !important;
+  background:none !important;
+  border:0 !important;
+  box-shadow:none !important;
+  transform:none !important;
+  color:var(--theme-heading) !important;
+  font-size:.72em !important;
+  line-height:1 !important;
+  letter-spacing:-1px !important;
+  vertical-align:.08em !important;
+}
+
+/* No second pseudo ornament next to the nickname */
+#sheet[data-design-theme="princess-pink"] .home-title-row::after,
+#sheet[data-design-theme="angel-core"] .home-title-row::after{
+  content:none !important;
+  display:none !important;
+}
+
+/* =========================================================
+   READABILITY — enlarge the small text without bloating titles
+   ========================================================= */
+
+/* General small copy */
+#sheet .home-subline,
+#sheet .archive-caption small,
+#sheet .side-content,
+#sheet .side-content small,
+#sheet .home-footer,
+#sheet .notice-box,
+#sheet .notice-box p,
+#sheet .pref-row,
+#sheet .platform-box,
+#sheet .sidebar-tags{
+  font-size:max(10px, .78em) !important;
+  line-height:1.55 !important;
+}
+
+/* Sidebar section labels */
+#sheet .home-sidebar .mini-title{
+  font-size:11px !important;
+  line-height:1.3 !important;
+  letter-spacing:.3px !important;
+}
+
+/* Chips / platform names / preference pills */
+#sheet .tag,
+#sheet .platform-box .tag,
+#sheet .sidebar-tags .tag{
+  font-size:9.5px !important;
+  line-height:1.35 !important;
+  padding-top:4px !important;
+  padding-bottom:4px !important;
+}
+
+/* Main archive section headings */
+#sheet .board-head{
+  font-size:11px !important;
+  line-height:1.35 !important;
+}
+
+/* Character / pair captions */
+#sheet .archive-caption h3{
+  font-size:12px !important;
+  line-height:1.4 !important;
+}
+#sheet .archive-caption p{
+  font-size:10.5px !important;
+  line-height:1.5 !important;
+}
+
+/* Tiny footer/meta text gets a minimum readable size */
+#sheet small,
+#sheet .muted,
+#sheet .meta{
+  font-size:max(9.5px, .74em) !important;
+}
+
+/* Editor/control panel small labels too */
+.editor-panel label,
+.editor-panel small,
+.controls label,
+.controls small,
+.panel label,
+.panel small{
+  font-size:12px !important;
+  line-height:1.45 !important;
+}
+
+/* Angel Core nickname mark — white heart + wings */
+#sheet[data-design-theme="angel-core"] .home-title-row > .theme-mark,
+#sheet[data-design-theme="angel-core"] .home-title-row > .home-heart{
+  display:none !important;
+}
+#sheet[data-design-theme="angel-core"] .home-title-row{
+  padding-left:0 !important;
+}
+#sheet[data-design-theme="angel-core"] .home-title-row::before{
+  content:"🤍 🪽" !important;
+  position:static !important;
+  display:inline-block !important;
+  width:auto !important;
+  height:auto !important;
+  margin-right:7px !important;
+  background:none !important;
+  border:0 !important;
+  box-shadow:none !important;
+  transform:none !important;
+  font-size:.72em !important;
+  line-height:1 !important;
+  letter-spacing:0 !important;
+  vertical-align:.08em !important;
+}
+#sheet[data-design-theme="angel-core"] .home-title-row::after{
+  content:none !important;
+  display:none !important;
+}
